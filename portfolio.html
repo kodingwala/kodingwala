@@ -1,0 +1,1475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website Design - Kodingwala</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://i.postimg.cc/3N8yBc2K/unnamed.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #06142a;
+            --bg-card: #0d1f3a;
+            --cyan: #19d3c5;
+            --cyan-light: #49e6da;
+            --orange: #f5a623;
+            --orange-light: #ffb84d;
+            --text-main: #ffffff;
+            --text-soft: #b8c4d6;
+            --border: rgba(255,255,255,0.08);
+            --gradient-cyan: linear-gradient(135deg, #19d3c5 0%, #49e6da 100%);
+            --gradient-orange: linear-gradient(135deg, #f5a623 0%, #ffb84d 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--cyan);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--cyan-light);
+        }
+
+        /* Brand Styling */
+        .brand-koding {
+            color: var(--cyan);
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+        }
+
+        .brand-wala {
+            color: var(--orange);
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+            font-family: 'Outfit', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-cyan);
+            color: var(--bg-main);
+            box-shadow: 0 4px 15px rgba(25, 211, 197, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(25, 211, 197, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--orange);
+            border: 2px solid var(--orange);
+        }
+
+        .btn-secondary:hover {
+            background: var(--orange);
+            color: var(--bg-main);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(245, 166, 35, 0.3);
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-whatsapp:hover {
+            background: #128c7e;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: var(--gradient-cyan);
+            z-index: 1001;
+            transition: width 0.2s ease;
+        }
+
+        /* Desktop Navigation */
+        .desktop-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(6, 20, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .desktop-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 8px;
+            object-fit: contain;
+        }
+
+        .tagline {
+            font-size: 0.8rem;
+            color: var(--text-soft);
+            margin: 0.2rem 0 0 2.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-soft);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        .nav-links a.active {
+            color: var(--cyan);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Mobile Bottom Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(6, 20, 42, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.3);
+            border-top: 1px solid var(--border);
+            border-radius: 20px 20px 0 0;
+            padding: 10px 0 5px;
+        }
+
+        .mobile-nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 5px 5px;
+            color: var(--text-soft);
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .mobile-nav-item.active {
+            color: var(--cyan);
+        }
+
+        .mobile-nav-item.active::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 4px;
+            background: var(--cyan);
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 0 10px rgba(25, 211, 197, 0.7);
+        }
+
+        .mobile-nav-item.active::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--orange);
+            border-radius: 50%;
+        }
+
+        .mobile-nav-item i {
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-item.active i {
+            transform: scale(1.1);
+        }
+
+        .mobile-nav-item span {
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .mobile-nav-item:active {
+            transform: scale(0.95);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 1.5rem 3rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(25, 211, 197, 0.15) 0%, rgba(25, 211, 197, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: url('https://i.postimg.cc/3N8yBc2K/unnamed.png') no-repeat center;
+            background-size: contain;
+            opacity: 0.03;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-soft);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(25, 211, 197, 0.1);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--cyan);
+        }
+
+        .trust-badge i {
+            color: var(--orange);
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.8s forwards;
+        }
+
+        .hero-image {
+            max-width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title-wrapper {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-soft);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--cyan);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: var(--bg-main);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(25, 211, 197, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .feature-card p {
+            color: var(--text-soft);
+            flex-grow: 1;
+        }
+
+        /* Best For Grid */
+        .best-for-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .best-for-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .best-for-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: var(--cyan);
+        }
+
+        .best-for-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        /* Pricing Section */
+        .pricing-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--cyan);
+        }
+
+        .pricing-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--cyan);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Sample Portfolio Grid */
+        .sample-portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .sample-portfolio-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .sample-portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: var(--cyan);
+        }
+
+        .sample-portfolio-preview {
+            height: 200px;
+            background: var(--bg-main);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sample-portfolio-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(25, 211, 197, 0.1) 0%, rgba(245, 166, 35, 0.1) 100%);
+        }
+
+        .sample-portfolio-icon {
+            font-size: 3rem;
+            color: var(--cyan);
+        }
+
+        .sample-portfolio-content {
+            padding: 1.5rem;
+        }
+
+        .sample-portfolio-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(25, 211, 197, 0.05);
+        }
+
+        .faq-question h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+            color: var(--orange);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(25, 211, 197, 0.1) 0%, rgba(245, 166, 35, 0.1) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-card);
+            padding: 3rem 1.5rem 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-logo img {
+            max-width: 100px;
+            margin-bottom: 1rem;
+            object-fit: contain;
+        }
+
+        .footer-logo h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(25, 211, 197, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cyan);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--cyan);
+            color: var(--bg-main);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-soft);
+            font-size: 0.9rem;
+        }
+
+        /* Floating WhatsApp Button */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-main);
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(25, 211, 197, 0.4);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(25, 211, 197, 0.5);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animation on Scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+
+            .mobile-nav {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .cta-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+        <div class="desktop-nav-container">
+            <div>
+                <div class="logo">
+                    <img src="https://i.postimg.cc/3N8yBc2K/unnamed.png" alt="Kodingwala Logo">
+                    <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>
+                </div>
+                <p class="tagline">Design • Develop • Deliver</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#why-matters">Why Matters</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#best-for">Best For</a></li>
+                <li><a href="#samples">Samples</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav-item">
+            <a href="index.html" style="color: inherit;">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="#features" style="color: inherit;">
+                <i class="fas fa-star"></i>
+                <span>Features</span>
+            </a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="#pricing" style="color: inherit;">
+                <i class="fas fa-tag"></i>
+                <span>Pricing</span>
+            </a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="#samples" style="color: inherit;">
+                <i class="fas fa-images"></i>
+                <span>Samples</span>
+            </a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="#faq" style="color: inherit;">
+                <i class="fas fa-question-circle"></i>
+                <span>FAQ</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Portfolio Website Design</h1>
+                <p><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> builds modern personal portfolio websites that showcase your projects and skills in the best possible way to attract clients and employers.</p>
+                <div class="hero-buttons">
+                    <a href="#samples" class="btn btn-secondary">View Samples</a>
+                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Portfolio%20Website%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                </div>
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Mobile Responsive</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-palette"></i>
+                        <span>Modern Design</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-bolt"></i>
+                        <span>Fast Loading</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="https://picsum.photos/seed/portfolio/600/400.jpg" alt="Portfolio Website Design" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Portfolio Matters Section -->
+    <section class="section" id="why-matters">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Why Portfolio Matters</h2>
+                <p class="section-subtitle">A professional portfolio can significantly boost your career and business opportunities</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <h3>Show Your Projects</h3>
+                    <p>Display your best work in an organized and visually appealing way that highlights your skills and achievements</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Build Online Presence</h3>
+                    <p>Establish a professional online presence that makes you easily discoverable by potential clients and employers</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Impress Recruiters</h3>
+                    <p>Stand out from other candidates with a professional portfolio that showcases your capabilities and potential</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-tag"></i>
+                    </div>
+                    <h3>Personal Branding</h3>
+                    <p>Build and strengthen your personal brand with a consistent online presence that reflects your professional identity</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Features Section -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Portfolio Features</h2>
+                <p class="section-subtitle">Our portfolio websites include all these features to showcase your work effectively</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>About Me</h3>
+                    <p>Professional about section that introduces you, your background, and your expertise to visitors</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Skills Section</h3>
+                    <p>Visually appealing skills section with progress bars or skill cards that highlight your technical abilities</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-images"></i>
+                    </div>
+                    <h3>Project Gallery</h3>
+                    <p>Beautiful project gallery with detailed descriptions, images, and links to live projects or repositories</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Resume Download</h3>
+                    <p>Integrated resume download button that allows visitors to easily download your CV for reference</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Contact Section</h3>
+                    <p>Easy-to-use contact form with all your contact information for potential clients and employers</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Responsive</h3>
+                    <p>Fully responsive design that looks great on all devices, from desktop computers to mobile phones</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3>Social Links</h3>
+                    <p>Integrated social media links that help visitors connect with you on various platforms</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3>GitHub Integration</h3>
+                    <p>Seamless integration with your GitHub profile to showcase your code repositories and contributions</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section" id="pricing">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Pricing</h2>
+                <p class="section-subtitle">Affordable pricing for professional portfolio websites</p>
+            </div>
+            
+            <div class="pricing-card fade-in">
+                <h3 class="pricing-title">Portfolio Website</h3>
+                <div class="pricing-price">Starting from ₹999</div>
+                <p style="color: var(--text-soft); margin-bottom: 2rem;">Get a professional portfolio website that showcases your work and helps you stand out from the crowd</p>
+                <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Portfolio%20Website%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Get a Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best For Section -->
+    <section class="section" id="best-for">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Best For</h2>
+                <p class="section-subtitle">Portfolio websites are perfect for these professionals</p>
+            </div>
+            
+            <div class="best-for-grid">
+                <div class="best-for-card fade-in">
+                    <div class="best-for-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Students</h3>
+                    <p>Showcase your academic projects and achievements to potential employers and internship providers</p>
+                </div>
+                
+                <div class="best-for-card fade-in">
+                    <div class="best-for-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Developers</h3>
+                    <p>Display your coding projects, technical skills, and problem-solving abilities to attract job opportunities</p>
+                </div>
+                
+                <div class="best-for-card fade-in">
+                    <div class="best-for-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Designers</h3>
+                    <p>Present your creative work, design process, and aesthetic sense to potential clients and employers</p>
+                </div>
+                
+                <div class="best-for-card fade-in">
+                    <div class="best-for-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Freelancers</h3>
+                    <p>Build credibility and attract clients by showcasing your portfolio of successful projects and client testimonials</p>
+                </div>
+                
+                <div class="best-for-card fade-in">
+                    <div class="best-for-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Job Seekers</h3>
+                    <p>Stand out from other candidates with a professional portfolio that demonstrates your skills and experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sample Portfolio Layouts Section -->
+    <section class="section" id="samples">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Sample Portfolio Layouts</h2>
+                <p class="section-subtitle">Take a look at some of our portfolio design samples</p>
+            </div>
+            
+            <div class="sample-portfolio-grid">
+                <div class="sample-portfolio-card fade-in">
+                    <div class="sample-portfolio-preview">
+                        <div class="sample-portfolio-placeholder">
+                            <i class="fas fa-user-graduate sample-portfolio-icon"></i>
+                        </div>
+                    </div>
+                    <div class="sample-portfolio-content">
+                        <h3 class="sample-portfolio-title">Student Portfolio</h3>
+                        <p>Clean and modern portfolio designed for students to showcase academic projects and achievements</p>
+                    </div>
+                </div>
+                
+                <div class="sample-portfolio-card fade-in">
+                    <div class="sample-portfolio-preview">
+                        <div class="sample-portfolio-placeholder">
+                            <i class="fas fa-code sample-portfolio-icon"></i>
+                        </div>
+                    </div>
+                    <div class="sample-portfolio-content">
+                        <h3 class="sample-portfolio-title">Developer Portfolio</h3>
+                        <p>Technical portfolio with code snippets, project repositories, and technical skill demonstrations</p>
+                    </div>
+                </div>
+                
+                <div class="sample-portfolio-card fade-in">
+                    <div class="sample-portfolio-preview">
+                        <div class="sample-portfolio-placeholder">
+                            <i class="fas fa-palette sample-portfolio-icon"></i>
+                        </div>
+                    </div>
+                    <div class="sample-portfolio-content">
+                        <h3 class="sample-portfolio-title">Creative Portfolio</h3>
+                        <p>Artistic and visually striking portfolio perfect for designers, artists, and creative professionals</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Got questions? We've got answers</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Can I add custom sections to my portfolio?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we can add custom sections based on your specific needs. Whether you need a blog, testimonials, case studies, or any other section, we can customize your portfolio accordingly.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Can you link my resume to the portfolio?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We can integrate your resume into the portfolio with a download button, embed it as a section, or create a dedicated page for it. We'll discuss the best approach based on your needs.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>How long does it take to deliver a portfolio website?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Typically, we deliver portfolio websites within 5-7 working days, depending on the complexity and number of projects to be included. We'll provide a specific timeline after understanding your requirements.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Do you provide hosting for the portfolio?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We don't provide hosting directly, but we can guide you in choosing the right hosting provider based on your needs and budget. We'll also help you deploy your portfolio to the hosting server.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Do you help with domain registration?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we can help you choose and register a domain name for your portfolio. We'll suggest appropriate domain names and guide you through the registration process.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-section fade-in">
+                <h2 class="cta-title">Need Your Own Portfolio Website?</h2>
+                <p>Let <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> create a professional portfolio that showcases your work and helps you achieve your career goals.</p>
+                <div class="cta-buttons">
+                    <a href="#samples" class="btn btn-secondary">View Samples</a>
+                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Portfolio%20Website%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="https://i.postimg.cc/3N8yBc2K/unnamed.png" alt="Kodingwala Logo">
+                        <h3><span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h3>
+                    </div>
+                    <p style="margin-bottom: 1rem; color: var(--text-soft);">Design • Develop • Deliver</p>
+                    <p style="color: var(--text-soft);">We help professionals create impressive portfolio websites that showcase their work and attract opportunities.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#why-matters">Why Matters</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#best-for">Best For</a></li>
+                        <li><a href="#samples">Samples</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="staticwebdesign.html">Static Websites</a></li>
+                        <li><a href="dynamic.html">Dynamic Websites</a></li>
+                        <li><a href="resume.html">Resume Design</a></li>
+                        <li><a href="ppt.html">PPT Design</a></li>
+                        <li><a href="portfolio.html">Portfolio Websites</a></li>
+                        <li><a href="logo.html">Logo Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fab fa-whatsapp"></i> WhatsApp: 738686895149</li>
+                        <li><i class="fas fa-envelope"></i> Email: hello@kodingwala.com</li>
+                        <li><i class="fab fa-instagram"></i> Instagram: @kodingwala</li>
+                        <li><i class="fab fa-youtube"></i> YouTube: Kodingwala</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>. All rights reserved. | Made with <i class="fas fa-heart" style="color: var(--orange);"></i> in India</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Portfolio%20Website%20service.%20Please%20share%20details." target="_blank" class="floating-whatsapp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Scroll Progress Bar
+        window.addEventListener('scroll', function() {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollPx = document.documentElement.scrollTop;
+            const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = `${scrollPx / winHeightPx * 100}%`;
+            scrollProgress.style.width = scrolled;
+        });
+
+        // Mobile Navigation Active State
+        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+        mobileNavItems.forEach(item => {
+            item.addEventListener('click', function() {
+                mobileNavItems.forEach(navItem => navItem.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Scroll to section
+                const href = this.querySelector('a').getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    const section = document.querySelector(href);
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', function() {
+                // Toggle active class
+                item.classList.toggle('active');
+                
+                // Close other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Fade In Animation on Scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        function checkFade() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkFade);
+        window.addEventListener('load', checkFade);
+        
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

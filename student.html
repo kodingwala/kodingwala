@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Services - Kodingwala</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://i.postimg.cc/3N8yBc2K/unnamed.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #06142a;
+            --bg-card: #0d1f3a;
+            --cyan: #19d3c5;
+            --cyan-light: #49e6da;
+            --orange: #f5a623;
+            --orange-light: #ffb84d;
+            --text-main: #ffffff;
+            --text-soft: #b8c4d6;
+            --border: rgba(255,255,255,0.08);
+            --gradient-cyan: linear-gradient(135deg, #19d3c5 0%, #49e6da 100%);
+            --gradient-orange: linear-gradient(135deg, #f5a623 0%, #ffb84d 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--cyan);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--cyan-light);
+        }
+
+        /* Brand Styling */
+        .brand-koding {
+            color: var(--cyan);
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+        }
+
+        .brand-wala {
+            color: var(--orange);
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+            font-family: 'Outfit', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-cyan);
+            color: var(--bg-main);
+            box-shadow: 0 4px 15px rgba(25, 211, 197, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(25, 211, 197, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--orange);
+            border: 2px solid var(--orange);
+        }
+
+        .btn-secondary:hover {
+            background: var(--orange);
+            color: var(--bg-main);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(245, 166, 35, 0.3);
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-whatsapp:hover {
+            background: #128c7e;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: var(--gradient-cyan);
+            z-index: 1001;
+            transition: width 0.2s ease;
+        }
+
+        /* Desktop Navigation */
+        .desktop-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(6, 20, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .desktop-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 8px;
+            object-fit: contain;
+        }
+
+        .tagline {
+            font-size: 0.8rem;
+            color: var(--text-soft);
+            margin: 0.2rem 0 0 2.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-soft);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        .nav-links a.active {
+            color: var(--cyan);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 7rem 1.5rem 3rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(25, 211, 197, 0.15) 0%, rgba(25, 211, 197, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: url('https://i.postimg.cc/3N8yBc2K/unnamed.png') no-repeat center;
+            background-size: contain;
+            opacity: 0.03;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-soft);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(25, 211, 197, 0.1);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--cyan);
+        }
+
+        .trust-badge i {
+            color: var(--orange);
+        }
+
+        /* Floating Animation */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title-wrapper {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-soft);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Service Cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--cyan);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-cyan);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--bg-main);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .service-card p {
+            color: var(--text-soft);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .pricing-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--cyan);
+        }
+
+        .pricing-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: var(--bg-main);
+        }
+
+        .pricing-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--cyan);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Feature Cards */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--cyan);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        /* Project Cards */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--cyan);
+        }
+
+        .project-preview {
+            height: 180px;
+            background: var(--bg-main);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .project-preview-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(25, 211, 197, 0.1) 0%, rgba(245, 166, 35, 0.1) 100%);
+        }
+
+        .project-preview-icon {
+            font-size: 3rem;
+            color: var(--cyan);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-category {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(245, 166, 35, 0.1);
+            border-radius: 50px;
+            color: var(--orange);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(25, 211, 197, 0.05);
+        }
+
+        .faq-question h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+            color: var(--orange);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(25, 211, 197, 0.05) 0%, rgba(245, 166, 35, 0.05) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-cyan);
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-orange);
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-card);
+            padding: 3rem 1.5rem 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-logo img {
+            max-width: 100px;
+            margin-bottom: 1rem;
+            object-fit: contain;
+        }
+
+        .footer-logo h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(25, 211, 197, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cyan);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--cyan);
+            color: var(--bg-main);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-soft);
+            font-size: 0.9rem;
+        }
+
+        /* Floating WhatsApp Button */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 90px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-main);
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(25, 211, 197, 0.4);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(25, 211, 197, 0.5);
+        }
+
+        /* Animation on Scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .cta-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+        <div class="desktop-nav-container">
+            <div>
+                <div class="logo">
+                    <img src="https://i.postimg.cc/3N8yBc2K/unnamed.png" alt="Kodingwala Logo">
+                    <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>
+                </div>
+                <p class="tagline">Design • Develop • Deliver</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="index.html#showcase">Showcase</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Student Services</h1>
+                <p><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> helps students with resumes, portfolios, mini projects, PPTs, and digital support at student-friendly prices.</p>
+                <div class="hero-buttons">
+                    <a href="#services" class="btn btn-primary">View Services</a>
+                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20want%20to%20know%20more%20about%20your%20Student%20Services." target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Enquiry Now
+                    </a>
+                </div>
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Student-Focused</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-rupee-sign"></i>
+                        <span>Affordable Pricing</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-bolt"></i>
+                        <span>Fast Delivery</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp Support</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services for Students Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Services for Students</h2>
+                <p class="section-subtitle">We offer a wide range of digital services designed specifically for students</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Resume Design</h3>
+                    <p>Professional and eye-catching resume designs that help you stand out from the crowd and land your dream job.</p>
+                    <a href="resume.html" class="btn btn-secondary" style="width: 100%;">Learn More</a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Portfolio Websites</h3>
+                    <p>Beautiful portfolio websites that showcase your work and skills in the best possible way to attract clients and employers.</p>
+                    <a href="portfolio.html" class="btn btn-secondary" style="width: 100%;">Learn More</a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3>Mini Projects</h3>
+                    <p>Academic projects and mini-projects for students with proper documentation and explanations to help you learn and score well.</p>
+                    <a href="#" class="btn btn-secondary" style="width: 100%;">Learn More</a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-presentation"></i>
+                    </div>
+                    <h3>PPT Design</h3>
+                    <p>Engaging and professional PowerPoint presentations that effectively communicate your message and impress your audience.</p>
+                    <a href="ppt.html" class="btn btn-secondary" style="width: 100%;">Learn More</a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h3>Project UI</h3>
+                    <p>Modern and attractive UI designs for your academic projects that make them look professional and impressive.</p>
+                    <a href="#" class="btn btn-secondary" style="width: 100%;">Learn More</a>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Submission Support</h3>
+                    <p>Guidance and support for your project submissions, presentations, and academic requirements.</p>
+                    <a href="#" class="btn btn-secondary" style="width: 100%;">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Overview Section -->
+    <section class="section" id="pricing">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Student-Friendly Pricing</h2>
+                <p class="section-subtitle">Affordable pricing options designed for students</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <div class="pricing-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3 class="pricing-title">Resume Design</h3>
+                    <div class="pricing-price">₹199<span>+</span></div>
+                    <p>Professional resume designs that help you stand out</p>
+                </div>
+                
+                <div class="pricing-card fade-in">
+                    <div class="pricing-icon">
+                        <i class="fas fa-presentation"></i>
+                    </div>
+                    <h3 class="pricing-title">PPT Design</h3>
+                    <div class="pricing-price">₹399<span>+</span></div>
+                    <p>Attractive presentations for seminars and projects</p>
+                </div>
+                
+                <div class="pricing-card fade-in">
+                    <div class="pricing-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="pricing-title">Mini Projects</h3>
+                    <div class="pricing-price">₹3,000-4,000</div>
+                    <p>Complete academic projects with documentation</p>
+                </div>
+                
+                <div class="pricing-card fade-in">
+                    <div class="pricing-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="pricing-title">Portfolio Websites</h3>
+                    <div class="pricing-price">₹999<span>+</span></div>
+                    <p>Personal portfolio websites to showcase your work</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Students Choose Kodingwala Section -->
+    <section class="section" id="why-choose">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Why Students Choose <span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h2>
+                <p class="section-subtitle">We understand the needs of students and provide services tailored to them</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <h3>Budget Friendly</h3>
+                    <p>Student-friendly pricing that fits your budget without compromising on quality</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>Quick turnaround times to meet your academic deadlines</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>Attractive Design</h3>
+                    <p>Modern and professional designs that impress your professors and employers</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Easy Communication</h3>
+                    <p>Simple and clear communication throughout the project</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp Support</h3>
+                    <p>Direct communication through WhatsApp for quick responses</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mini Project Support Section -->
+    <section class="section" id="project-support">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Mini Project Support</h2>
+                <p class="section-subtitle">We help you with various types of academic projects</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-preview">
+                        <div class="project-preview-placeholder">
+                            <i class="fas fa-laptop-code project-preview-icon"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Front-end Projects</h3>
+                        <div class="project-category">Web Development</div>
+                        <p>Interactive front-end projects with modern design and smooth animations</p>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-preview">
+                        <div class="project-preview-placeholder">
+                            <i class="fas fa-palette project-preview-icon"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">UI Mini Projects</h3>
+                        <div class="project-category">Design</div>
+                        <p>Beautiful UI designs for your applications and websites</p>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-preview">
+                        <div class="project-preview-placeholder">
+                            <i class="fas fa-presentation project-preview-icon"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Project Presentation</h3>
+                        <div class="project-category">Presentation</div>
+                        <p>Professional presentations for your project submissions</p>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-preview">
+                        <div class="project-preview-placeholder">
+                            <i class="fas fa-file-alt project-preview-icon"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Documentation</h3>
+                        <div class="project-category">Documentation</div>
+                        <p>Complete documentation for your projects with proper explanations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Got questions? We've got answers</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>How long does delivery take?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Delivery time varies depending on the complexity of the project. Simple resumes and PPTs can be delivered within 2-3 days, while mini projects and portfolio websites may take 5-10 days. We'll provide a timeline with our quote.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>What types of projects do you support?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We support a wide range of academic projects including web development, mobile app development, UI/UX design, data science projects, and more. Contact us with your specific requirements.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Do you offer student discounts?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! All our services are already priced with students in mind. We offer special student-friendly pricing and additional discounts for bulk orders or group projects.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Can you do custom work based on my requirements?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We specialize in custom solutions tailored to your specific requirements. Just share your project details, and we'll create a solution that meets your needs.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Do you provide support for portfolio websites?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we provide complete support for portfolio websites including design, development, hosting guidance, and even content suggestions to make your portfolio stand out.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-section fade-in">
+                <h2 class="cta-title">Need Student-Friendly Digital Services?</h2>
+                <p class="section-subtitle">Get in touch with us and let's discuss how we can help you with your academic needs</p>
+                <div class="cta-buttons">
+                    <a href="#services" class="btn btn-primary">View Services</a>
+                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20want%20to%20know%20more%20about%20your%20Student%20Services." target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Enquiry Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="https://i.postimg.cc/3N8yBc2K/unnamed.png" alt="Kodingwala Logo">
+                        <h3><span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h3>
+                    </div>
+                    <p style="margin-bottom: 1rem; color: var(--text-soft);">Design • Develop • Deliver</p>
+                    <p style="color: var(--text-soft);"><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> helps students, freelancers, and businesses build modern digital presence with websites, resumes, logos, and project solutions.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="index.html#showcase">Showcase</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Student Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="resume.html">Resume Design</a></li>
+                        <li><a href="portfolio.html">Portfolio Websites</a></li>
+                        <li><a href="#">Mini Projects</a></li>
+                        <li><a href="ppt.html">PPT Design</a></li>
+                        <li><a href="#">Project UI</a></li>
+                        <li><a href="#">Submission Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fab fa-whatsapp"></i> WhatsApp: 738686895149</li>
+                        <li><i class="fas fa-envelope"></i> Email: hello@kodingwala.com</li>
+                        <li><i class="fab fa-instagram"></i> Instagram: @kodingwala</li>
+                        <li><i class="fab fa-youtube"></i> YouTube: Kodingwala</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>. All rights reserved. | Made with <i class="fas fa-heart" style="color: var(--orange);"></i> in India</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20want%20to%20know%20more%20about%20your%20Student%20Services." target="_blank" class="floating-whatsapp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Scroll Progress Bar
+        window.addEventListener('scroll', function() {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollPx = document.documentElement.scrollTop;
+            const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = `${scrollPx / winHeightPx * 100}%`;
+            scrollProgress.style.width = scrolled;
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', function() {
+                // Toggle active class
+                item.classList.toggle('active');
+                
+                // Close other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Fade In Animation on Scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        function checkFade() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkFade);
+        window.addEventListener('load', checkFade);
+    </script>
+</body>
+</html>

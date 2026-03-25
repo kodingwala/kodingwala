@@ -1,0 +1,1594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Website Development - Kodingwala</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://i.postimg.cc/3N8yBc2K/unnamed.png">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #06142a;
+            --bg-card: #0d1f3a;
+            --cyan: #19d3c5;
+            --cyan-light: #49e6da;
+            --orange: #f5a623;
+            --orange-light: #ffb84d;
+            --text-main: #ffffff;
+            --text-soft: #b8c4d6;
+            --border: rgba(255,255,255,0.08);
+            --gradient-cyan: linear-gradient(135deg, #19d3c5 0%, #49e6da 100%);
+            --gradient-orange: linear-gradient(135deg, #f5a623 0%, #ffb84d 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--cyan);
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--cyan-light);
+        }
+
+        /* Brand Styling */
+        .brand-koding {
+            color: var(--cyan);
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+        }
+
+        .brand-wala {
+            color: var(--orange);
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            font-size: 1rem;
+            font-family: 'Outfit', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gradient-cyan);
+            color: var(--bg-main);
+            box-shadow: 0 4px 15px rgba(25, 211, 197, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(25, 211, 197, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--orange);
+            border: 2px solid var(--orange);
+        }
+
+        .btn-secondary:hover {
+            background: var(--orange);
+            color: var(--bg-main);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(245, 166, 35, 0.3);
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-whatsapp:hover {
+            background: #128c7e;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: var(--gradient-cyan);
+            z-index: 1001;
+            transition: width 0.2s ease;
+        }
+
+        /* Desktop Navigation */
+        .desktop-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(6, 20, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .desktop-nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 8px;
+            object-fit: contain;
+        }
+
+        .tagline {
+            font-size: 0.8rem;
+            color: var(--text-soft);
+            margin: 0.2rem 0 0 2.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-soft);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--cyan);
+        }
+
+        .nav-links a.active {
+            color: var(--cyan);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Mobile Bottom Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(6, 20, 42, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.3);
+            border-top: 1px solid var(--border);
+            border-radius: 20px 20px 0 0;
+            padding: 10px 0 5px;
+        }
+
+        .mobile-nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px 5px 5px;
+            color: var(--text-soft);
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .mobile-nav-item.active {
+            color: var(--cyan);
+        }
+
+        .mobile-nav-item.active::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 4px;
+            background: var(--cyan);
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 0 10px rgba(25, 211, 197, 0.7);
+        }
+
+        .mobile-nav-item.active::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background: var(--orange);
+            border-radius: 50%;
+        }
+
+        .mobile-nav-item i {
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-item.active i {
+            transform: scale(1.1);
+        }
+
+        .mobile-nav-item span {
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .mobile-nav-item:active {
+            transform: scale(0.95);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 1.5rem 3rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(25, 211, 197, 0.15) 0%, rgba(25, 211, 197, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: url('https://i.postimg.cc/3N8yBc2K/unnamed.png') no-repeat center;
+            background-size: contain;
+            opacity: 0.03;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--text-soft);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.4s forwards;
+        }
+
+        .trust-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease 0.6s forwards;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(25, 211, 197, 0.1);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--cyan);
+        }
+
+        .trust-badge i {
+            color: var(--orange);
+        }
+
+        /* Hero Visual */
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.8s forwards;
+        }
+
+        .hero-image {
+            max-width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: all 0.5s ease;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title-wrapper {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-soft);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--cyan);
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            color: var(--bg-main);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(25, 211, 197, 0.3);
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .feature-card p {
+            color: var(--text-soft);
+            flex-grow: 1;
+        }
+
+        /* Who Needs Section */
+        .who-needs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .who-needs-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .who-needs-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: var(--cyan);
+        }
+
+        .who-needs-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        /* Pricing Model Section */
+        .pricing-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2.5rem 2rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--cyan);
+        }
+
+        .pricing-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pricing-details {
+            margin-bottom: 2rem;
+        }
+
+        .pricing-details p {
+            margin-bottom: 0.8rem;
+            color: var(--text-soft);
+        }
+
+        /* Process Timeline */
+        .process-timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .process-step {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .process-number {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--bg-main);
+            flex-shrink: 0;
+        }
+
+        .process-content {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            flex-grow: 1;
+        }
+
+        .process-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Feature Blocks */
+        .feature-blocks {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-block {
+            background: var(--bg-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .feature-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: var(--cyan);
+        }
+
+        .feature-block-preview {
+            height: 180px;
+            background: var(--bg-main);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-block-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(25, 211, 197, 0.1) 0%, rgba(245, 166, 35, 0.1) 100%);
+        }
+
+        .feature-block-icon {
+            font-size: 3rem;
+            color: var(--cyan);
+        }
+
+        .feature-block-content {
+            padding: 1.5rem;
+        }
+
+        .feature-block-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--bg-card);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: rgba(25, 211, 197, 0.05);
+        }
+
+        .faq-question h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+            color: var(--orange);
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(25, 211, 197, 0.1) 0%, rgba(245, 166, 35, 0.1) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-card);
+            padding: 3rem 1.5rem 1.5rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-logo img {
+            max-width: 100px;
+            margin-bottom: 1rem;
+            object-fit: contain;
+        }
+
+        .footer-logo h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(25, 211, 197, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--cyan);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--cyan);
+            color: var(--bg-main);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-soft);
+            font-size: 0.9rem;
+        }
+
+        /* Floating WhatsApp Button */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-main);
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(25, 211, 197, 0.4);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(25, 211, 197, 0.5);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animation on Scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+
+            .mobile-nav {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .cta-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Desktop Navigation -->
+    <nav class="desktop-nav">
+        <div class="desktop-nav-container">
+            <div>
+                <div class="logo">
+                    <img src="https://i.postimg.cc/3N8yBc2K/unnamed.png" alt="Kodingwala Logo">
+                    <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>
+                </div>
+                <p class="tagline">Design • Develop • Deliver</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#who-needs">Who Needs</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav-item">
+            <a href="index.html" style="color: inherit;">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="#features" style="color: inherit;">
+                <i class="fas fa-cogs"></i>
+                <span>Features</span>
+            </a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="#pricing" style="color: inherit;">
+                <i class="fas fa-tag"></i>
+                <span>Pricing</span>
+            </a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="#process" style="color: inherit;">
+                <i class="fas fa-tasks"></i>
+                <span>Process</span>
+            </a>
+        </div>
+        <div class="mobile-nav-item">
+            <a href="#faq" style="color: inherit;">
+                <i class="fas fa-question-circle"></i>
+                <span>FAQ</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Dynamic Website Development</h1>
+                <p><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> builds custom websites with admin panels, database features, forms, dashboards, user systems, and business tools tailored to your specific requirements.</p>
+                <div class="hero-buttons">
+                    <a href="#features" class="btn btn-secondary">View Features</a>
+                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20a%20Dynamic%20Website.%20Please%20share%20a%20custom%20quote%20based%20on%20my%20requirements." target="_blank" class="btn btn-primary">Get Custom Quote</a>
+                </div>
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <i class="fas fa-database"></i>
+                        <span>Database Integration</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-user-shield"></i>
+                        <span>User Management</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Analytics Dashboard</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="https://picsum.photos/seed/dynamicwebsite/600/400.jpg" alt="Dynamic Website Development" class="hero-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Website Features Section -->
+    <section class="section" id="features">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Dynamic Website Features</h2>
+                <p class="section-subtitle">Our dynamic websites include powerful features to help your business grow</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Admin Panel</h3>
+                    <p>Complete backend control panel to manage your website content, users, and settings without technical knowledge</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-sign-in-alt"></i>
+                    </div>
+                    <h3>User Login System</h3>
+                    <p>Secure user authentication and authorization system with role-based access control for different user types</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-wpforms"></i>
+                    </div>
+                    <h3>Forms and Database</h3>
+                    <p>Custom forms with database integration to collect, store, and manage user data and inquiries</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Dashboard</h3>
+                    <p>Interactive dashboard with real-time data visualization, charts, and key performance indicators</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <h3>Product Management</h3>
+                    <p>Complete product catalog management with categories, attributes, inventory tracking, and pricing</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Booking System</h3>
+                    <p>Advanced booking and reservation system with calendar integration, availability management, and notifications</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3>Authentication</h3>
+                    <p>Multi-factor authentication, password recovery, and secure session management for enhanced security</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3>Custom Business Features</h3>
+                    <p>Tailored functionality specific to your business needs and workflows</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who Needs Dynamic Websites Section -->
+    <section class="section" id="who-needs">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Who Needs Dynamic Websites</h2>
+                <p class="section-subtitle">Dynamic websites are essential for businesses that need advanced functionality</p>
+            </div>
+            
+            <div class="who-needs-grid">
+                <div class="who-needs-card fade-in">
+                    <div class="who-needs-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-commerce Businesses</h3>
+                    <p>Online stores with product catalogs, shopping carts, and payment processing</p>
+                </div>
+                
+                <div class="who-needs-card fade-in">
+                    <div class="who-needs-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Coaching Institutes</h3>
+                    <p>Course management, student enrollment, and progress tracking systems</p>
+                </div>
+                
+                <div class="who-needs-card fade-in">
+                    <div class="who-needs-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Booking Websites</h3>
+                    <p>Appointment scheduling, reservation management, and availability tracking</p>
+                </div>
+                
+                <div class="who-needs-card fade-in">
+                    <div class="who-needs-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>Portals</h3>
+                    <p>Information portals with user-generated content and community features</p>
+                </div>
+                
+                <div class="who-needs-card fade-in">
+                    <div class="who-needs-icon">
+                        <i class="fas fa-concierge-bell"></i>
+                    </div>
+                    <h3>Service Businesses</h3>
+                    <p>Service management, customer tracking, and automated workflows</p>
+                </div>
+                
+                <div class="who-needs-card fade-in">
+                    <div class="who-needs-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Customer Management Systems</h3>
+                    <p>CRM solutions with customer data management and communication tools</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Model Section -->
+    <section class="section" id="pricing">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Pricing Model</h2>
+                <p class="section-subtitle">Custom pricing based on your specific requirements</p>
+            </div>
+            
+            <div class="pricing-card fade-in">
+                <h3 class="pricing-title">Dynamic Website Pricing</h3>
+                <div class="pricing-details">
+                    <p><i class="fas fa-info-circle" style="color: var(--orange); margin-right: 0.5rem;"></i>Dynamic website pricing depends on customer requirements</p>
+                    <p><i class="fas fa-list-ul" style="color: var(--orange); margin-right: 0.5rem;"></i>Price depends on features, pages, database, dashboard, forms, and custom functionality</p>
+                    <p><i class="fas fa-handshake" style="color: var(--orange); margin-right: 0.5rem;"></i>Contact us for a custom quote tailored to your needs</p>
+                </div>
+                <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20a%20Dynamic%20Website.%20Please%20share%20a%20custom%20quote%20based%20on%20my%20requirements." target="_blank" class="btn btn-primary">Get Custom Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Development Process Section -->
+    <section class="section" id="process">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Development Process</h2>
+                <p class="section-subtitle">Our transparent process ensures your project is delivered on time and to your satisfaction</p>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="process-step fade-in">
+                    <div class="process-number">1</div>
+                    <div class="process-content">
+                        <h3 class="process-title">Requirement Discussion</h3>
+                        <p>We start by understanding your business needs, goals, and specific requirements for the dynamic website</p>
+                    </div>
+                </div>
+                
+                <div class="process-step fade-in">
+                    <div class="process-number">2</div>
+                    <div class="process-content">
+                        <h3 class="process-title">Feature Planning</h3>
+                        <p>We plan the features, functionality, database structure, and user experience based on your requirements</p>
+                    </div>
+                </div>
+                
+                <div class="process-step fade-in">
+                    <div class="process-number">3</div>
+                    <div class="process-content">
+                        <h3 class="process-title">UI Design</h3>
+                        <p>Our designers create modern, intuitive user interfaces that align with your brand and business goals</p>
+                    </div>
+                </div>
+                
+                <div class="process-step fade-in">
+                    <div class="process-number">4</div>
+                    <div class="process-content">
+                        <h3 class="process-title">Development</h3>
+                        <p>Our developers build the dynamic website with clean, efficient code and implement all planned features</p>
+                    </div>
+                </div>
+                
+                <div class="process-step fade-in">
+                    <div class="process-number">5</div>
+                    <div class="process-content">
+                        <h3 class="process-title">Testing</h3>
+                        <p>We thoroughly test all functionality, performance, and security aspects before deployment</p>
+                    </div>
+                </div>
+                
+                <div class="process-step fade-in">
+                    <div class="process-number">6</div>
+                    <div class="process-content">
+                        <h3 class="process-title">Final Delivery</h3>
+                        <p>We deploy the website to your server and provide training and documentation for managing your dynamic website</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Example Feature Blocks Section -->
+    <section class="section" id="examples">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Example Feature Blocks</h2>
+                <p class="section-subtitle">Take a look at some of the modules we can build for your dynamic website</p>
+            </div>
+            
+            <div class="feature-blocks">
+                <div class="feature-block fade-in">
+                    <div class="feature-block-preview">
+                        <div class="feature-block-placeholder">
+                            <i class="fas fa-sign-in-alt feature-block-icon"></i>
+                        </div>
+                    </div>
+                    <div class="feature-block-content">
+                        <h3 class="feature-block-title">Login Page</h3>
+                        <p>Secure and user-friendly login interface with social login options and password recovery</p>
+                    </div>
+                </div>
+                
+                <div class="feature-block fade-in">
+                    <div class="feature-block-preview">
+                        <div class="feature-block-placeholder">
+                            <i class="fas fa-tachometer-alt feature-block-icon"></i>
+                        </div>
+                    </div>
+                    <div class="feature-block-content">
+                        <h3 class="feature-block-title">Dashboard</h3>
+                        <p>Interactive dashboard with widgets, charts, and real-time data visualization</p>
+                    </div>
+                </div>
+                
+                <div class="feature-block fade-in">
+                    <div class="feature-block-preview">
+                        <div class="feature-block-placeholder">
+                            <i class="fas fa-cogs feature-block-icon"></i>
+                        </div>
+                    </div>
+                    <div class="feature-block-content">
+                        <h3 class="feature-block-title">Admin Panel</h3>
+                        <p>Comprehensive backend interface to manage all aspects of your website</p>
+                    </div>
+                </div>
+                
+                <div class="feature-block fade-in">
+                    <div class="feature-block-preview">
+                        <div class="feature-block-placeholder">
+                            <i class="fas fa-chart-bar feature-block-icon"></i>
+                        </div>
+                    </div>
+                    <div class="feature-block-content">
+                        <h3 class="feature-block-title">Reports</h3>
+                        <p>Detailed reports and analytics with export options and data visualization</p>
+                    </div>
+                </div>
+                
+                <div class="feature-block fade-in">
+                    <div class="feature-block-preview">
+                        <div class="feature-block-placeholder">
+                            <i class="fas fa-wpforms feature-block-icon"></i>
+                        </div>
+                    </div>
+                    <div class="feature-block-content">
+                        <h3 class="feature-block-title">Forms</h3>
+                        <p>Custom forms with validation, file uploads, and database integration</p>
+                    </div>
+                </div>
+                
+                <div class="feature-block fade-in">
+                    <div class="feature-block-preview">
+                        <div class="feature-block-placeholder">
+                            <i class="fas fa-table feature-block-icon"></i>
+                        </div>
+                    </div>
+                    <div class="feature-block-content">
+                        <h3 class="feature-block-title">Tables</h3>
+                        <p>Interactive data tables with sorting, filtering, and pagination capabilities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section" id="faq">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Got questions? We've got answers</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>How is custom pricing determined for dynamic websites?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Dynamic website pricing is determined based on several factors including the number of pages, complexity of features, database requirements, admin panel functionality, custom business logic, and integration needs. We provide a detailed quote after understanding your specific requirements.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>How long does it take to develop a dynamic website?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The development timeline depends on the complexity and features required. Simple dynamic websites with basic functionality can take 3-4 weeks, while complex systems with advanced features may take 2-3 months. We'll provide a specific timeline after reviewing your requirements.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Do you provide an admin panel with dynamic websites?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, all our dynamic websites include a custom admin panel tailored to your specific needs. The admin panel allows you to manage content, users, and other aspects of your website without technical knowledge.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>What kind of database do you use for dynamic websites?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We use various database technologies based on your requirements, including MySQL, PostgreSQL, MongoDB, and others. We'll recommend the most suitable database solution based on your data structure, scalability needs, and budget.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Do you provide technical support after delivery?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we provide technical support after delivery. We offer different support packages based on your needs, including bug fixes, updates, and enhancements. We'll discuss support options during the project planning phase.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <h3>Can the dynamic website be upgraded in the future?</h3>
+                        <i class="fas fa-chevron-down faq-icon"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We build dynamic websites with scalability in mind, making it easy to add new features and functionality in the future. We use clean, modular code that can be easily extended as your business grows.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section">
+        <div class="container">
+            <div class="cta-section fade-in">
+                <h2 class="cta-title">Need a Custom Dynamic Website?</h2>
+                <p>Let <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> build a powerful, feature-rich dynamic website tailored to your business needs.</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20a%20Dynamic%20Website.%20Please%20share%20a%20custom%20quote%20based%20on%20my%20requirements." target="_blank" class="btn btn-primary">Get Custom Quote</a>
+                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20want%20to%20know%20more%20about%20your%20Dynamic%20Website%20services." target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="footer-logo">
+                        <img src="https://i.postimg.cc/3N8yBc2K/unnamed.png" alt="Kodingwala Logo">
+                        <h3><span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h3>
+                    </div>
+                    <p style="margin-bottom: 1rem; color: var(--text-soft);">Design • Develop • Deliver</p>
+                    <p style="color: var(--text-soft);">We help businesses build powerful dynamic websites with custom features and functionality.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#who-needs">Who Needs</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#process">Process</a></li>
+                        <li><a href="#examples">Examples</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="staticwebdesign.html">Static Websites</a></li>
+                        <li><a href="dynamic.html">Dynamic Websites</a></li>
+                        <li><a href="resume.html">Resume Design</a></li>
+                        <li><a href="ppt.html">PPT Design</a></li>
+                        <li><a href="portfolio.html">Portfolio Websites</a></li>
+                        <li><a href="logo.html">Logo Design</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul class="footer-links">
+                        <li><i class="fab fa-whatsapp"></i> WhatsApp: 738686895149</li>
+                        <li><i class="fas fa-envelope"></i> Email: hello@kodingwala.com</li>
+                        <li><i class="fab fa-instagram"></i> Instagram: @kodingwala</li>
+                        <li><i class="fab fa-youtube"></i> YouTube: Kodingwala</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>. All rights reserved. | Made with <i class="fas fa-heart" style="color: var(--orange);"></i> in India</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20a%20Dynamic%20Website.%20Please%20share%20a%20custom%20quote%20based%20on%20my%20requirements." target="_blank" class="floating-whatsapp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Scroll Progress Bar
+        window.addEventListener('scroll', function() {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollPx = document.documentElement.scrollTop;
+            const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = `${scrollPx / winHeightPx * 100}%`;
+            scrollProgress.style.width = scrolled;
+        });
+
+        // Mobile Navigation Active State
+        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+        mobileNavItems.forEach(item => {
+            item.addEventListener('click', function() {
+                mobileNavItems.forEach(navItem => navItem.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Scroll to section
+                const href = this.querySelector('a').getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    const section = document.querySelector(href);
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            question.addEventListener('click', function() {
+                // Toggle active class
+                item.classList.toggle('active');
+                
+                // Close other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item && otherItem.classList.contains('active')) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Fade In Animation on Scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        function checkFade() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkFade);
+        window.addEventListener('load', checkFade);
+        
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
