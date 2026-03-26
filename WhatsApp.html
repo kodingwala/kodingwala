@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhatsApp Integration for Websites - Kodingwala</title>
+    <title>WhatsApp Business Integration & Automation Services - Kodingwala</title>
     
     <!-- Favicon -->
     <link rel="icon" href="https://i.postimg.cc/3N8yBc2K/unnamed.png">
@@ -224,6 +224,64 @@
             width: 100%;
         }
 
+        /* Mobile Bottom Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(6, 20, 42, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.3);
+            border-top: 1px solid var(--border);
+            border-radius: 20px 20px 0 0;
+            padding: 10px 0 8px;
+        }
+
+        .mobile-nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .mobile-nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 4px 4px;
+            color: var(--text-soft);
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .mobile-nav-item.active {
+            color: var(--cyan);
+            text-shadow: 0 0 10px rgba(25, 211, 197, 0.5);
+        }
+
+        .mobile-nav-item i {
+            font-size: 1.2rem;
+            margin-bottom: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-item.active i {
+            transform: scale(1.1);
+        }
+
+        .mobile-nav-item span {
+            font-size: 0.65rem;
+            font-weight: 500;
+        }
+
+        .mobile-nav-item:active {
+            transform: scale(0.95);
+        }
+
         /* Hero Section */
         .hero {
             padding: 7rem 1.5rem 3rem;
@@ -276,7 +334,7 @@
         }
 
         .hero-content h1 {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 2.5rem);
             line-height: 1.2;
             margin-bottom: 1.5rem;
             opacity: 0;
@@ -349,6 +407,11 @@
             border: 2px solid var(--border);
             padding: 1rem;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-mockup:hover {
+            transform: scale(1.05);
         }
 
         .whatsapp-mockup-header {
@@ -390,33 +453,6 @@
             margin-top: auto;
         }
 
-        /* Floating Animation */
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         /* Section Styles */
         .section {
             padding: 5rem 1.5rem;
@@ -450,7 +486,7 @@
         /* Feature Cards */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
@@ -525,7 +561,139 @@
             color: white;
         }
 
-        /* Use Cases Section */
+        /* Two Column Layout */
+        .two-column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .two-column .column-content {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            height: 100%;
+        }
+
+        /* Steps Section */
+        .steps-container {
+            counter-reset: step-counter;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-main);
+            font-weight: 700;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .step-content p {
+            color: var(--text-soft);
+            line-height: 1.6;
+        }
+
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .tool-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--cyan);
+        }
+
+        .tool-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: var(--bg-main);
+        }
+
+        /* Message Examples */
+        .message-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .message-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .message-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: var(--whatsapp-green);
+        }
+
+        .message-type {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(37, 211, 102, 0.1);
+            border-radius: 50px;
+            color: var(--whatsapp-green);
+            font-size: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .message-content {
+            background: rgba(37, 211, 102, 0.05);
+            border-radius: 10px;
+            padding: 1rem;
+            color: var(--text-main);
+            font-style: italic;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Use Cases Grid */
         .use-cases-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -593,6 +761,196 @@
             margin: 0 auto 1.5rem;
             font-size: 1.8rem;
             color: white;
+        }
+
+        /* N8N Section */
+        .n8n-section {
+            background: linear-gradient(135deg, rgba(25, 211, 197, 0.05) 0%, rgba(245, 166, 35, 0.05) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            border: 1px solid var(--border);
+            margin: 2rem 0;
+        }
+
+        .n8n-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .n8n-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--bg-main);
+        }
+
+        .n8n-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .n8n-features {
+            list-style: none;
+        }
+
+        .n8n-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            color: var(--text-soft);
+        }
+
+        .n8n-features i {
+            color: var(--orange);
+            margin-right: 0.8rem;
+        }
+
+        /* Request Form */
+        .request-form {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-soft);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--cyan);
+            background: rgba(25, 211, 197, 0.05);
+            box-shadow: 0 0 0 3px rgba(25, 211, 197, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b8c4d6' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        select.form-control option {
+            background: var(--bg-card);
+            color: var(--text-main);
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--cyan);
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            color: var(--text-soft);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-style: italic;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -5px;
+            font-size: 3rem;
+            color: var(--cyan);
+            opacity: 0.5;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-main);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-info h4 {
+            margin-bottom: 0.2rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            background: rgba(245, 166, 35, 0.1);
+            border-radius: 50px;
+            color: var(--orange);
+            font-size: 0.75rem;
+            margin-top: 0.3rem;
         }
 
         /* FAQ Section */
@@ -829,6 +1187,23 @@
             box-shadow: 0 10px 25px rgba(25, 211, 197, 0.5);
         }
 
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* Animation on Scroll */
         .fade-in {
             opacity: 0;
@@ -841,23 +1216,207 @@
             transform: translateY(0);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
+        /* Responsive Design - Enhanced */
+        @media (max-width: 992px) {
             .hero-content h1 {
                 font-size: 2rem;
             }
-            
+
+            .n8n-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .n8n-icon {
+                margin: 0 auto 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            .hero {
+                padding: 5rem 1rem 3rem;
+            }
+
             .whatsapp-mockup {
                 width: 250px;
                 height: 500px;
             }
-            
+
             .cta-title {
                 font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+
+            .request-form {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .whatsapp-mockup {
+                width: 220px;
+                height: 450px;
+            }
+
+            .tool-card {
+                padding: 1.5rem;
+            }
+
+            .tool-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .whatsapp-mockup {
+                width: 200px;
+                height: 400px;
+            }
+
+            .tool-card {
+                padding: 1.5rem;
+            }
+
+            .tool-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .mobile-nav-item span {
+                font-size: 0.6rem;
+            }
+
+            .mobile-nav-item i {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .whatsapp-mockup {
+                width: 180px;
+                height: 350px;
+            }
+
+            .tool-card {
+                padding: 1.2rem;
+            }
+
+            .tool-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .mobile-nav {
+                padding: 10px 0 5px;
+            }
+        }
+
+        @media (max-width: 340px) {
+            .hero-content h1 {
+                font-size: 1.4rem;
+            }
+
+            .hero-content p {
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .whatsapp-mockup {
+                width: 160px;
+                height: 300px;
+            }
+
+            .tool-card {
+                padding: 1rem;
+            }
+
+            .tool-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .mobile-nav-item span {
+                font-size: 0.55rem;
+            }
+
+            .mobile-nav-item i {
+                font-size: 1rem;
+            }
+
+            .mobile-nav {
+                padding: 8px 0 5px;
+            }
+        }
+
+        /* Add bottom padding to body for mobile navigation */
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 70px;
+            }
+
+            .floating-whatsapp {
+                bottom: 80px;
+            }
+
+            .back-to-top {
+                bottom: 150px;
             }
         }
     </style>
@@ -887,15 +1446,57 @@
         </div>
     </nav>
 
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav-items">
+            <div class="mobile-nav-item">
+                <a href="index.html" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#integration" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-plug"></i>
+                    <span>Features</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#tools" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-tools"></i>
+                    <span>Tools</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#automation" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-robot"></i>
+                    <span>Automation</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#faq" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-question-circle"></i>
+                    <span>FAQ</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#whatsapp-request" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>WhatsApp Integration for Websites</h1>
-                <p><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> adds direct WhatsApp communication into websites for fast customer contact. Increase engagement and conversions with instant messaging.</p>
+                <h1>WhatsApp Business Integration & Automation</h1>
+                <p><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> provides complete WhatsApp Business setup, automation, and integration services. Transform your customer communication with instant messaging and automated workflows.</p>
                 <div class="hero-buttons">
-                    <a href="#features" class="btn btn-primary">View Features</a>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20WhatsApp%20Integration%20service.%20Please%20share%20details." target="_blank" class="btn btn-whatsapp">
+                    <a href="#integration" class="btn btn-primary">View Features</a>
+                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20WhatsApp%20Business%20services.%20Please%20share%20details." target="_blank" class="btn btn-whatsapp">
                         <i class="fab fa-whatsapp"></i> Enquiry Now
                     </a>
                 </div>
@@ -921,7 +1522,7 @@
             <div class="whatsapp-visual">
                 <div class="whatsapp-mockup floating">
                     <div class="whatsapp-mockup-header">
-                        <i class="fab fa-whatsapp"></i> WhatsApp Chat
+                        <i class="fab fa-whatsapp"></i> WhatsApp Business
                     </div>
                     <div class="whatsapp-mockup-body">
                         <div class="whatsapp-chat-bubble">
@@ -939,11 +1540,11 @@
         </div>
     </section>
 
-    <!-- What WhatsApp Integration Does Section -->
-    <section class="section" id="what-does">
+    <!-- What is WhatsApp Integration Section -->
+    <section class="section" id="integration">
         <div class="container">
             <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">What WhatsApp Integration Does</h2>
+                <h2 class="section-title">What is WhatsApp Integration</h2>
                 <p class="section-subtitle">Transform your website with instant messaging capabilities</p>
             </div>
             
@@ -991,118 +1592,423 @@
         </div>
     </section>
 
-    <!-- Features Included Section -->
-    <section class="section" id="features">
+    <!-- What is WhatsApp Automation Section -->
+    <section class="section" id="automation">
         <div class="container">
             <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Features Included</h2>
-                <p class="section-subtitle">Complete WhatsApp integration solutions for your website</p>
+                <h2 class="section-title">What is WhatsApp Automation</h2>
+                <p class="section-subtitle">Automate your WhatsApp responses for better customer service</p>
             </div>
             
-            <div class="whatsapp-features fade-in">
-                <div class="whatsapp-features-grid">
-                    <div class="whatsapp-feature-item">
-                        <div class="whatsapp-feature-icon">
-                            <i class="fab fa-whatsapp"></i>
+            <div class="two-column">
+                <div class="column-content fade-in">
+                    <h3>Simple Definition</h3>
+                    <p>WhatsApp automation means setting up automatic responses to customer messages. When customers send messages, they receive instant replies without manual intervention.</p>
+                    <br><br>
+                    <h3>Key Benefits</h3>
+                    <ul style="list-style: none; padding-left: 1.5rem;">
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-clock" style="color: var(--orange); margin-right: 0.5rem;"></i>24/7 availability</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-bolt" style="color: var(--orange); margin-right: 0.5rem;"></i>Instant responses</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-user-check" style="color: var(--orange); margin-right: 0.5rem;"></i>Consistent service</li>
+                        <li><i class="fas fa-chart-line" style="color: var(--orange); margin-right: 0.5rem;"></i>Improved efficiency</li>
+                    </ul>
+                </div>
+                <div class="column-content fade-in">
+                    <h3>Common Use Cases</h3>
+                    <div class="whatsapp-features">
+                        <div class="whatsapp-features-grid">
+                            <div class="whatsapp-feature-item">
+                                <div class="whatsapp-feature-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <h4>Welcome Messages</h4>
+                                <p>Auto-greet new customers</p>
+                            </div>
+                            
+                            <div class="whatsapp-feature-item">
+                                <div class="whatsapp-feature-icon">
+                                    <i class="fas fa-moon"></i>
+                                </div>
+                                <h4>Away Messages</h4>
+                                <p>Handle after-hours queries</p>
+                            </div>
+                            
+                            <div class="whatsapp-feature-item">
+                                <div class="whatsapp-feature-icon">
+                                    <i class="fas fa-reply"></i>
+                                </div>
+                                <h4>Quick Replies</h4>
+                                <p>Instant common answers</p>
+                            </div>
+                            
+                            <div class="whatsapp-feature-item">
+                                <div class="whatsapp-feature-icon">
+                                    <i class="fas fa-question-circle"></i>
+                                </div>
+                                <h4>FAQ Bots</h4>
+                                <p>Answer frequent questions</p>
+                            </div>
                         </div>
-                        <h4>Floating WhatsApp Button</h4>
-                        <p>Fixed position button that stays visible as users scroll</p>
                     </div>
-                    
-                    <div class="whatsapp-feature-item">
-                        <div class="whatsapp-feature-icon">
-                            <i class="fas fa-box"></i>
-                        </div>
-                        <h4>Product Enquiry Button</h4>
-                        <p>WhatsApp buttons on product pages for quick inquiries</p>
+                </div>
+            </div>
+    </section>
+
+    <!-- What is WhatsApp Business Section -->
+    <section class="section" id="whatsapp-business">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">What is WhatsApp Business</h2>
+                <p class="section-subtitle">Professional communication platform for businesses of all sizes</p>
+            </div>
+            
+            <div class="two-column">
+                <div class="column-content fade-in">
+                    <h3>Overview</h3>
+                    <p>WhatsApp Business is the official business version of WhatsApp designed specifically for business communication. It offers advanced features like business profiles, product catalogs, automated messaging, and analytics.</p>
+                    <br><br>
+                    <h3>Key Differences</h3>
+                    <ul style="list-style: none; padding-left: 1.5rem;">
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-building" style="color: var(--orange); margin-right: 0.5rem;"></i>Business profile instead of personal</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-box" style="color: var(--orange); margin-right: 0.5rem;"></i>Product catalog feature</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-chart-bar" style="color: var(--orange); margin-right: 0.5rem;"></i>Analytics and insights</li>
+                        <li><i class="fas fa-users" style="color: var(--orange); margin-right: 0.5rem;"></i>Multiple device support</li>
+                    </ul>
+                </div>
+                <div class="column-content fade-in">
+                    <h3>Why Use It?</h3>
+                    <ul style="list-style: none; padding-left: 1.5rem;">
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: var(--whatsapp-green); margin-right: 0.5rem;"></i>Professional appearance</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: var(--whatsapp-green); margin-right: 0.5rem;"></i>Better customer trust</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: var(--whatsapp-green); margin-right: 0.5rem;"></i>Advanced features</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--whatsapp-green); margin-right: 0.5rem;"></i>Free to use</li>
+                    </ul>
+                </div>
+            </div>
+    </section>
+
+    <!-- How to Install Section -->
+    <section class="section" id="install">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">How to Install & Set Up WhatsApp Business</h2>
+                <p class="section-subtitle">Step-by-step guide to get started with WhatsApp Business</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step-item fade-in">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Download WhatsApp Business</h3>
+                        <p>Download the app from Google Play Store or Apple App Store. It's free for all users.</p>
                     </div>
-                    
-                    <div class="whatsapp-feature-item">
-                        <div class="whatsapp-feature-icon">
-                            <i class="fas fa-cogs"></i>
-                        </div>
-                        <h4>Service Enquiry Button</h4>
-                        <p>Dedicated buttons for service-related questions</p>
+                </div>
+                
+                <div class="step-item fade-in">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Install & Open App</h3>
+                        <p>Install the app on your device and open it to begin the setup process.</p>
                     </div>
-                    
-                    <div class="whatsapp-feature-item">
-                        <div class="whatsapp-feature-icon">
-                            <i class="fas fa-comment-dots"></i>
-                        </div>
-                        <h4>Prefilled Message Links</h4>
-                        <p>Custom pre-written messages for different contexts</p>
+                </div>
+                
+                <div class="step-item fade-in">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Verify Phone Number</h3>
+                        <p>Verify your business phone number with a code received via SMS. This confirms you own the number.</p>
                     </div>
-                    
-                    <div class="whatsapp-feature-item">
-                        <div class="whatsapp-feature-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <h4>Contact Form to WhatsApp</h4>
-                        <p>Form submissions directly to your WhatsApp</p>
+                </div>
+                
+                <div class="step-item fade-in">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Create Business Profile</h3>
+                        <p>Add your business name, profile photo, category, and other business details.</p>
                     </div>
-                    
-                    <div class="whatsapp-feature-item">
-                        <div class="whatsapp-feature-icon">
-                            <i class="fas fa-bullhorn"></i>
-                        </div>
-                        <h4>CTA Integration</h4>
-                        <p>Strategic placement in call-to-action sections</p>
+                </div>
+                
+                <div class="step-item fade-in">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3>Set Up Business Info</h3>
+                        <p>Configure business hours, address, email, website, and description for customers.</p>
+                    </div>
+                </div>
+                
+                <div class="step-item fade-in">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h3>Start Using Features</h3>
+                        <p>Begin using catalogs, quick replies, automated messages, and other business tools.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Benefits for Business Section -->
-    <section class="section" id="benefits">
+    <!-- WhatsApp Business Tools Section -->
+    <section class="section" id="tools">
         <div class="container">
             <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Benefits for Business</h2>
-                <p class="section-subtitle">Why WhatsApp integration is essential for modern businesses</p>
+                <h2 class="section-title">WhatsApp Business Tools</h2>
+                <p class="section-subtitle">Powerful features to enhance your business communication</p>
             </div>
             
-            <div class="benefits-grid">
-                <div class="benefit-card fade-in">
-                    <div class="benefit-icon">
-                        <i class="fas fa-bolt"></i>
+            <div class="tools-grid">
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fas fa-box"></i>
                     </div>
-                    <h3>Quick Response</h3>
-                    <p>Respond to customer inquiries instantly, improving satisfaction and building trust with your audience</p>
+                    <h3>Catalog</h3>
+                    <p>Showcase your products with images, prices, and descriptions directly in WhatsApp</p>
                 </div>
                 
-                <div class="benefit-card fade-in">
-                    <div class="benefit-icon">
-                        <i class="fas fa-headset"></i>
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fas fa-tags"></i>
                     </div>
-                    <h3>Easy Customer Support</h3>
-                    <p>Provide seamless support through a platform customers already use and trust daily</p>
+                    <h3>Labels</h3>
+                    <p>Organize customers with labels like "New Customer", "VIP", "Lead", etc.</p>
                 </div>
                 
-                <div class="benefit-card fade-in">
-                    <div class="benefit-icon">
-                        <i class="fas fa-chart-line"></i>
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fas fa-comment"></i>
                     </div>
-                    <h3>Better Conversions</h3>
-                    <p>Reduce drop-off rates with frictionless communication that keeps customers engaged</p>
+                    <h3>Greeting Message</h3>
+                    <p>Auto-welcome message sent when customers first message your business</p>
                 </div>
                 
-                <div class="benefit-card fade-in">
-                    <div class="benefit-icon">
-                        <i class="fas fa-ban"></i>
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fas fa-moon"></i>
                     </div>
-                    <h3>No Complex Form Dependency</h3>
-                    <p>Bypass form fatigue and capture leads through simple, instant messaging</p>
+                    <h3>Away Message</h3>
+                    <p>Auto-reply when you're unavailable or outside business hours</p>
+                </div>
+                
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fas fa-reply"></i>
+                    </div>
+                    <h3>Quick Replies</h3>
+                    <p>Pre-written responses for frequently asked questions and common inquiries</p>
+                </div>
+                
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Payments</h3>
+                    <p>Accept payments directly through WhatsApp for products and services</p>
+                </div>
+                
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Broadcast</h3>
+                    <p>Send messages to multiple customers at once (with limits)</p>
+                </div>
+                
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <h3>Meta Integration</h3>
+                    <p>Connect with Facebook and Instagram for enhanced business presence</p>
+                </div>
+                
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fas fa-ad"></i>
+                    </div>
+                    <h3>Click-to-WhatsApp Ads</h3>
+                    <p>Create ads that directly open WhatsApp for instant customer contact</p>
                 </div>
             </div>
         </div>
+    </section>
+
+    <!-- Catalog, Ads, Payments, Labels Section -->
+    <section class="section" id="catalog-features">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Catalog, Ads, Payments & Labels</h2>
+                <p class="section-subtitle">Essential features for complete WhatsApp Business setup</p>
+            </div>
+            
+            <div class="tools-grid">
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <h3>Product Catalog</h3>
+                    <p>Create a digital storefront with product images, descriptions, and pricing</p>
+                </div>
+                
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fas fa-ad"></i>
+                    </div>
+                    <h3>WhatsApp Ads</h3>
+                    <p>Run Facebook and Instagram ads that click directly to WhatsApp</p>
+                </div>
+                
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>In-App Payments</h3>
+                    <p>Accept payments directly in WhatsApp chat for orders and services</p>
+                </div>
+                
+                <div class="tool-card fade-in">
+                    <div class="tool-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3>Customer Labels</h3>
+                    <p>Organize and segment customers for targeted communication</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Message Examples Section -->
+    <section class="section" id="message-examples">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Greeting, Away & Quick Reply Examples</h2>
+                <p class="section-subtitle">Professional message templates for better customer service</p>
+            </div>
+            
+            <div class="message-examples">
+                <div class="message-card fade-in">
+                    <div class="message-type">Greeting Message</div>
+                    <div class="message-content">
+                        <p>Thank you for contacting <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>! How can we help you today?</p>
+                    </div>
+                </div>
+                
+                <div class="message-card fade-in">
+                    <div class="message-type">Away Message</div>
+                    <div class="message-content">
+                        <p>We're currently away. Please leave a message and we'll get back to you during business hours.</p>
+                    </div>
+                </div>
+                
+                <div class="message-card fade-in">
+                    <div class="message-type">Quick Reply</div>
+                    <div class="message-content">
+                        <p>Our pricing starts from ₹2999. Would you like to know more about our services?</p>
+                    </div>
+                </div>
+                
+                <div class="message-card fade-in">
+                    <div class="message-type">Quick Reply</div>
+                    <div class="message-content">
+                        <p>Yes, we provide WhatsApp integration services. Would you like to see our portfolio?</p>
+                    </div>
+                </div>
+                
+                <div class="message-card fade-in">
+                    <div class="message-type">Quick Reply</div>
+                    <div class="message-content">
+                        <p>We offer complete website development services. What type of website do you need?</p>
+                    </div>
+                </div>
+                
+                <div class="message-card fade-in">
+                    <div class="message-type">Quick Reply</div>
+                    <div class="message-content">
+                        <p>Delivery time is typically 5-7 days depending on project complexity. We'll provide a timeline after understanding your requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meta Integration Section -->
+    <section class="section" id="meta-integration">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Meta, Facebook & Instagram Integration</h2>
+                <p class="section-subtitle">Connect WhatsApp Business with social media platforms</p>
+            </div>
+            
+            <div class="two-column">
+                <div class="column-content fade-in">
+                    <h3>Facebook Integration</h3>
+                    <p>Connect your WhatsApp Business account with your Facebook Page for enhanced customer service and marketing capabilities.</p>
+                    <br><br>
+                    <h3>Benefits</h3>
+                    <ul style="list-style: none; padding-left: 1.5rem;">
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: var(--whatsapp-green); margin-right: 0.5rem;"></i>Click-to-WhatsApp on Facebook</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: var(--whatsapp-green); margin-right: 0.5rem;"></i>Unified customer communication</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--whatsapp-green); margin-right: 0.5rem;"></i>Enhanced marketing reach</li>
+                    </ul>
+                </div>
+                <div class="column-content fade-in">
+                    <h3>Instagram Integration</h3>
+                    <p>Add WhatsApp action buttons to your Instagram profile and posts for direct customer engagement and lead generation.</p>
+                    <br><br>
+                    <h3>Advantages</h3>
+                    <ul style="list-style: none; padding-left: 1.5rem;">
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: var(--whatsapp-green); margin-right: 0.5rem;"></i>Direct customer contact</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-check-circle" style="color: var(--whatsapp-green); margin-right: 0.5rem;"></i>Higher engagement rates</li>
+                        <li><i class="fas fa-check-circle" style="color: var(--whatsapp-green); margin-right: 0.5rem;"></i>Seamless user experience</li>
+                    </ul>
+                </div>
+            </div>
+    </section>
+
+    <!-- N8N WhatsApp Automation Section -->
+    <section class="section" id="n8n-automation">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">N8N WhatsApp Automation</h2>
+                <p class="section-subtitle">Advanced workflow automation for WhatsApp Business</p>
+            </div>
+            
+            <div class="n8n-section fade-in">
+                <div class="n8n-content">
+                    <div class="n8n-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="n8n-text">
+                        <h3>What is N8N?</h3>
+                        <p>N8N is a powerful workflow automation tool that can connect with WhatsApp Business to create advanced automated workflows and chatbots.</p>
+                        
+                        <div class="n8n-features">
+                            <h4>Key Capabilities</h4>
+                            <ul class="n8n-features">
+                                <li><i class="fas fa-robot" style="color: var(--orange); margin-right: 0.5rem;"></i>Custom chatbot flows</li>
+                                <li><i class="fas fa-database" style="color: var(--orange); margin-right: 0.5rem;"></i>Lead management</li>
+                                <li><i class="fas fa-bell" style="color: var(--orange); margin-right: 0.5rem;"></i>Auto-responses</li>
+                                <li><i class="fas fa-share-alt" style="color: var(--orange); margin-right: 0.5rem;"></i>Team notifications</li>
+                                <li><i class="fas fa-plug" style="color: var(--orange); margin-right: 0.5rem;"></i>API integrations</li>
+                            </ul>
+                        </div>
+                        
+                        <h4>Use Cases</h4>
+                        <ul class="n8n-features">
+                            <li><i class="fas fa-shopping-cart" style="color: var(--orange); margin-right: 0.5rem;"></i>E-commerce automation</li>
+                            <li><i class="fas fa-headset" style="color: var(--orange); margin-right: 0.5rem;"></i>Lead qualification</li>
+                            <li><i class="fas fa-calendar-check" style="color: var(--orange); margin-right: 0.5rem;"></i>Appointment scheduling</li>
+                            <li><i class="fas fa-support" style="color: var(--orange); margin-right: 0.5rem;"></i>Customer support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
     </section>
 
     <!-- Use Cases Section -->
     <section class="section" id="use-cases">
         <div class="container">
             <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Use Cases</h2>
-                <p class="section-subtitle">Perfect for various types of websites and businesses</p>
+                <h2 class="section-title">Perfect for Various Business Types</h2>
+                <p class="section-subtitle">WhatsApp Business solutions tailored for different industries</p>
             </div>
             
             <div class="use-cases-grid">
@@ -1110,40 +2016,210 @@
                     <div class="use-case-icon">
                         <i class="fas fa-store"></i>
                     </div>
-                    <h3>Boutique Websites</h3>
-                    <p>Perfect for fashion and retail boutiques to handle customer inquiries and orders</p>
+                    <h3>Retail & E-commerce</h3>
+                    <p>Product catalogs, order updates, and customer support for online stores</p>
                 </div>
                 
                 <div class="use-case-card fade-in">
                     <div class="use-case-icon">
                         <i class="fas fa-concierge-bell"></i>
                     </div>
-                    <h3>Service Websites</h3>
-                    <p>Ideal for service providers to book appointments and answer questions quickly</p>
+                    <h3>Service Businesses</h3>
+                    <p>Appointment booking, service inquiries, and consultation management</p>
                 </div>
                 
                 <div class="use-case-card fade-in">
                     <div class="use-case-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
-                    <h3>Portfolio Websites</h3>
-                    <p>Great for freelancers and professionals to discuss project requirements</p>
+                    <h3>Freelancers & Agencies</h3>
+                    <p>Project discussions, portfolio sharing, and client communication</p>
                 </div>
                 
                 <div class="use-case-card fade-in">
                     <div class="use-case-icon">
                         <i class="fas fa-store-alt"></i>
                     </div>
-                    <h3>Small Business Sites</h3>
-                    <p>Essential for local businesses to connect with customers in real-time</p>
+                    <h3>Local Businesses</h3>
+                    <p>Store information, location details, and local customer engagement</p>
                 </div>
                 
                 <div class="use-case-card fade-in">
                     <div class="use-case-icon">
-                        <i class="fas fa-rocket"></i>
+                        <i class="fas fa-graduation-cap"></i>
                     </div>
-                    <h3>Landing Pages</h3>
-                    <p>Maximize lead capture on landing pages with instant communication options</p>
+                    <h3>Education & Training</h3>
+                    <p>Course inquiries, student support, and batch updates</p>
+                </div>
+                
+                <div class="use-case-card fade-in">
+                    <div class="use-case-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Healthcare Providers</h3>
+                    <p>Appointment booking, patient queries, and health information sharing</p>
+                </div>
+                
+                <div class="use-case-card fade-in">
+                    <div class="use-case-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>Fitness & Wellness</h3>
+                    <p>Class schedules, membership inquiries, and trainer consultations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Request WhatsApp Integration Form Section -->
+    <section class="section" id="whatsapp-request">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Request WhatsApp Integration</h2>
+                <p class="section-subtitle">Tell us about your project and we'll create the perfect WhatsApp solution for you</p>
+            </div>
+
+            <div class="request-form fade-in">
+                <form id="whatsappRequestForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="businessName">Business Name *</label>
+                        <input type="text" id="businessName" class="form-control" required>
+                        </div>
+
+                    <div class="form-group">
+                        <label for="mobileNumber">Mobile Number *</label>
+                        <input type="tel" id="mobileNumber" class="form-control" required>
+                        </div>
+
+                    <div class="form-group">
+                        <label for="websiteType">Website Type *</label>
+                        <select id="websiteType" class="form-control" required>
+                            <option value="" selected disabled>Select website type</option>
+                            <option value="business">Business Website</option>
+                            <option value="ecommerce">E-commerce Store</option>
+                            <option value="portfolio">Portfolio Website</option>
+                            <option value="blog">Blog/News Site</option>
+                            <option value="landing">Landing Page</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="businessCategory">Business Category *</label>
+                        <input type="text" id="businessCategory" class="form-control" required>
+                        </div>
+
+                    <div class="form-group">
+                        <label for="hasWhatsAppBusiness">Do you have WhatsApp Business? *</label>
+                        <select id="hasWhatsAppBusiness" class="form-control" required>
+                            <option value="" selected disabled>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No, need setup</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needButton">Need WhatsApp Button? *</label>
+                        <select id="needButton" class="form-control" required>
+                            <option value="" selected disabled>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needCatalog">Need Catalog Setup? *</label>
+                        <select id="needCatalog" class="form-control" required>
+                            <option value="" selected disabled>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needAutomation">Need Automation/Bot? *</label>
+                        <select id="needAutomation" class="form-control" required>
+                            <option value="" selected disabled>Select an option</option>
+                            <option value="yes">Yes, N8N workflow</option>
+                            <option value="basic">Basic auto-replies</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needMeta">Need Meta/Facebook/Instagram Integration? *</label>
+                        <select id="needMeta" class="form-control" required>
+                            <option value="" selected disabled>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectDetails">Project Details / Message</label>
+                        <textarea id="projectDetails" class="form-control" rows="4" placeholder="Tell us about your project requirements"></textarea>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" id="resetForm" class="btn btn-secondary">Reset</button>
+                        <button type="submit" class="btn btn-primary">Send via WhatsApp</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">What Our Clients Say About <span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h2>
+                <p class="section-subtitle">Don't just take our word for it - hear from our satisfied clients</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> set up our WhatsApp Business perfectly. The automation has reduced our response time by 80% and customer satisfaction has improved significantly.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">R</div>
+                        <div class="testimonial-info">
+                            <h4>Rahul Sharma</h4>
+                            <div class="testimonial-badge">E-commerce Store</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        The N8N WhatsApp automation by <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> has transformed our customer service. We now handle 100+ inquiries daily without manual intervention.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">P</div>
+                        <div class="testimonial-info">
+                            <h4>Priya Patel</h4>
+                            <div class="testimonial-badge">Service Business</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        Our product catalog in WhatsApp Business, set up by <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>, has increased our mobile orders by 45%. Customers love the convenience!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">A</div>
+                        <div class="testimonial-info">
+                            <h4>Amit Kumar</h4>
+                            <div class="testimonial-badge">Retail Store</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1154,57 +2230,57 @@
         <div class="container">
             <div class="section-title-wrapper fade-in">
                 <h2 class="section-title">Frequently Asked Questions</h2>
-                <p class="section-subtitle">Common questions about WhatsApp integration</p>
+                <p class="section-subtitle">Common questions about WhatsApp Business and integration</p>
             </div>
             
             <div class="faq-container">
                 <div class="faq-item fade-in">
                     <div class="faq-question">
-                        <h3>How does WhatsApp integration work?</h3>
+                        <h3>Is WhatsApp Business really free?</h3>
                         <i class="fas fa-chevron-down faq-icon"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>We integrate WhatsApp by adding click-to-chat buttons, floating widgets, and contact forms that directly open WhatsApp with pre-filled messages. Users can contact you with a single click, and messages go directly to your WhatsApp number.</p>
+                        <p>Yes, WhatsApp Business is completely free to use for all businesses. There are no hidden charges or subscription fees for the basic features.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item fade-in">
                     <div class="faq-question">
-                        <h3>Is it mobile friendly?</h3>
+                        <h3>Can I use both WhatsApp and WhatsApp Business?</h3>
                         <i class="fas fa-chevron-down faq-icon"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, absolutely! WhatsApp integration is perfect for mobile users as it opens the native WhatsApp app on their device. This provides a seamless experience that customers are already familiar with.</p>
+                        <p>Yes, you can use both apps on the same device. However, for business use, we recommend using WhatsApp Business exclusively for better organization.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item fade-in">
                     <div class="faq-question">
-                        <h3>Can messages be prefilled?</h3>
+                        <h3>How many products can I add to the catalog?</h3>
                         <i class="fas fa-chevron-down faq-icon"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes! We can pre-fill messages based on the context. For example, product pages can have messages like "I'm interested in [Product Name]" and service pages can have "I'd like to know more about [Service Name]".</p>
+                        <p>You can add up to 500 products to your WhatsApp Business catalog. Each product can have multiple images, descriptions, and pricing options.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item fade-in">
                     <div class="faq-question">
-                        <h3>Where can buttons be placed?</h3>
+                        <h3>What is N8N and how does it work with WhatsApp?</h3>
                         <i class="fas fa-chevron-down faq-icon"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>WhatsApp buttons can be placed anywhere on your website - header, footer, floating widget, product pages, service pages, contact sections, and even within forms. We'll strategically place them based on your business needs.</p>
+                        <p>N8N is an automation tool that connects with WhatsApp Business API. It can automate responses, manage leads, integrate with other systems, and create complex workflows - all through WhatsApp.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item fade-in">
                     <div class="faq-question">
-                        <h3>Do I need a WhatsApp Business account?</h3>
+                        <h3>Can I accept payments through WhatsApp?</h3>
                         <i class="fas fa-chevron-down faq-icon"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>While not mandatory, we recommend using WhatsApp Business for better features like automated responses, business profiles, and analytics. However, regular WhatsApp works perfectly for basic integration.</p>
+                        <p>Yes! WhatsApp Business supports in-app payments through third-party payment providers. We can help you set up secure payment collection for your products and services.</p>
                     </div>
                 </div>
             </div>
@@ -1215,13 +2291,11 @@
     <section class="section">
         <div class="container">
             <div class="cta-section fade-in">
-                <h2 class="cta-title">Need WhatsApp Integration on Your Website?</h2>
-                <p class="section-subtitle">Let's add instant messaging capabilities to boost your customer engagement</p>
+                <h2 class="cta-title">Ready to Transform Your Customer Communication?</h2>
+                <p class="section-subtitle">Let's set up WhatsApp Business and automation to boost your engagement</p>
                 <div class="cta-buttons">
-                    <a href="#features" class="btn btn-primary">View Features</a>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20WhatsApp%20Integration%20service.%20Please%20share%20details." target="_blank" class="btn btn-whatsapp">
-                        <i class="fab fa-whatsapp"></i> Enquiry Now
-                    </a>
+                    <a href="#tools" class="btn btn-primary">View Features</a>
+                    <a href="#whatsapp-request" class="btn btn-whatsapp">Get a Quote</a>
                 </div>
             </div>
         </div>
@@ -1237,12 +2311,12 @@
                         <h3><span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h3>
                     </div>
                     <p style="margin-bottom: 1rem; color: var(--text-soft);">Design • Develop • Deliver</p>
-                    <p style="color: var(--text-soft);"><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> helps students, freelancers, and businesses build modern digital presence with websites, resumes, logos, and project solutions.</p>
+                    <p style="color: var(--text-soft);"><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> helps businesses and professionals leverage WhatsApp for better customer communication, lead generation, and automated support.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="https://instagram.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="https://wa.me/738686895149" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://facebook.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
                 
@@ -1259,14 +2333,15 @@
                 </div>
                 
                 <div class="footer-column">
-                    <h3>WhatsApp Features</h3>
+                    <h3>WhatsApp Services</h3>
                     <ul class="footer-links">
-                        <li><a href="#features">Floating Button</a></li>
-                        <li><a href="#features">Product Enquiry</a></li>
-                        <li><a href="#features">Service Enquiry</a></li>
-                        <li><a href="#features">Prefilled Messages</a></li>
-                        <li><a href="#features">Contact Form</a></li>
-                        <li><a href="#features">CTA Integration</a></li>
+                        <li><a href="#integration">Integration</a></li>
+                        <li><a href="#automation">Automation</a></li>
+                        <li><a href="#whatsapp-business">WhatsApp Business</a></li>
+                        <li><a href="#install">Installation</a></li>
+                        <li><a href="#tools">Business Tools</a></li>
+                        <li><a href="#catalog-features">Catalog</a></li>
+                        <li><a href="#n8n-automation">N8N Automation</a></li>
                     </ul>
                 </div>
                 
@@ -1288,7 +2363,7 @@
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20WhatsApp%20Integration%20service.%20Please%20share%20details." target="_blank" class="floating-whatsapp">
+    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20WhatsApp%20Business%20services.%20Please%20share%20details." target="_blank" class="floating-whatsapp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -1307,22 +2382,65 @@
             scrollProgress.style.width = scrolled;
         });
 
-        // Smooth Scrolling for Navigation Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+        // Mobile Navigation Active State
+        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+        mobileNavItems.forEach(item => {
+            item.addEventListener('click', function() {
+                mobileNavItems.forEach(navItem => navItem.classList.remove('active'));
+                this.classList.add('active');
                 
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                // Scroll to section
+                const href = this.querySelector('a').getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    const section = document.querySelector(href);
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }
                 }
             });
+        });
+
+        // WhatsApp Request Form Submission
+        const whatsappRequestForm = document.getElementById('whatsappRequestForm');
+
+        whatsappRequestForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const businessName = document.getElementById('businessName').value;
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            const websiteType = document.getElementById('websiteType').value;
+            const businessCategory = document.getElementById('businessCategory').value;
+            const hasWhatsAppBusiness = document.getElementById('hasWhatsAppBusiness').value;
+            const needButton = document.getElementById('needButton').value;
+            const needCatalog = document.getElementById('needCatalog').value;
+            const needAutomation = document.getElementById('needAutomation').value;
+            const needMeta = document.getElementById('needMeta').value;
+            const projectDetails = document.getElementById('projectDetails').value;
+
+            // Build WhatsApp message
+            const message = `Hello Kodingwala, I'm interested in your WhatsApp Business services.%0A%0A` +
+                `Full Name: ${fullName}%0A` +
+                `Business Name: ${businessName}%0A` +
+                `Mobile Number: ${mobileNumber}%0A` +
+                `Website Type: ${websiteType}%0A` +
+                `Business Category: ${businessCategory}%0A` +
+                `Has WhatsApp Business: ${hasWhatsAppBusiness}%0A` +
+                `Need WhatsApp Button: ${needButton}%0A` +
+                `Need Catalog Setup: ${needCatalog}%0A` +
+                `Need Automation: ${needAutomation}%0A` +
+                `Need Meta Integration: ${needMeta}%0A` +
+                `Project Details: ${projectDetails || 'Not provided'}`;
+
+            // Open WhatsApp with the message
+            const whatsappURL = `https://wa.me/738686895149?text=${message}`;
+            window.open(whatsappURL, '_blank');
+        });
+
+        // Reset Form Button
+        document.getElementById('resetForm').addEventListener('click', function() {
+            whatsappRequestForm.reset();
         });
 
         // FAQ Accordion
@@ -1377,6 +2495,24 @@
         
         window.addEventListener('scroll', checkFade);
         window.addEventListener('load', checkFade);
+        
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
