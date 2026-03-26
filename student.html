@@ -222,6 +222,64 @@
             width: 100%;
         }
 
+        /* Mobile Bottom Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(6, 20, 42, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.3);
+            border-top: 1px solid var(--border);
+            border-radius: 20px 20px 0 0;
+            padding: 10px 0 8px;
+        }
+
+        .mobile-nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .mobile-nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 4px 4px;
+            color: var(--text-soft);
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .mobile-nav-item.active {
+            color: var(--cyan);
+            text-shadow: 0 0 10px rgba(25, 211, 197, 0.5);
+        }
+
+        .mobile-nav-item i {
+            font-size: 1.2rem;
+            margin-bottom: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-item.active i {
+            transform: scale(1.1);
+        }
+
+        .mobile-nav-item span {
+            font-size: 0.65rem;
+            font-weight: 500;
+        }
+
+        .mobile-nav-item:active {
+            transform: scale(0.95);
+        }
+
         /* Hero Section */
         .hero {
             padding: 7rem 1.5rem 3rem;
@@ -397,6 +455,7 @@
             border-radius: 16px;
             padding: 2rem;
             border: 1px solid var(--border);
+            text-align: center;
             transition: all 0.3s ease;
             height: 100%;
             display: flex;
@@ -578,6 +637,190 @@
             color: var(--orange);
             font-size: 0.8rem;
             margin-bottom: 1rem;
+        }
+
+        /* Documentation Section */
+        .documentation-section {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 3rem;
+            border: 1px solid var(--border);
+            margin: 2rem 0;
+        }
+
+        .documentation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .documentation-item {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .documentation-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--cyan);
+            background: rgba(25, 211, 197, 0.05);
+        }
+
+        .documentation-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.3rem;
+            color: white;
+        }
+
+        /* Custom Project Request Form */
+        .custom-project-form {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-soft);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--cyan);
+            background: rgba(25, 211, 197, 0.05);
+            box-shadow: 0 0 0 3px rgba(25, 211, 197, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b8c4d6' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        select.form-control option {
+            background: var(--bg-card);
+            color: var(--text-main);
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--cyan);
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            color: var(--text-soft);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-style: italic;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -5px;
+            font-size: 3rem;
+            color: var(--cyan);
+            opacity: 0.5;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-main);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-info h4 {
+            margin-bottom: 0.2rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            background: rgba(245, 166, 35, 0.1);
+            border-radius: 50px;
+            color: var(--orange);
+            font-size: 0.75rem;
+            margin-top: 0.3rem;
         }
 
         /* FAQ Section */
@@ -826,18 +1069,420 @@
             transform: translateY(0);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
+        /* Responsive Design - Enhanced */
+        @media (max-width: 992px) {
             .hero-content h1 {
                 font-size: 2rem;
             }
-            
+        }
+
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            .hero {
+                padding: 5rem 1rem 3rem;
+            }
+
             .cta-title {
                 font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+
+            .custom-project-form {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .service-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .project-card {
+                margin-bottom: 1.5rem;
+            }
+
+            .project-preview {
+                height: 150px;
+            }
+
+            .project-preview-icon {
+                font-size: 2.5rem;
+            }
+
+            .pricing-card {
+                padding: 1.5rem;
+            }
+
+            .pricing-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .pricing-title {
+                font-size: 1.2rem;
+            }
+
+            .pricing-price {
+                font-size: 2rem;
+            }
+
+            .documentation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .documentation-item {
+                padding: 1.5rem;
+            }
+
+            .documentation-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .custom-project-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .mobile-nav-item span {
+                font-size: 0.6rem;
+            }
+
+            .mobile-nav-item i {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .service-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .feature-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .project-card {
+                margin-bottom: 1.5rem;
+            }
+
+            .project-preview {
+                height: 130px;
+            }
+
+            .project-preview-icon {
+                font-size: 2rem;
+            }
+
+            .pricing-card {
+                padding: 1.5rem;
+            }
+
+            .pricing-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .pricing-title {
+                font-size: 1.2rem;
+            }
+
+            .pricing-price {
+                font-size: 1.8rem;
+            }
+
+            .documentation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .documentation-item {
+                padding: 1.5rem;
+            }
+
+            .documentation-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .custom-project-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .mobile-nav-item span {
+                font-size: 0.55rem;
+            }
+
+            .mobile-nav-item i {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .service-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .feature-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .project-card {
+                margin-bottom: 1.5rem;
+            }
+
+            .project-preview {
+                height: 120px;
+            }
+
+            .project-preview-icon {
+                font-size: 1.8rem;
+            }
+
+            .pricing-card {
+                padding: 1.5rem;
+            }
+
+            .pricing-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .pricing-title {
+                font-size: 1.2rem;
+            }
+
+            .pricing-price {
+                font-size: 1.6rem;
+            }
+
+            .documentation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .documentation-item {
+                padding: 1.5rem;
+            }
+
+            .documentation-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+
+            .custom-project-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .mobile-nav {
+                padding: 10px 0 5px;
+            }
+
+            .mobile-nav-item span {
+                font-size: 0.5rem;
+            }
+
+            .mobile-nav-item i {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 340px) {
+            .hero-content h1 {
+                font-size: 1.4rem;
+            }
+
+            .hero-content p {
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .service-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .feature-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .project-card {
+                margin-bottom: 1.5rem;
+            }
+
+            .project-preview {
+                height: 100px;
+            }
+
+            .project-preview-icon {
+                font-size: 1.5rem;
+            }
+
+            .pricing-card {
+                padding: 1.5rem;
+            }
+
+            .pricing-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .pricing-title {
+                font-size: 1.1rem;
+            }
+
+            .pricing-price {
+                font-size: 1.4rem;
+            }
+
+            .documentation-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .documentation-item {
+                padding: 1.5rem;
+            }
+
+            .documentation-icon {
+                width: 25px;
+                height: 25px;
+                font-size: 0.8rem;
+            }
+
+            .custom-project-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .mobile-nav {
+                padding: 8px 0 5px;
+            }
+
+            .mobile-nav-item span {
+                font-size: 0.45rem;
+            }
+
+            .mobile-nav-item i {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Add bottom padding to body for mobile navigation */
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 70px;
+            }
+
+            .floating-whatsapp {
+                bottom: 80px;
+            }
+
+            .back-to-top {
+                bottom: 150px;
             }
         }
     </style>
@@ -864,6 +1509,42 @@
                 <li><a href="index.html#about">About</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
+        </div>
+    </nav>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav-items">
+            <div class="mobile-nav-item">
+                <a href="index.html" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#services" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-list-check"></i>
+                    <span>Services</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#projects" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-laptop-code"></i>
+                    <span>Projects</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#documentation" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Docs</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#faq" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-question-circle"></i>
+                    <span>FAQ</span>
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -930,16 +1611,16 @@
                 
                 <div class="service-card fade-in">
                     <div class="service-icon">
-                        <i class="fas fa-flask"></i>
+                        <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h3>Mini Projects</h3>
-                    <p>Academic projects and mini-projects for students with proper documentation and explanations to help you learn and score well.</p>
-                    <a href="#" class="btn btn-secondary" style="width: 100%;">Learn More</a>
+                    <h3>Front-end Projects</h3>
+                    <p>Interactive front-end web development projects with modern design and smooth animations for academic requirements.</p>
+                    <a href="#projects" class="btn btn-secondary" style="width: 100%;">Learn More</a>
                 </div>
                 
                 <div class="service-card fade-in">
                     <div class="service-icon">
-                        <i class="fas fa-presentation"></i>
+                        <i class="fas fa-person-chalkboard"></i>
                     </div>
                     <h3>PPT Design</h3>
                     <p>Engaging and professional PowerPoint presentations that effectively communicate your message and impress your audience.</p>
@@ -948,20 +1629,20 @@
                 
                 <div class="service-card fade-in">
                     <div class="service-icon">
-                        <i class="fas fa-palette"></i>
+                        <i class="fas fa-brain"></i>
                     </div>
-                    <h3>Project UI</h3>
-                    <p>Modern and attractive UI designs for your academic projects that make them look professional and impressive.</p>
-                    <a href="#" class="btn btn-secondary" style="width: 100%;">Learn More</a>
+                    <h3>AI/ML Projects</h3>
+                    <p>Artificial Intelligence and Machine Learning projects with proper implementation and documentation for academic requirements.</p>
+                    <a href="#projects" class="btn btn-secondary" style="width: 100%;">Learn More</a>
                 </div>
                 
                 <div class="service-card fade-in">
                     <div class="service-icon">
-                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-robot"></i>
                     </div>
-                    <h3>Submission Support</h3>
-                    <p>Guidance and support for your project submissions, presentations, and academic requirements.</p>
-                    <a href="#" class="btn btn-secondary" style="width: 100%;">Learn More</a>
+                    <h3>AI Projects</h3>
+                    <p>Artificial Intelligence projects with algorithms, models, and practical applications for academic and real-world scenarios.</p>
+                    <a href="#projects" class="btn btn-secondary" style="width: 100%;">Learn More</a>
                 </div>
             </div>
         </div>
@@ -987,7 +1668,7 @@
                 
                 <div class="pricing-card fade-in">
                     <div class="pricing-icon">
-                        <i class="fas fa-presentation"></i>
+                        <i class="fas fa-person-chalkboard"></i>
                     </div>
                     <h3 class="pricing-title">PPT Design</h3>
                     <div class="pricing-price">₹399<span>+</span></div>
@@ -996,11 +1677,11 @@
                 
                 <div class="pricing-card fade-in">
                     <div class="pricing-icon">
-                        <i class="fas fa-flask"></i>
+                        <i class="fas fa-laptop-code"></i>
                     </div>
-                    <h3 class="pricing-title">Mini Projects</h3>
-                    <div class="pricing-price">₹3,000-4,000</div>
-                    <p>Complete academic projects with documentation</p>
+                    <h3 class="pricing-title">Front-end Projects</h3>
+                    <div class="pricing-price">₹1,500-3,000</div>
+                    <p>Interactive web projects with modern design</p>
                 </div>
                 
                 <div class="pricing-card fade-in">
@@ -1067,11 +1748,11 @@
         </div>
     </section>
 
-    <!-- Mini Project Support Section -->
-    <section class="section" id="project-support">
+    <!-- Mini Projects Section -->
+    <section class="section" id="projects">
         <div class="container">
             <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Mini Project Support</h2>
+                <h2 class="section-title">Mini Projects for Students</h2>
                 <p class="section-subtitle">We help you with various types of academic projects</p>
             </div>
             
@@ -1105,11 +1786,11 @@
                 <div class="project-card fade-in">
                     <div class="project-preview">
                         <div class="project-preview-placeholder">
-                            <i class="fas fa-presentation project-preview-icon"></i>
+                            <i class="fas fa-person-chalkboard project-preview-icon"></i>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Project Presentation</h3>
+                        <h3 class="project-title">Presentations</h3>
                         <div class="project-category">Presentation</div>
                         <p>Professional presentations for your project submissions</p>
                     </div>
@@ -1118,13 +1799,254 @@
                 <div class="project-card fade-in">
                     <div class="project-preview">
                         <div class="project-preview-placeholder">
-                            <i class="fas fa-file-alt project-preview-icon"></i>
+                            <i class="fas fa-brain project-preview-icon"></i>
                         </div>
                     </div>
                     <div class="project-content">
-                        <h3 class="project-title">Documentation</h3>
-                        <div class="project-category">Documentation</div>
-                        <p>Complete documentation for your projects with proper explanations</p>
+                        <h3 class="project-title">AI/ML Projects</h3>
+                        <div class="project-category">Artificial Intelligence</div>
+                        <p>AI and Machine Learning projects with algorithms and models</p>
+                    </div>
+                </div>
+                
+                <div class="project-card fade-in">
+                    <div class="project-preview">
+                        <div class="project-preview-placeholder">
+                            <i class="fas fa-robot project-preview-icon"></i>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">AI Projects</h3>
+                        <div class="project-category">Artificial Intelligence</div>
+                        <p>Artificial Intelligence projects with practical applications</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Documentation Section -->
+    <section class="section" id="documentation">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Project Documentation</h2>
+                <p class="section-subtitle">Complete documentation support for your academic projects</p>
+            </div>
+            
+            <div class="documentation-section fade-in">
+                <div class="documentation-grid">
+                    <div class="documentation-item">
+                        <div class="documentation-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <h4>Abstract</h4>
+                        <p>Clear and concise abstract that summarizes your project</p>
+                    </div>
+                    
+                    <div class="documentation-item">
+                        <div class="documentation-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h4>Problem Statement</h4>
+                        <p>Well-defined problem statement explaining the project context and objectives</p>
+                    </div>
+                    
+                    <div class="documentation-item">
+                        <div class="documentation-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h4>Objectives</h4>
+                        <p>Clear project objectives and goals with measurable outcomes</p>
+                    </div>
+                    
+                    <div class="documentation-item">
+                        <div class="documentation-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <h4>Modules</h4>
+                        <p>Detailed module-wise breakdown of your project structure</p>
+                    </div>
+                    
+                    <div class="documentation-item">
+                        <div class="documentation-icon">
+                            <i class="fas fa-sitemap"></i>
+                        </div>
+                        <h4>Flow Explanation</h4>
+                        <p>System architecture and data flow diagrams with explanations</p>
+                    </div>
+                    
+                    <div class="documentation-item">
+                        <div class="documentation-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h4>Screenshots</h4>
+                        <p>Relevant screenshots of your project with proper annotations</p>
+                    </div>
+                    
+                    <div class="documentation-item">
+                        <div class="documentation-icon">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <h4>Output</h4>
+                        <p>Final output and results of your project with explanations</p>
+                    </div>
+                    
+                    <div class="documentation-item">
+                        <div class="documentation-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h4>Conclusion</h4>
+                        <p>Comprehensive conclusion summarizing your project achievements and learnings</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Project Request Form Section -->
+    <section class="section" id="custom-project">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Request Your Custom Project</h2>
+                <p class="section-subtitle">Tell us about your project requirements and we'll create the perfect solution for you</p>
+            </div>
+
+            <div class="custom-project-form fade-in">
+                <form id="customProjectForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobileNumber">Mobile Number *</label>
+                        <input type="tel" id="mobileNumber" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="collegeName">College Name *</label>
+                        <input type="text" id="collegeName" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="course">Course / Branch *</label>
+                        <input type="text" id="course" class="form-control" required>
+                        </div>
+
+                    <div class="form-group">
+                        <label for="year">Year / Semester *</label>
+                        <input type="text" id="year" class="form-control" required>
+                        </div>
+
+                    <div class="form-group">
+                        <label for="projectType">Project Type *</label>
+                        <select id="projectType" class="form-control" required>
+                            <option value="" selected disabled>Select project type</option>
+                            <option value="frontend">Front-end Project</option>
+                            <option value="ui">UI Mini Project</option>
+                            <option value="presentation">Presentation</option>
+                            <option value="ai-ml">AI/ML Project</option>
+                            <option value="ai">AI Project</option>
+                            <option value="custom">Custom Project</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="technology">Technology Needed</label>
+                        <input type="text" id="technology" class="form-control" placeholder="e.g., HTML, CSS, JavaScript, Python, etc.">
+                        </div>
+
+                    <div class="form-group">
+                        <label for="needDocumentation">Need Documentation? *</label>
+                        <select id="needDocumentation" class="form-control" required>
+                            <option value="" selected disabled>Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needPPT">Need PPT Presentation? *</label>
+                        <select id="needPPT" class="form-control" required>
+                            <option value="" selected disabled>Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needExplanation">Need Source Code Explanation? *</label>
+                        <select id="needExplanation" class="form-control" required>
+                            <option value="" selected disabled>Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectTopic">Project Topic / Requirement</label>
+                        <textarea id="projectTopic" class="form-control" rows="4" placeholder="Tell us about your project requirements"></textarea>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" id="resetForm" class="btn btn-secondary">Reset</button>
+                        <button type="submit" class="btn btn-primary">Send via WhatsApp</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">What Our Students Say About <span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h2>
+                <p class="section-subtitle">Don't just take our word for it - hear from our satisfied students</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> helped me with my mini project and documentation. The code was well-explained and the documentation was comprehensive. Scored A+!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">R</div>
+                        <div class="testimonial-info">
+                            <h4>Rahul Sharma</h4>
+                            <div class="testimonial-badge">Mini Project</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        The PPT design by <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> was professional and helped me score good marks in my seminar presentation. Very student-friendly service!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">P</div>
+                        <div class="testimonial-info">
+                            <h4>Priya Patel</h4>
+                            <div class="testimonial-badge">PPT Design</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        My portfolio website created by <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> helped me land my first internship. The design was modern and responsive.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">A</div>
+                        <div class="testimonial-info">
+                            <h4>Amit Kumar</h4>
+                            <div class="testimonial-badge">Portfolio Support</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1156,7 +2078,7 @@
                         <i class="fas fa-chevron-down faq-icon"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>We support a wide range of academic projects including web development, mobile app development, UI/UX design, data science projects, and more. Contact us with your specific requirements.</p>
+                        <p>We support a wide range of academic projects including web development, UI/UX design, data science projects, and more. Contact us with your specific requirements.</p>
                     </div>
                 </div>
                 
@@ -1221,10 +2143,10 @@
                     <p style="margin-bottom: 1rem; color: var(--text-soft);">Design • Develop • Deliver</p>
                     <p style="color: var(--text-soft);"><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> helps students, freelancers, and businesses build modern digital presence with websites, resumes, logos, and project solutions.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="https://instagram.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="https://wa.me/738686895149" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://facebook.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
                 
@@ -1245,26 +2167,25 @@
                     <ul class="footer-links">
                         <li><a href="resume.html">Resume Design</a></li>
                         <li><a href="portfolio.html">Portfolio Websites</a></li>
-                        <li><a href="#">Mini Projects</a></li>
+                        <li><a href="#projects">Mini Projects</a></li>
                         <li><a href="ppt.html">PPT Design</a></li>
-                        <li><a href="#">Project UI</a></li>
-                        <li><a href="#">Submission Support</a></li>
+                        <li><a href="#documentation">Documentation</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Contact Info</h3>
                     <ul class="footer-links">
-                        <li><i class="fab fa-whatsapp"></i> WhatsApp: 738686895149</li>
-                        <li><i class="fas fa-envelope"></i> Email: hello@kodingwala.com</li>
-                        <li><i class="fab fa-instagram"></i> Instagram: @kodingwala</li>
-                        <li><i class="fab fa-youtube"></i> YouTube: Kodingwala</li>
+                        <li><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/738686895149" target="_blank" rel="noopener noreferrer">738686895149</a></li>
+                        <li><i class="fas fa-envelope"></i> Email: <a href="mailto:hello@kodingwala.com" target="_blank" rel="noopener noreferrer">hello@kodingwala.com</a></li>
+                        <li><i class="fab fa-instagram"></i> Instagram: <a href="https://instagram.com/kodingwala" target="_blank" rel="noopener noreferrer">@kodingwala</a></li>
+                        <li><i class="fab fa-youtube"></i> YouTube: <a href="https://youtube.com/@kodingwala" target="_blank" rel="noopener noreferrer">Kodingwala</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>. All rights reserved. | Made with <i class="fas fa-heart" style="color: var(--orange);"></i> in India</p>
+                <p>&copy; 2026 <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>. All rights reserved. | Made with <i class="fas fa-heart" style="color: var(--orange);"></i> in India</p>
             </div>
         </div>
     </footer>
@@ -1289,22 +2210,67 @@
             scrollProgress.style.width = scrolled;
         });
 
-        // Smooth Scrolling for Navigation Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+        // Mobile Navigation Active State
+        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+        mobileNavItems.forEach(item => {
+            item.addEventListener('click', function() {
+                mobileNavItems.forEach(navItem => navItem.classList.remove('active'));
+                this.classList.add('active');
                 
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                // Scroll to section
+                const href = this.querySelector('a').getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    const section = document.querySelector(href);
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }
                 }
             });
+        });
+
+        // Custom Project Form Submission
+        const customProjectForm = document.getElementById('customProjectForm');
+
+        customProjectForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            const email = document.getElementById('email').value;
+            const collegeName = document.getElementById('collegeName').value;
+            const course = document.getElementById('course').value;
+            const year = document.getElementById('year').value;
+            const projectType = document.getElementById('projectType').value;
+            const technology = document.getElementById('technology').value;
+            const needDocumentation = document.getElementById('needDocumentation').value;
+            const needPPT = document.getElementById('needPPT').value;
+            const needExplanation = document.getElementById('needExplanation').value;
+            const projectTopic = document.getElementById('projectTopic').value;
+
+            // Build WhatsApp message
+            const message = `Hello Kodingwala, I'm interested in your Custom Project service.%0A%0A` +
+                `Full Name: ${fullName}%0A` +
+                `Mobile Number: ${mobileNumber}%0A` +
+                `Email: ${email}%0A` +
+                `College Name: ${collegeName}%0A` +
+                `Course/Branch: ${course}%0A` +
+                `Year/Semester: ${year}%0A` +
+                `Project Type: ${projectType}%0A` +
+                `Technology: ${technology || 'Not specified'}%0A` +
+                `Need Documentation: ${needDocumentation}%0A` +
+                `Need PPT: ${needPPT}%0A` +
+                `Need Explanation: ${needExplanation}%0A` +
+                `Project Topic: ${projectTopic || 'Not provided'}`;
+
+            // Open WhatsApp with the message
+            const whatsappURL = `https://wa.me/738686895149?text=${message}`;
+            window.open(whatsappURL, '_blank');
+        });
+
+        // Reset Form Button
+        document.getElementById('resetForm').addEventListener('click', function() {
+            customProjectForm.reset();
         });
 
         // FAQ Accordion
@@ -1359,6 +2325,24 @@
         
         window.addEventListener('scroll', checkFade);
         window.addEventListener('load', checkFade);
+        
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
