@@ -229,13 +229,19 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(6, 20, 42, 0.85);
+            background: rgba(6, 20, 42, 0.95);
             backdrop-filter: blur(15px);
             z-index: 1000;
             box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.3);
             border-top: 1px solid var(--border);
             border-radius: 20px 20px 0 0;
-            padding: 10px 0 5px;
+            padding: 10px 0 8px;
+        }
+
+        .mobile-nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
         }
 
         .mobile-nav-item {
@@ -243,7 +249,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 10px 5px 5px;
+            padding: 8px 4px 4px;
             color: var(--text-soft);
             transition: all 0.3s ease;
             position: relative;
@@ -252,36 +258,12 @@
 
         .mobile-nav-item.active {
             color: var(--cyan);
-        }
-
-        .mobile-nav-item.active::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 4px;
-            background: var(--cyan);
-            border-radius: 0 0 4px 4px;
-            box-shadow: 0 0 10px rgba(25, 211, 197, 0.7);
-        }
-
-        .mobile-nav-item.active::after {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 8px;
-            height: 8px;
-            background: var(--orange);
-            border-radius: 50%;
+            text-shadow: 0 0 10px rgba(25, 211, 197, 0.5);
         }
 
         .mobile-nav-item i {
-            font-size: 1.3rem;
-            margin-bottom: 4px;
+            font-size: 1.2rem;
+            margin-bottom: 3px;
             transition: all 0.3s ease;
         }
 
@@ -290,7 +272,7 @@
         }
 
         .mobile-nav-item span {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 500;
         }
 
@@ -300,7 +282,7 @@
 
         /* Hero Section */
         .hero {
-            padding: 5rem 1.5rem 3rem;
+            padding: 7rem 1.5rem 3rem;
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -338,13 +320,17 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1.2fr 1fr;
             gap: 3rem;
             align-items: center;
         }
 
+        .hero-content {
+            max-width: 700px;
+        }
+
         .hero-content h1 {
-            font-size: 2.5rem;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
             line-height: 1.2;
             margin-bottom: 1.5rem;
             opacity: 0;
@@ -398,25 +384,24 @@
 
         /* Hero Visual */
         .hero-visual {
-            position: relative;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 400px;
             opacity: 0;
             animation: fadeIn 1s ease 0.8s forwards;
         }
 
         .hero-image {
-            max-width: 100%;
-            border-radius: 16px;
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+            border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            transition: all 0.5s ease;
+            transition: transform 0.3s ease;
         }
 
         .hero-image:hover {
             transform: scale(1.05);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
         }
 
         /* Section Styles */
@@ -449,10 +434,60 @@
             margin: 0 auto;
         }
 
-        /* Features Grid */
+        /* Service Cards */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--cyan);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-cyan);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            color: var(--bg-main);
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .service-card p {
+            color: var(--text-soft);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        /* Feature Cards */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
 
@@ -461,12 +496,8 @@
             border-radius: 16px;
             padding: 2rem;
             border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             text-align: center;
+            transition: all 0.3s ease;
         }
 
         .feature-card:hover {
@@ -476,58 +507,6 @@
         }
 
         .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient-cyan);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.8rem;
-            color: var(--bg-main);
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1);
-            box-shadow: 0 10px 20px rgba(25, 211, 197, 0.3);
-        }
-
-        .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            color: var(--text-main);
-        }
-
-        .feature-card p {
-            color: var(--text-soft);
-            flex-grow: 1;
-        }
-
-        /* Who Needs Section */
-        .who-needs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .who-needs-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid var(--border);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .who-needs-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            border-color: var(--cyan);
-        }
-
-        .who-needs-icon {
             width: 70px;
             height: 70px;
             background: var(--gradient-orange);
@@ -540,14 +519,127 @@
             color: white;
         }
 
-        /* Pricing Model Section */
+        /* Dynamic Website Benefits */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--cyan);
+        }
+
+        .benefit-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: var(--bg-main);
+        }
+
+        /* Detailed Feature Blocks */
+        .detailed-features {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 3rem;
+            border: 1px solid var(--border);
+            margin: 2rem 0;
+        }
+
+        .detailed-features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .detailed-feature-item {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .detailed-feature-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--cyan);
+            background: rgba(25, 211, 197, 0.05);
+        }
+
+        .detailed-feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        /* Use Cases Section */
+        .use-cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .use-case-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .use-case-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: var(--cyan);
+        }
+
+        .use-case-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-cyan);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: var(--bg-main);
+        }
+
+        /* Pricing Section */
         .pricing-card {
             background: var(--bg-card);
             border-radius: 16px;
-            padding: 2.5rem 2rem;
+            padding: 3rem;
             border: 1px solid var(--border);
             text-align: center;
-            max-width: 800px;
+            max-width: 600px;
             margin: 0 auto;
             transition: all 0.3s ease;
         }
@@ -558,111 +650,179 @@
             border-color: var(--cyan);
         }
 
-        .pricing-title {
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .pricing-details {
-            margin-bottom: 2rem;
-        }
-
-        .pricing-details p {
-            margin-bottom: 0.8rem;
-            color: var(--text-soft);
-        }
-
-        /* Process Timeline */
-        .process-timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .process-step {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .process-number {
-            width: 50px;
-            height: 50px;
+        .pricing-icon {
+            width: 80px;
+            height: 80px;
             background: var(--gradient-cyan);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
             color: var(--bg-main);
-            flex-shrink: 0;
         }
 
-        .process-content {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid var(--border);
-            flex-grow: 1;
+        .pricing-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
         }
 
-        .process-title {
-            font-size: 1.2rem;
+        .pricing-description {
+            color: var(--text-soft);
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features {
+            text-align: left;
+            max-width: 400px;
+            margin: 0 auto 2rem;
+            color: var(--text-soft);
+        }
+
+        .pricing-features li {
             margin-bottom: 0.5rem;
         }
 
-        /* Feature Blocks */
-        .feature-blocks {
+        /* Dynamic Website Request Form */
+        .dynamic-request-form {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-soft);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--cyan);
+            background: rgba(25, 211, 197, 0.05);
+            box-shadow: 0 0 0 3px rgba(25, 211, 197, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b8c4d6' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        select.form-control option {
+            background: var(--bg-card);
+            color: var(--text-main);
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
-        .feature-block {
+        .testimonial-card {
             background: var(--bg-card);
             border-radius: 16px;
-            overflow: hidden;
+            padding: 2rem;
             border: 1px solid var(--border);
             transition: all 0.3s ease;
+            position: relative;
         }
 
-        .feature-block:hover {
+        .testimonial-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
             border-color: var(--cyan);
         }
 
-        .feature-block-preview {
-            height: 180px;
-            background: var(--bg-main);
+        .testimonial-quote {
+            font-size: 1.1rem;
+            color: var(--text-soft);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-style: italic;
             position: relative;
-            overflow: hidden;
+            padding-left: 1.5rem;
         }
 
-        .feature-block-placeholder {
-            width: 100%;
-            height: 100%;
+        .testimonial-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -5px;
+            font-size: 3rem;
+            color: var(--cyan);
+            opacity: 0.5;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-cyan);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(25, 211, 197, 0.1) 0%, rgba(245, 166, 35, 0.1) 100%);
-        }
-
-        .feature-block-icon {
-            font-size: 3rem;
-            color: var(--cyan);
-        }
-
-        .feature-block-content {
-            padding: 1.5rem;
-        }
-
-        .feature-block-title {
+            color: var(--bg-main);
+            font-weight: 700;
             font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+        }
+
+        .testimonial-info h4 {
+            margin-bottom: 0.2rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            background: rgba(245, 166, 35, 0.1);
+            border-radius: 50px;
+            color: var(--orange);
+            font-size: 0.75rem;
+            margin-top: 0.3rem;
         }
 
         /* FAQ Section */
@@ -720,18 +880,38 @@
 
         /* CTA Section */
         .cta-section {
-            background: linear-gradient(135deg, rgba(25, 211, 197, 0.1) 0%, rgba(245, 166, 35, 0.1) 100%);
+            background: linear-gradient(135deg, rgba(25, 211, 197, 0.05) 0%, rgba(245, 166, 35, 0.05) 100%);
             border-radius: 20px;
             padding: 3rem;
             border: 1px solid var(--border);
             text-align: center;
-            margin: 0 auto;
-            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-cyan);
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-orange);
         }
 
         .cta-title {
             font-size: 2rem;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .cta-buttons {
@@ -821,7 +1001,7 @@
         /* Floating WhatsApp Button */
         .floating-whatsapp {
             position: fixed;
-            bottom: 20px;
+            bottom: 30px;
             right: 20px;
             width: 60px;
             height: 60px;
@@ -851,8 +1031,8 @@
         /* Back to Top Button */
         .back-to-top {
             position: fixed;
-            bottom: 90px;
-            right: 20px;
+            bottom: 30px;
+            right: 90px;
             width: 50px;
             height: 50px;
             background: var(--gradient-cyan);
@@ -879,29 +1059,6 @@
             box-shadow: 0 10px 25px rgba(25, 211, 197, 0.5);
         }
 
-        /* Animations */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         /* Animation on Scroll */
         .fade-in {
             opacity: 0;
@@ -914,30 +1071,425 @@
             transform: translateY(0);
         }
 
-        /* Responsive Design */
+        /* Responsive Design - Enhanced */
+        @media (max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .desktop-nav {
                 display: none;
             }
 
             .mobile-nav {
-                display: flex;
+                display: block;
             }
 
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            .hero-container {
-                grid-template-columns: 1fr;
-            }
-
-            .cta-section {
-                padding: 2rem 1.5rem;
+            .hero {
+                padding: 5rem 1rem 3rem;
             }
 
             .cta-title {
                 font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+
+            .dynamic-request-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .floating-whatsapp {
+                bottom: 80px;
+            }
+
+            .back-to-top {
+                bottom: 150px;
+            }
+        }
+
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .service-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .benefit-card {
+                padding: 1.5rem;
+            }
+
+            .benefit-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .detailed-features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detailed-feature-item {
+                padding: 1.5rem;
+            }
+
+            .detailed-feature-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .use-case-card {
+                padding: 1.5rem;
+            }
+
+            .use-case-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .pricing-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .pricing-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .pricing-title {
+                font-size: 1.3rem;
+            }
+
+            .pricing-description {
+                font-size: 0.95rem;
+            }
+
+            .pricing-features {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .service-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .feature-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .benefit-card {
+                padding: 1.5rem;
+            }
+
+            .benefit-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .detailed-features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detailed-feature-item {
+                padding: 1.5rem;
+            }
+
+            .detailed-feature-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .use-case-card {
+                padding: 1.5rem;
+            }
+
+            .use-case-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .pricing-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .pricing-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+
+            .pricing-title {
+                font-size: 1.2rem;
+            }
+
+            .pricing-description {
+                font-size: 0.9rem;
+            }
+
+            .pricing-features {
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .service-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .feature-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .benefit-card {
+                padding: 1.5rem;
+            }
+
+            .benefit-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .detailed-features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detailed-feature-item {
+                padding: 1.5rem;
+            }
+
+            .detailed-feature-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .use-case-card {
+                padding: 1.5rem;
+            }
+
+            .use-case-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .pricing-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .pricing-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+
+            .pricing-title {
+                font-size: 1.2rem;
+            }
+
+            .pricing-description {
+                font-size: 0.85rem;
+            }
+
+            .pricing-features {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 340px) {
+            .hero-content h1 {
+                font-size: 1.4rem;
+            }
+
+            .hero-content p {
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .service-card {
+                padding: 1.5rem;
+            }
+
+            .service-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .feature-card {
+                padding: 1.5rem;
+            }
+
+            .feature-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .benefit-card {
+                padding: 1.5rem;
+            }
+
+            .benefit-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .detailed-features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .detailed-feature-item {
+                padding: 1.5rem;
+            }
+
+            .detailed-feature-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+
+            .use-case-card {
+                padding: 1.5rem;
+            }
+
+            .use-case-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 1rem;
+            }
+
+            .pricing-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .pricing-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+
+            .pricing-title {
+                font-size: 1.1rem;
+            }
+
+            .pricing-description {
+                font-size: 0.8rem;
+            }
+
+            .pricing-features {
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Add bottom padding to body for mobile navigation */
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 70px;
+            }
+
+            .floating-whatsapp {
+                bottom: 80px;
+            }
+
+            .back-to-top {
+                bottom: 150px;
             }
         }
     </style>
@@ -959,10 +1511,10 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="#features">Features</a></li>
-                <li><a href="#who-needs">Who Needs</a></li>
+                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#use-cases">Use Cases</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#process">Process</a></li>
-                <li><a href="#examples">Examples</a></li>
+                <li><a href="#dynamic-request">Request</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
         </div>
@@ -970,35 +1522,43 @@
 
     <!-- Mobile Bottom Navigation -->
     <nav class="mobile-nav">
-        <div class="mobile-nav-item">
-            <a href="index.html" style="color: inherit;">
-                <i class="fas fa-home"></i>
-                <span>Home</span>
-            </a>
-        </div>
-        <div class="mobile-nav-item">
-            <a href="#features" style="color: inherit;">
-                <i class="fas fa-cogs"></i>
-                <span>Features</span>
-            </a>
-        </div>
-        <div class="mobile-nav-item">
-            <a href="#pricing" style="color: inherit;">
-                <i class="fas fa-tag"></i>
-                <span>Pricing</span>
-            </a>
-        </div>
-        <div class="mobile-nav-item">
-            <a href="#process" style="color: inherit;">
-                <i class="fas fa-tasks"></i>
-                <span>Process</span>
-            </a>
-        </div>
-        <div class="mobile-nav-item">
-            <a href="#faq" style="color: inherit;">
-                <i class="fas fa-question-circle"></i>
-                <span>FAQ</span>
-            </a>
+        <div class="mobile-nav-items">
+            <div class="mobile-nav-item">
+                <a href="index.html" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#features" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-list-check"></i>
+                    <span>Features</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#benefits" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Benefits</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#pricing" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-tag"></i>
+                    <span>Pricing</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#dynamic-request" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-edit"></i>
+                    <span>Request</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#faq" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-question-circle"></i>
+                    <span>FAQ</span>
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -1006,29 +1566,35 @@
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>Dynamic Website Development</h1>
-                <p><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> builds custom websites with admin panels, database features, forms, dashboards, user systems, and business tools tailored to your specific requirements.</p>
+                <h1>Smart Dynamic Websites with Admin Panel and Business Features</h1>
+                <p><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> builds custom dynamic websites with admin panels, dashboards, user management, payment integration, and custom business features. Perfect for modern businesses that need complete control.</p>
                 <div class="hero-buttons">
-                    <a href="#features" class="btn btn-secondary">View Features</a>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20a%20Dynamic%20Website.%20Please%20share%20a%20custom%20quote%20based%20on%20my%20requirements." target="_blank" class="btn btn-primary">Get Custom Quote</a>
+                    <a href="#features" class="btn btn-primary">View Features</a>
+                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Dynamic%20Website%20service.%20Please%20share%20details." target="_blank" class="btn btn-whatsapp">
+                        <i class="fab fa-whatsapp"></i> Enquiry Now
+                    </a>
                 </div>
                 <div class="trust-badges">
                     <div class="trust-badge">
-                        <i class="fas fa-database"></i>
-                        <span>Database Integration</span>
+                        <i class="fas fa-cogs"></i>
+                        <span>Admin Panel</span>
                     </div>
                     <div class="trust-badge">
                         <i class="fas fa-user-shield"></i>
                         <span>User Management</span>
                     </div>
                     <div class="trust-badge">
-                        <i class="fas fa-chart-bar"></i>
-                        <span>Analytics Dashboard</span>
+                        <i class="fas fa-database"></i>
+                        <span>Database Integration</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Payment Integration</span>
                     </div>
                 </div>
             </div>
             <div class="hero-visual">
-                <img src="https://picsum.photos/seed/dynamicwebsite/600/400.jpg" alt="Dynamic Website Development" class="hero-image">
+                <img src="https://i.postimg.cc/3N8yBc2K/unnamed.png" alt="Dynamic Website" class="hero-image">
             </div>
         </div>
     </section>
@@ -1038,295 +1604,490 @@
         <div class="container">
             <div class="section-title-wrapper fade-in">
                 <h2 class="section-title">Dynamic Website Features</h2>
-                <p class="section-subtitle">Our dynamic websites include powerful features to help your business grow</p>
+                <p class="section-subtitle">Complete solutions with powerful features for your business</p>
             </div>
             
-            <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
                         <i class="fas fa-cogs"></i>
                     </div>
                     <h3>Admin Panel</h3>
-                    <p>Complete backend control panel to manage your website content, users, and settings without technical knowledge</p>
+                    <p>Complete admin dashboard to manage all aspects of your website with ease and control</p>
+                    <a href="#detailed-features" class="btn btn-secondary" style="width: 100%;">Learn More</a>
                 </div>
                 
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-sign-in-alt"></i>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-user-shield"></i>
                     </div>
                     <h3>User Login System</h3>
-                    <p>Secure user authentication and authorization system with role-based access control for different user types</p>
+                    <p>Secure user registration, login, and role-based access control for your website</p>
+                    <a href="#detailed-features" class="btn btn-secondary" style="width: 100%;">Learn More</a>
                 </div>
                 
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-wpforms"></i>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-database"></i>
                     </div>
-                    <h3>Forms and Database</h3>
-                    <p>Custom forms with database integration to collect, store, and manage user data and inquiries</p>
+                    <h3>Forms & Database</h3>
+                    <p>Dynamic forms with database integration to collect and manage user data effectively</p>
+                    <a href="#detailed-features" class="btn btn-secondary" style="width: 100%;">Learn More</a>
                 </div>
                 
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
                         <i class="fas fa-tachometer-alt"></i>
                     </div>
                     <h3>Dashboard</h3>
-                    <p>Interactive dashboard with real-time data visualization, charts, and key performance indicators</p>
+                    <p>Interactive dashboard with analytics and insights to track website performance</p>
+                    <a href="#detailed-features" class="btn btn-secondary" style="width: 100%;">Learn More</a>
                 </div>
                 
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
                         <i class="fas fa-box"></i>
                     </div>
                     <h3>Product Management</h3>
-                    <p>Complete product catalog management with categories, attributes, inventory tracking, and pricing</p>
+                    <p>Complete product catalog management with categories, variants, and inventory tracking</p>
+                    <a href="#detailed-features" class="btn btn-secondary" style="width: 100%;">Learn More</a>
                 </div>
                 
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
                         <i class="fas fa-calendar-check"></i>
                     </div>
                     <h3>Booking System</h3>
-                    <p>Advanced booking and reservation system with calendar integration, availability management, and notifications</p>
+                    <p>Advanced booking and reservation system with calendar integration and notifications</p>
+                    <a href="#detailed-features" class="btn btn-secondary" style="width: 100%;">Learn More</a>
                 </div>
                 
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-key"></i>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-user-lock"></i>
                     </div>
                     <h3>Authentication</h3>
-                    <p>Multi-factor authentication, password recovery, and secure session management for enhanced security</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-puzzle-piece"></i>
-                    </div>
-                    <h3>Custom Business Features</h3>
-                    <p>Tailored functionality specific to your business needs and workflows</p>
+                    <p>Secure authentication system with password reset and account management features</p>
+                    <a href="#detailed-features" class="btn btn-secondary" style="width: 100%;">Learn More</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Who Needs Dynamic Websites Section -->
-    <section class="section" id="who-needs">
+    <!-- How Dynamic Websites Help Your Business Section -->
+    <section class="section" id="benefits">
         <div class="container">
             <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Who Needs Dynamic Websites</h2>
-                <p class="section-subtitle">Dynamic websites are essential for businesses that need advanced functionality</p>
+                <h2 class="section-title">How Dynamic Websites Help Your Business</h2>
+                <p class="section-subtitle">Transform your online presence with powerful dynamic features</p>
             </div>
             
-            <div class="who-needs-grid">
-                <div class="who-needs-card fade-in">
-                    <div class="who-needs-icon">
-                        <i class="fas fa-shopping-cart"></i>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-edit"></i>
                     </div>
-                    <h3>E-commerce Businesses</h3>
-                    <p>Online stores with product catalogs, shopping carts, and payment processing</p>
+                    <h3>Easy Content Management</h3>
+                    <p>Update your website content anytime without technical knowledge through the admin panel</p>
                 </div>
                 
-                <div class="who-needs-card fade-in">
-                    <div class="who-needs-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Coaching Institutes</h3>
-                    <p>Course management, student enrollment, and progress tracking systems</p>
-                </div>
-                
-                <div class="who-needs-card fade-in">
-                    <div class="who-needs-icon">
-                        <i class="fas fa-calendar-alt"></i>
-                    </div>
-                    <h3>Booking Websites</h3>
-                    <p>Appointment scheduling, reservation management, and availability tracking</p>
-                </div>
-                
-                <div class="who-needs-card fade-in">
-                    <div class="who-needs-icon">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3>Portals</h3>
-                    <p>Information portals with user-generated content and community features</p>
-                </div>
-                
-                <div class="who-needs-card fade-in">
-                    <div class="who-needs-icon">
-                        <i class="fas fa-concierge-bell"></i>
-                    </div>
-                    <h3>Service Businesses</h3>
-                    <p>Service management, customer tracking, and automated workflows</p>
-                </div>
-                
-                <div class="who-needs-card fade-in">
-                    <div class="who-needs-icon">
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <h3>Customer Management Systems</h3>
-                    <p>CRM solutions with customer data management and communication tools</p>
+                    <h3>User Engagement</h3>
+                    <p>Keep users engaged with personalized accounts, dashboards, and interactive features</p>
+                </div>
+                
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Business Analytics</h3>
+                    <p>Track user behavior, sales, and performance with comprehensive analytics and reporting</p>
+                </div>
+                
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-commerce Ready</h3>
+                    <p>Sell products and services online with integrated payment gateway and order management</p>
+                </div>
+                
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Scalable Solution</h3>
+                    <p>Grow your business with a scalable website that can handle increasing traffic and data</p>
+                </div>
+                
+                <div class="benefit-card fade-in">
+                    <div class="benefit-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Responsive</h3>
+                    <p>Reach customers on all devices with a fully responsive design that works everywhere</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing Model Section -->
+    <!-- Detailed Features Section -->
+    <section class="section" id="detailed-features">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Detailed Feature Explanations</h2>
+                <p class="section-subtitle">Understanding the key components of a dynamic website</p>
+            </div>
+            
+            <div class="detailed-features fade-in">
+                <div class="detailed-features-grid">
+                    <div class="detailed-feature-item">
+                        <div class="detailed-feature-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h4>Admin Panel</h4>
+                        <p>Complete backend control panel to manage all website content, users, and settings</p>
+                    </div>
+                    
+                    <div class="detailed-feature-item">
+                        <div class="detailed-feature-icon">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h4>Dashboard</h4>
+                        <p>Visual dashboard with charts and metrics to monitor website performance</p>
+                    </div>
+                    
+                    <div class="detailed-feature-item">
+                        <div class="detailed-feature-icon">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <h4>User Authentication</h4>
+                        <p>Secure login system with registration, password reset, and account management</p>
+                    </div>
+                    
+                    <div class="detailed-feature-item">
+                        <div class="detailed-feature-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h4>Database Management</h4>
+                        <p>Efficient database structure to store and retrieve all website data</p>
+                    </div>
+                    
+                    <div class="detailed-feature-item">
+                        <div class="detailed-feature-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h4>Payment Integration</h4>
+                        <p>Secure payment gateway integration for online transactions and orders</p>
+                    </div>
+                    
+                    <div class="detailed-feature-item">
+                        <div class="detailed-feature-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <h4>Product Management</h4>
+                        <p>Complete product catalog with categories, variants, pricing, and inventory</p>
+                    </div>
+                    
+                    <div class="detailed-feature-item">
+                        <div class="detailed-feature-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <h4>Booking System</h4>
+                        <p>Advanced booking and reservation system with calendar and notifications</p>
+                    </div>
+                    
+                    <div class="detailed-feature-item">
+                        <div class="detailed-feature-icon">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <h4>Custom Business Logic</h4>
+                        <p>Tailored features and workflows specific to your business requirements</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="section" id="use-cases">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Best Use Cases for Dynamic Websites</h2>
+                <p class="section-subtitle">Perfect solutions for various business types and requirements</p>
+            </div>
+            
+            <div class="use-cases-grid">
+                <div class="use-case-card fade-in">
+                    <div class="use-case-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3>E-commerce Store</h3>
+                    <p>Complete online store with product management, orders, payments, and customer accounts</p>
+                </div>
+                
+                <div class="use-case-card fade-in">
+                    <div class="use-case-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Booking Platform</h3>
+                    <p>Reservation and booking system for hotels, restaurants, appointments, and events</p>
+                </div>
+                
+                <div class="use-case-card fade-in">
+                    <div class="use-case-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Education Portal</h3>
+                    <p>Learning management system with courses, student accounts, and progress tracking</p>
+                </div>
+                
+                <div class="use-case-card fade-in">
+                    <div class="use-case-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Membership Site</h3>
+                    <p>Subscription-based platform with member accounts, content access, and renewals</p>
+                </div>
+                
+                <div class="use-case-card fade-in">
+                    <div class="use-case-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Business Portal</h3>
+                    <p>Custom business portal with client accounts, dashboards, and workflow management</p>
+                </div>
+                
+                <div class="use-case-card fade-in">
+                    <div class="use-case-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Analytics Dashboard</h3>
+                    <p>Data visualization platform with real-time metrics and customizable reports</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
     <section class="section" id="pricing">
         <div class="container">
             <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Pricing Model</h2>
-                <p class="section-subtitle">Custom pricing based on your specific requirements</p>
+                <h2 class="section-title">Custom Dynamic Website Pricing</h2>
+                <p class="section-subtitle">Tailored solutions based on your specific requirements and business needs</p>
             </div>
             
             <div class="pricing-card fade-in">
-                <h3 class="pricing-title">Dynamic Website Pricing</h3>
-                <div class="pricing-details">
-                    <p><i class="fas fa-info-circle" style="color: var(--orange); margin-right: 0.5rem;"></i>Dynamic website pricing depends on customer requirements</p>
-                    <p><i class="fas fa-list-ul" style="color: var(--orange); margin-right: 0.5rem;"></i>Price depends on features, pages, database, dashboard, forms, and custom functionality</p>
-                    <p><i class="fas fa-handshake" style="color: var(--orange); margin-right: 0.5rem;"></i>Contact us for a custom quote tailored to your needs</p>
+                <div class="pricing-icon">
+                    <i class="fas fa-code"></i>
                 </div>
-                <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20a%20Dynamic%20Website.%20Please%20share%20a%20custom%20quote%20based%20on%20my%20requirements." target="_blank" class="btn btn-primary">Get Custom Quote</a>
+                <h3 class="pricing-title">Custom Dynamic Website Development</h3>
+                <p class="pricing-description">We offer custom pricing for dynamic websites based on your specific requirements. Factors include admin panel complexity, number of user roles, database structure, payment integration, and custom business features.</p>
+                
+                <div class="pricing-features">
+                    <h4>What's Included:</h4>
+                    <ul class="pricing-features">
+                        <li>✓ Custom Admin Panel</li>
+                        <li>✓ User Authentication System</li>
+                        <li>✓ Database Integration</li>
+                        <li>✓ Dashboard & Analytics</li>
+                        <li>✓ Payment Gateway Integration</li>
+                        <li>✓ Product/Service Management</li>
+                        <li>✓ Booking/Order System</li>
+                        <li>✓ Custom Business Features</li>
+                        <li>✓ Mobile Responsive Design</li>
+                        <li>✓ SEO Optimization</li>
+                    </ul>
+                </div>
+                
+                <a href="#dynamic-request" class="btn btn-primary">Get Custom Quote</a>
             </div>
         </div>
     </section>
 
-    <!-- Development Process Section -->
-    <section class="section" id="process">
+    <!-- Dynamic Website Request Form Section -->
+    <section class="section" id="dynamic-request">
         <div class="container">
             <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Development Process</h2>
-                <p class="section-subtitle">Our transparent process ensures your project is delivered on time and to your satisfaction</p>
+                <h2 class="section-title">Request Your Dynamic Website</h2>
+                <p class="section-subtitle">Tell us about your project requirements and we'll create the perfect solution for you</p>
             </div>
-            
-            <div class="process-timeline">
-                <div class="process-step fade-in">
-                    <div class="process-number">1</div>
-                    <div class="process-content">
-                        <h3 class="process-title">Requirement Discussion</h3>
-                        <p>We start by understanding your business needs, goals, and specific requirements for the dynamic website</p>
+
+            <div class="dynamic-request-form fade-in">
+                <form id="dynamicRequestForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" class="form-control" required>
                     </div>
-                </div>
-                
-                <div class="process-step fade-in">
-                    <div class="process-number">2</div>
-                    <div class="process-content">
-                        <h3 class="process-title">Feature Planning</h3>
-                        <p>We plan the features, functionality, database structure, and user experience based on your requirements</p>
+
+                    <div class="form-group">
+                        <label for="businessName">Business Name *</label>
+                        <input type="text" id="businessName" class="form-control" required>
                     </div>
-                </div>
-                
-                <div class="process-step fade-in">
-                    <div class="process-number">3</div>
-                    <div class="process-content">
-                        <h3 class="process-title">UI Design</h3>
-                        <p>Our designers create modern, intuitive user interfaces that align with your brand and business goals</p>
+
+                    <div class="form-group">
+                        <label for="mobileNumber">Mobile Number *</label>
+                        <input type="tel" id="mobileNumber" class="form-control" required>
                     </div>
-                </div>
-                
-                <div class="process-step fade-in">
-                    <div class="process-number">4</div>
-                    <div class="process-content">
-                        <h3 class="process-title">Development</h3>
-                        <p>Our developers build the dynamic website with clean, efficient code and implement all planned features</p>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" class="form-control" required>
                     </div>
-                </div>
-                
-                <div class="process-step fade-in">
-                    <div class="process-number">5</div>
-                    <div class="process-content">
-                        <h3 class="process-title">Testing</h3>
-                        <p>We thoroughly test all functionality, performance, and security aspects before deployment</p>
+
+                    <div class="form-group">
+                        <label for="businessCategory">Business Category *</label>
+                        <input type="text" id="businessCategory" class="form-control" required>
                     </div>
-                </div>
-                
-                <div class="process-step fade-in">
-                    <div class="process-number">6</div>
-                    <div class="process-content">
-                        <h3 class="process-title">Final Delivery</h3>
-                        <p>We deploy the website to your server and provide training and documentation for managing your dynamic website</p>
+
+                    <div class="form-group">
+                        <label for="websitePurpose">Website Purpose *</label>
+                        <select id="websitePurpose" class="form-control" required>
+                            <option value="" selected disabled>Select purpose</option>
+                            <option value="ecommerce">E-commerce Store</option>
+                            <option value="booking">Booking Platform</option>
+                            <option value="education">Education Portal</option>
+                            <option value="membership">Membership Site</option>
+                            <option value="business">Business Portal</option>
+                            <option value="analytics">Analytics Dashboard</option>
+                            <option value="custom">Custom Solution</option>
+                        </select>
                     </div>
-                </div>
+
+                    <div class="form-group">
+                        <label for="needAdminPanel">Need Admin Panel? *</label>
+                        <select id="needAdminPanel" class="form-control" required>
+                            <option value="" selected disabled>Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needLoginSystem">Need Login System? *</label>
+                        <select id="needLoginSystem" class="form-control" required>
+                            <option value="" selected disabled>Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needPayment">Need Payment Integration? *</label>
+                        <select id="needPayment" class="form-control" required>
+                            <option value="" selected disabled>Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needProducts">Need Product Management? *</label>
+                        <select id="needProducts" class="form-control" required>
+                            <option value="" selected disabled>Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needBooking">Need Booking System? *</label>
+                        <select id="needBooking" class="form-control" required>
+                            <option value="" selected disabled>Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needDashboard">Need Dashboard? *</label>
+                        <select id="needDashboard" class="form-control" required>
+                            <option value="" selected disabled>Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needAuthentication">Need Authentication? *</label>
+                        <select id="needAuthentication" class="form-control" required>
+                            <option value="" selected disabled>Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needCustomFeatures">Need Custom Business Features? *</label>
+                        <select id="needCustomFeatures" class="form-control" required>
+                            <option value="" selected disabled>Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectDetails">Project Details / Message</label>
+                        <textarea id="projectDetails" class="form-control" rows="4" placeholder="Tell us about your project requirements"></textarea>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" id="resetForm" class="btn btn-secondary">Reset</button>
+                        <button type="submit" class="btn btn-primary">Send via WhatsApp</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- Example Feature Blocks Section -->
-    <section class="section" id="examples">
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
         <div class="container">
             <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Example Feature Blocks</h2>
-                <p class="section-subtitle">Take a look at some of the modules we can build for your dynamic website</p>
+                <h2 class="section-title">What Our Clients Say About <span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h2>
+                <p class="section-subtitle">Don't just take our word for it - hear from our satisfied clients</p>
             </div>
-            
-            <div class="feature-blocks">
-                <div class="feature-block fade-in">
-                    <div class="feature-block-preview">
-                        <div class="feature-block-placeholder">
-                            <i class="fas fa-sign-in-alt feature-block-icon"></i>
-                        </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> created an amazing dynamic business website with admin panel that has transformed how we manage our operations. The custom features they implemented are exactly what we needed.
                     </div>
-                    <div class="feature-block-content">
-                        <h3 class="feature-block-title">Login Page</h3>
-                        <p>Secure and user-friendly login interface with social login options and password recovery</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">R</div>
+                        <div class="testimonial-info">
+                            <h4>Rahul Sharma</h4>
+                            <div class="testimonial-badge">Business Dashboard</div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="feature-block fade-in">
-                    <div class="feature-block-preview">
-                        <div class="feature-block-placeholder">
-                            <i class="fas fa-tachometer-alt feature-block-icon"></i>
-                        </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        Our e-commerce platform by <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> has increased our online sales by 60%. The admin panel makes it easy to manage products and orders efficiently.
                     </div>
-                    <div class="feature-block-content">
-                        <h3 class="feature-block-title">Dashboard</h3>
-                        <p>Interactive dashboard with widgets, charts, and real-time data visualization</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">P</div>
+                        <div class="testimonial-info">
+                            <h4>Priya Patel</h4>
+                            <div class="testimonial-badge">E-commerce Store</div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="feature-block fade-in">
-                    <div class="feature-block-preview">
-                        <div class="feature-block-placeholder">
-                            <i class="fas fa-cogs feature-block-icon"></i>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        The booking system <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> developed for our service business has streamlined our entire reservation process and improved customer satisfaction significantly.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">A</div>
+                        <div class="testimonial-info">
+                            <h4>Amit Kumar</h4>
+                            <div class="testimonial-badge">Booking Website</div>
                         </div>
-                    </div>
-                    <div class="feature-block-content">
-                        <h3 class="feature-block-title">Admin Panel</h3>
-                        <p>Comprehensive backend interface to manage all aspects of your website</p>
-                    </div>
-                </div>
-                
-                <div class="feature-block fade-in">
-                    <div class="feature-block-preview">
-                        <div class="feature-block-placeholder">
-                            <i class="fas fa-chart-bar feature-block-icon"></i>
-                        </div>
-                    </div>
-                    <div class="feature-block-content">
-                        <h3 class="feature-block-title">Reports</h3>
-                        <p>Detailed reports and analytics with export options and data visualization</p>
-                    </div>
-                </div>
-                
-                <div class="feature-block fade-in">
-                    <div class="feature-block-preview">
-                        <div class="feature-block-placeholder">
-                            <i class="fas fa-wpforms feature-block-icon"></i>
-                        </div>
-                    </div>
-                    <div class="feature-block-content">
-                        <h3 class="feature-block-title">Forms</h3>
-                        <p>Custom forms with validation, file uploads, and database integration</p>
-                    </div>
-                </div>
-                
-                <div class="feature-block fade-in">
-                    <div class="feature-block-preview">
-                        <div class="feature-block-placeholder">
-                            <i class="fas fa-table feature-block-icon"></i>
-                        </div>
-                    </div>
-                    <div class="feature-block-content">
-                        <h3 class="feature-block-title">Tables</h3>
-                        <p>Interactive data tables with sorting, filtering, and pagination capabilities</p>
                     </div>
                 </div>
             </div>
@@ -1338,67 +2099,57 @@
         <div class="container">
             <div class="section-title-wrapper fade-in">
                 <h2 class="section-title">Frequently Asked Questions</h2>
-                <p class="section-subtitle">Got questions? We've got answers</p>
+                <p class="section-subtitle">Common questions about dynamic website development</p>
             </div>
             
             <div class="faq-container">
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <h3>How is custom pricing determined for dynamic websites?</h3>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Dynamic website pricing is determined based on several factors including the number of pages, complexity of features, database requirements, admin panel functionality, custom business logic, and integration needs. We provide a detailed quote after understanding your specific requirements.</p>
-                    </div>
-                </div>
-                
                 <div class="faq-item fade-in">
                     <div class="faq-question">
                         <h3>How long does it take to develop a dynamic website?</h3>
                         <i class="fas fa-chevron-down faq-icon"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>The development timeline depends on the complexity and features required. Simple dynamic websites with basic functionality can take 3-4 weeks, while complex systems with advanced features may take 2-3 months. We'll provide a specific timeline after reviewing your requirements.</p>
+                        <p>Development time varies based on complexity. Simple dynamic websites take 15-20 days, while complex systems with custom features may take 30-45 days. We'll provide a detailed timeline after understanding your requirements.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item fade-in">
                     <div class="faq-question">
-                        <h3>Do you provide an admin panel with dynamic websites?</h3>
+                        <h3>Can you integrate payment gateways?</h3>
                         <i class="fas fa-chevron-down faq-icon"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, all our dynamic websites include a custom admin panel tailored to your specific needs. The admin panel allows you to manage content, users, and other aspects of your website without technical knowledge.</p>
+                        <p>Yes! We integrate popular payment gateways like Razorpay, PayU, PayPal, and Stripe. The integration is secure and follows all compliance requirements for online transactions.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item fade-in">
                     <div class="faq-question">
-                        <h3>What kind of database do you use for dynamic websites?</h3>
+                        <h3>Do you provide hosting services?</h3>
                         <i class="fas fa-chevron-down faq-icon"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>We use various database technologies based on your requirements, including MySQL, PostgreSQL, MongoDB, and others. We'll recommend the most suitable database solution based on your data structure, scalability needs, and budget.</p>
+                        <p>While we don't provide hosting directly, we can guide you on the best hosting solution for your dynamic website and help with the deployment process.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item fade-in">
                     <div class="faq-question">
-                        <h3>Do you provide technical support after delivery?</h3>
+                        <h3>Can I update content myself?</h3>
                         <i class="fas fa-chevron-down faq-icon"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, we provide technical support after delivery. We offer different support packages based on your needs, including bug fixes, updates, and enhancements. We'll discuss support options during the project planning phase.</p>
+                        <p>Absolutely! The admin panel is designed for easy content management. We provide training and documentation so you can update text, images, products, and more without technical knowledge.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item fade-in">
                     <div class="faq-question">
-                        <h3>Can the dynamic website be upgraded in the future?</h3>
+                        <h3>What technologies do you use?</h3>
                         <i class="fas fa-chevron-down faq-icon"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Absolutely! We build dynamic websites with scalability in mind, making it easy to add new features and functionality in the future. We use clean, modular code that can be easily extended as your business grows.</p>
+                        <p>We use modern technologies like HTML, CSS, JavaScript, PHP, MySQL, and popular frameworks. We choose the best technology stack based on your specific project requirements.</p>
                     </div>
                 </div>
             </div>
@@ -1409,13 +2160,11 @@
     <section class="section">
         <div class="container">
             <div class="cta-section fade-in">
-                <h2 class="cta-title">Need a Custom Dynamic Website?</h2>
-                <p>Let <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> build a powerful, feature-rich dynamic website tailored to your business needs.</p>
+                <h2 class="cta-title">Need a Dynamic Website for Your Business?</h2>
+                <p class="section-subtitle">Let's create a powerful dynamic website that grows with your business</p>
                 <div class="cta-buttons">
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20a%20Dynamic%20Website.%20Please%20share%20a%20custom%20quote%20based%20on%20my%20requirements." target="_blank" class="btn btn-primary">Get Custom Quote</a>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20want%20to%20know%20more%20about%20your%20Dynamic%20Website%20services." target="_blank" class="btn btn-whatsapp">
-                        <i class="fab fa-whatsapp"></i> WhatsApp Us
-                    </a>
+                    <a href="#features" class="btn btn-primary">View Features</a>
+                    <a href="#dynamic-request" class="btn btn-whatsapp">Get a Quote</a>
                 </div>
             </div>
         </div>
@@ -1431,12 +2180,12 @@
                         <h3><span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h3>
                     </div>
                     <p style="margin-bottom: 1rem; color: var(--text-soft);">Design • Develop • Deliver</p>
-                    <p style="color: var(--text-soft);">We help businesses build powerful dynamic websites with custom features and functionality.</p>
+                    <p style="color: var(--text-soft);"><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> helps students, freelancers, and businesses build modern digital presence with websites, resumes, logos, and project solutions.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="https://instagram.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="https://wa.me/738686895149" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://facebook.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
                 
@@ -1444,45 +2193,46 @@
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#who-needs">Who Needs</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#process">Process</a></li>
-                        <li><a href="#examples">Examples</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#pricing">Pricing</a></li>
+                        <li><a href="index.html#showcase">Showcase</a></li>
+                        <li><a href="index.html#about">About</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Services</h3>
+                    <h3>Dynamic Website Features</h3>
                     <ul class="footer-links">
-                        <li><a href="staticwebdesign.html">Static Websites</a></li>
-                        <li><a href="dynamic.html">Dynamic Websites</a></li>
-                        <li><a href="resume.html">Resume Design</a></li>
-                        <li><a href="ppt.html">PPT Design</a></li>
-                        <li><a href="portfolio.html">Portfolio Websites</a></li>
-                        <li><a href="logo.html">Logo Design</a></li>
+                        <li><a href="#features">Admin Panel</a></li>
+                        <li><a href="#detailed-features">Dashboard</a></li>
+                        <li><a href="#detailed-features">User Management</a></li>
+                        <li><a href="#detailed-features">Database</a></li>
+                        <li><a href="#detailed-features">Payment Integration</a></li>
+                        <li><a href="#detailed-features">Product Management</a></li>
+                        <li><a href="#detailed-features">Booking System</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Contact Info</h3>
                     <ul class="footer-links">
-                        <li><i class="fab fa-whatsapp"></i> WhatsApp: 738686895149</li>
-                        <li><i class="fas fa-envelope"></i> Email: hello@kodingwala.com</li>
-                        <li><i class="fab fa-instagram"></i> Instagram: @kodingwala</li>
-                        <li><i class="fab fa-youtube"></i> YouTube: Kodingwala</li>
+                        <li><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/738686895149" target="_blank" rel="noopener noreferrer">738686895149</a></li>
+                        <li><i class="fas fa-envelope"></i> Email: <a href="mailto:hello@kodingwala.com" target="_blank" rel="noopener noreferrer">hello@kodingwala.com</a></li>
+                        <li><i class="fab fa-instagram"></i> Instagram: <a href="https://instagram.com/kodingwala" target="_blank" rel="noopener noreferrer">@kodingwala</a></li>
+                        <li><i class="fab fa-youtube"></i> YouTube: <a href="https://youtube.com/@kodingwala" target="_blank" rel="noopener noreferrer">Kodingwala</a></li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>. All rights reserved. | Made with <i class="fas fa-heart" style="color: var(--orange);"></i> in India</p>
+                <p>&copy; 2026 <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>. All rights reserved. | Made with <i class="fas fa-heart" style="color: var(--orange);"></i> in India</p>
             </div>
         </div>
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20a%20Dynamic%20Website.%20Please%20share%20a%20custom%20quote%20based%20on%20my%20requirements." target="_blank" class="floating-whatsapp">
+    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Dynamic%20Website%20service.%20Please%20share%20details." target="_blank" class="floating-whatsapp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -1517,6 +2267,57 @@
                     }
                 }
             });
+        });
+
+        // Dynamic Website Request Form Submission
+        const dynamicRequestForm = document.getElementById('dynamicRequestForm');
+
+        dynamicRequestForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const businessName = document.getElementById('businessName').value;
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            const email = document.getElementById('email').value;
+            const businessCategory = document.getElementById('businessCategory').value;
+            const websitePurpose = document.getElementById('websitePurpose').value;
+            const needAdminPanel = document.getElementById('needAdminPanel').value;
+            const needLoginSystem = document.getElementById('needLoginSystem').value;
+            const needPayment = document.getElementById('needPayment').value;
+            const needProducts = document.getElementById('needProducts').value;
+            const needBooking = document.getElementById('needBooking').value;
+            const needDashboard = document.getElementById('needDashboard').value;
+            const needAuthentication = document.getElementById('needAuthentication').value;
+            const needCustomFeatures = document.getElementById('needCustomFeatures').value;
+            const projectDetails = document.getElementById('projectDetails').value;
+
+            // Build WhatsApp message
+            const message = `Hello Kodingwala, I'm interested in your Dynamic Website service.%0A%0A` +
+                `Full Name: ${fullName}%0A` +
+                `Business Name: ${businessName}%0A` +
+                `Mobile Number: ${mobileNumber}%0A` +
+                `Email: ${email}%0A` +
+                `Business Category: ${businessCategory}%0A` +
+                `Website Purpose: ${websitePurpose}%0A` +
+                `Need Admin Panel: ${needAdminPanel}%0A` +
+                `Need Login System: ${needLoginSystem}%0A` +
+                `Need Payment Integration: ${needPayment}%0A` +
+                `Need Product Management: ${needProducts}%0A` +
+                `Need Booking System: ${needBooking}%0A` +
+                `Need Dashboard: ${needDashboard}%0A` +
+                `Need Authentication: ${needAuthentication}%0A` +
+                `Need Custom Features: ${needCustomFeatures}%0A` +
+                `Project Details: ${projectDetails || 'Not provided'}`;
+
+            // Open WhatsApp with the message
+            const whatsappURL = `https://wa.me/738686895149?text=${message}`;
+            window.open(whatsappURL, '_blank');
+        });
+
+        // Reset Form Button
+        document.getElementById('resetForm').addEventListener('click', function() {
+            dynamicRequestForm.reset();
         });
 
         // FAQ Accordion
