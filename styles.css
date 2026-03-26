@@ -1874,9 +1874,7 @@
             transform: translateY(0);
         }
    
-    <!-- Custom Intro Styles-->
-    
-        /* Intro Animation Styles */
+    /* Intro Animation Styles */
         #intro-animation {
             position: fixed;
             top: 0;
@@ -1904,16 +1902,20 @@
             text-align: center;
             position: relative;
             z-index: 10;
-            width: 100%;
-            max-width: 1200px;
-            padding: 0 20px;
+            /* FIXED: Better centering with proper dimensions */
+            width: min(92vw, 900px);
+            max-width: 100%;
+            min-height: 100dvh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
         
-        /* Floating Icons */
+        /* Floating Icons - MODIFIED SECTION */
         .floating-icon {
             position: absolute;
             opacity: 0;
@@ -1922,8 +1924,9 @@
             transition: all 0.3s ease;
         }
         
+        /* FIXED: Better balanced icon positioning */
         .icon-1 {
-            top: 15%;
+            top: 20%;
             left: 15%;
             color: #64ffda;
             animation: float 4s ease-in-out infinite, fadeIn 1s ease-out forwards;
@@ -1931,7 +1934,7 @@
         }
         
         .icon-2 {
-            top: 15%;
+            top: 20%;
             right: 15%;
             color: #ff8c00;
             animation: float 4s ease-in-out infinite, fadeIn 1s ease-out forwards;
@@ -1939,7 +1942,7 @@
         }
         
         .icon-3 {
-            bottom: 15%;
+            bottom: 20%;
             left: 15%;
             color: #64ffda;
             animation: float 4s ease-in-out infinite, fadeIn 1s ease-out forwards;
@@ -1947,7 +1950,7 @@
         }
         
         .icon-4 {
-            bottom: 15%;
+            bottom: 20%;
             right: 15%;
             color: #ff8c00;
             animation: float 4s ease-in-out infinite, fadeIn 1s ease-out forwards;
@@ -1974,7 +1977,7 @@
             }
         }
         
-        /* Brand Name Styling */
+        /* Brand Name Styling - MODIFIED SECTION */
         .intro-brand-name {
             font-family: 'Fredoka', cursive;
             font-weight: 700;
@@ -1983,9 +1986,12 @@
             justify-content: center;
             position: relative;
             text-transform: uppercase;
-            /* Using clamp for responsive font size */
+            /* FIXED: Better responsive font sizing */
             font-size: clamp(2.5rem, 8vw, 6rem);
             letter-spacing: clamp(1px, 1.5vw, 4px);
+            /* FIXED: Ensure full width for centering */
+            width: 100%;
+            text-align: center;
         }
         
         .intro-letter {
@@ -1994,7 +2000,7 @@
             transform: scale(0);
             filter: blur(10px);
             position: relative;
-            /* Adjust letter spacing on smaller screens */
+            /* FIXED: Better letter spacing for mobile */
             margin: 0 clamp(-0.5px, -0.2vw, 1px);
         }
         
@@ -2060,18 +2066,20 @@
             }
         }
         
-        /* Tagline Styling */
+        /* Tagline Styling - MODIFIED SECTION */
         .intro-tagline {
             font-family: 'Outfit', sans-serif;
             font-weight: 600;
             margin-top: 30px;
             opacity: 0;
             color: white;
-            /* Using clamp for responsive font size */
+            /* FIXED: Better responsive font sizing */
             font-size: clamp(0.9rem, 3vw, 1.5rem);
             letter-spacing: clamp(2px, 1.5vw, 4px);
-            /* Allow wrapping on very small screens */
+            /* FIXED: Ensure proper width and centering */
+            width: 100%;
             max-width: 90%;
+            text-align: center;
         }
         
         .intro-tagline span {
@@ -2114,35 +2122,32 @@
             visibility: visible;
         }
         
-        /* Responsive Styles for Intro */
-        @media (max-width: 480px) {
+        /* Responsive Styles for Intro - SIMPLIFIED SECTION */
+        @media (max-width: 768px) {
             .intro-container {
-                padding: 0 15px;
+                padding: 15px;
             }
             
+            /* FIXED: Simplified and more balanced icon positioning */
             .floating-icon {
-                font-size: 1.8rem;
-                opacity: 0.8;
+                font-size: 2rem;
+                opacity: 0.7;
             }
             
-            .icon-1 {
-                top: 12%;
-                left: 12%;
+            .icon-1, .icon-2 {
+                top: 25%;
             }
             
-            .icon-2 {
-                top: 12%;
-                right: 12%;
+            .icon-3, .icon-4 {
+                bottom: 25%;
             }
             
-            .icon-3 {
-                bottom: 12%;
-                left: 12%;
+            .icon-1, .icon-3 {
+                left: 10%;
             }
             
-            .icon-4 {
-                bottom: 12%;
-                right: 12%;
+            .icon-2, .icon-4 {
+                right: 10%;
             }
             
             .intro-brand-name {
@@ -2151,145 +2156,72 @@
             
             .intro-tagline {
                 margin-top: 20px;
+                max-width: 95%;
             }
         }
         
-        @media (max-width: 412px) {
+        @media (max-width: 480px) {
+            .intro-container {
+                padding: 12px;
+            }
+            
+            /* FIXED: Further reduced icon size and adjusted positioning */
             .floating-icon {
                 font-size: 1.6rem;
-                opacity: 0.7;
-            }
-            
-            .icon-1 {
-                top: 10%;
-                left: 10%;
-            }
-            
-            .icon-2 {
-                top: 10%;
-                right: 10%;
-            }
-            
-            .icon-3 {
-                bottom: 10%;
-                left: 10%;
-            }
-            
-            .icon-4 {
-                bottom: 10%;
-                right: 10%;
-            }
-        }
-        
-        @media (max-width: 390px) {
-            .floating-icon {
-                font-size: 1.5rem;
-                opacity: 0.7;
-            }
-            
-            .icon-1 {
-                top: 8%;
-                left: 8%;
-            }
-            
-            .icon-2 {
-                top: 8%;
-                right: 8%;
-            }
-            
-            .icon-3 {
-                bottom: 8%;
-                left: 8%;
-            }
-            
-            .icon-4 {
-                bottom: 8%;
-                right: 8%;
-            }
-        }
-        
-        @media (max-width: 370px) {
-            .floating-icon {
-                font-size: 1.4rem;
                 opacity: 0.6;
             }
             
-            .icon-1 {
-                top: 6%;
-                left: 6%;
+            .icon-1, .icon-2 {
+                top: 30%;
             }
             
-            .icon-2 {
-                top: 6%;
-                right: 6%;
+            .icon-3, .icon-4 {
+                bottom: 30%;
             }
             
-            .icon-3 {
-                bottom: 6%;
-                left: 6%;
+            .icon-1, .icon-3 {
+                left: 8%;
             }
             
-            .icon-4 {
-                bottom: 6%;
-                right: 6%;
+            .icon-2, .icon-4 {
+                right: 8%;
+            }
+            
+            .intro-brand-name {
+                margin-bottom: 12px;
+            }
+            
+            .intro-tagline {
+                margin-top: 15px;
+                max-width: 98%;
             }
         }
         
         @media (max-width: 360px) {
-            .floating-icon {
-                font-size: 1.3rem;
-                opacity: 0.6;
-            }
-            
-            .icon-1 {
-                top: 5%;
-                left: 5%;
-            }
-            
-            .icon-2 {
-                top: 5%;
-                right: 5%;
-            }
-            
-            .icon-3 {
-                bottom: 5%;
-                left: 5%;
-            }
-            
-            .icon-4 {
-                bottom: 5%;
-                right: 5%;
-            }
-        }
-        
-        @media (max-width: 320px) {
             .intro-container {
-                padding: 0 10px;
+                padding: 10px;
             }
             
+            /* FIXED: Even smaller icons and better positioning */
             .floating-icon {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
                 opacity: 0.5;
             }
             
-            .icon-1 {
-                top: 4%;
-                left: 4%;
+            .icon-1, .icon-2 {
+                top: 35%;
             }
             
-            .icon-2 {
-                top: 4%;
-                right: 4%;
+            .icon-3, .icon-4 {
+                bottom: 35%;
             }
             
-            .icon-3 {
-                bottom: 4%;
-                left: 4%;
+            .icon-1, .icon-3 {
+                left: 5%;
             }
             
-            .icon-4 {
-                bottom: 4%;
-                right: 4%;
+            .icon-2, .icon-4 {
+                right: 5%;
             }
             
             .intro-brand-name {
@@ -2297,38 +2229,7 @@
             }
             
             .intro-tagline {
-                margin-top: 15px;
-                max-width: 95%;
-            }
-        }
-        
-        @media (min-width: 768px) {
-            .floating-icon {
-                font-size: 3rem;
-            }
-            
-            .icon-1 {
-                top: 18%;
-                left: 18%;
-            }
-            
-            .icon-2 {
-                top: 18%;
-                right: 18%;
-            }
-            
-            .icon-3 {
-                bottom: 18%;
-                left: 18%;
-            }
-            
-            .icon-4 {
-                bottom: 18%;
-                right: 18%;
-            }
-            
-            .intro-container {
-                padding: 0 30px;
+                margin-top: 12px;
             }
         }
         
@@ -2337,28 +2238,23 @@
                 font-size: 3.5rem;
             }
             
-            .icon-1 {
-                top: 20%;
+            .icon-1, .icon-2 {
+                top: 18%;
+            }
+            
+            .icon-3, .icon-4 {
+                bottom: 18%;
+            }
+            
+            .icon-1, .icon-3 {
                 left: 20%;
             }
             
-            .icon-2 {
-                top: 20%;
-                right: 20%;
-            }
-            
-            .icon-3 {
-                bottom: 20%;
-                left: 20%;
-            }
-            
-            .icon-4 {
-                bottom: 20%;
+            .icon-2, .icon-4 {
                 right: 20%;
             }
             
             .intro-container {
-                padding: 0 40px;
+                padding: 40px;
             }
         }
-   
