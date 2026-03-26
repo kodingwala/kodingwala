@@ -222,6 +222,64 @@
             width: 100%;
         }
 
+        /* Mobile Bottom Navigation */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(6, 20, 42, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.3);
+            border-top: 1px solid var(--border);
+            border-radius: 20px 20px 0 0;
+            padding: 10px 0 8px;
+        }
+
+        .mobile-nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .mobile-nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 8px 4px 4px;
+            color: var(--text-soft);
+            transition: all 0.3s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .mobile-nav-item.active {
+            color: var(--cyan);
+            text-shadow: 0 0 10px rgba(25, 211, 197, 0.5);
+        }
+
+        .mobile-nav-item i {
+            font-size: 1.2rem;
+            margin-bottom: 3px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-item.active i {
+            transform: scale(1.1);
+        }
+
+        .mobile-nav-item span {
+            font-size: 0.65rem;
+            font-weight: 500;
+        }
+
+        .mobile-nav-item:active {
+            transform: scale(0.95);
+        }
+
         /* Hero Section */
         .hero {
             padding: 7rem 1.5rem 3rem;
@@ -274,12 +332,14 @@
         }
 
         .hero-content h1 {
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 4vw, 2.5rem);
             line-height: 1.2;
             margin-bottom: 1.5rem;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.8s ease forwards;
+            white-space: normal;
+            word-wrap: break-word;
         }
 
         .hero-content p {
@@ -388,7 +448,7 @@
         /* Feature Cards */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
@@ -496,6 +556,147 @@
             margin: 0 auto 1rem;
             font-size: 1.3rem;
             color: white;
+        }
+
+        /* Landing Page Request Form Section */
+        .landing-request-form {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-soft);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--cyan);
+            background: rgba(25, 211, 197, 0.05);
+            box-shadow: 0 0 0 3px rgba(25, 211, 197, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b8c4d6' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        select.form-control option {
+            background: var(--bg-card);
+            color: var(--text-main);
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--cyan);
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            color: var(--text-soft);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-style: italic;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -5px;
+            font-size: 3rem;
+            color: var(--cyan);
+            opacity: 0.5;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-main);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-info h4 {
+            margin-bottom: 0.2rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            background: rgba(245, 166, 35, 0.1);
+            border-radius: 50px;
+            color: var(--orange);
+            font-size: 0.75rem;
+            margin-top: 0.3rem;
         }
 
         /* Pricing Card */
@@ -785,18 +986,184 @@
             transform: translateY(0);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
+        /* Responsive Design - Enhanced */
+        @media (max-width: 992px) {
             .hero-content h1 {
                 font-size: 2rem;
             }
-            
+
+            .structure-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            .hero {
+                padding: 5rem 1rem 3rem;
+            }
+
             .cta-title {
                 font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+
+            .landing-request-form {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .structure-item {
+                padding: 1rem;
+            }
+
+            .structure-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+
+            .mobile-nav-item span {
+                font-size: 0.6rem;
+            }
+
+            .mobile-nav-item i {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .structure-item {
+                padding: 1rem;
+            }
+
+            .structure-icon {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+
+            .mobile-nav-item span {
+                font-size: 0.55rem;
+            }
+
+            .mobile-nav-item i {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .structure-item {
+                padding: 1rem;
+            }
+
+            .structure-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 0.8rem;
+            }
+
+            .mobile-nav {
+                padding: 10px 0 5px;
+            }
+        }
+
+        @media (max-width: 340px) {
+            .hero-content h1 {
+                font-size: 1.4rem;
+            }
+
+            .hero-content p {
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .structure-item {
+                padding: 1rem;
+            }
+
+            .structure-icon {
+                width: 25px;
+                height: 25px;
+                font-size: 0.7rem;
+            }
+
+            .mobile-nav-item span {
+                font-size: 0.5rem;
+            }
+
+            .mobile-nav-item i {
+                font-size: 0.9rem;
+            }
+
+            .mobile-nav {
+                padding: 8px 0 5px;
+            }
+        }
+
+        /* Add bottom padding to body for mobile navigation */
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 70px;
+            }
+
+            .floating-whatsapp {
+                bottom: 80px;
+            }
+
+            .back-to-top {
+                bottom: 150px;
             }
         }
     </style>
@@ -826,6 +1193,42 @@
         </div>
     </nav>
 
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav-items">
+            <div class="mobile-nav-item">
+                <a href="index.html" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#benefits" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-bullseye"></i>
+                    <span>Benefits</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#features" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-list-check"></i>
+                    <span>Features</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#landing-request" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-edit"></i>
+                    <span>Form</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#faq" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-question-circle"></i>
+                    <span>FAQ</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
@@ -833,7 +1236,7 @@
                 <h1>Landing Page Design</h1>
                 <p><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> creates modern high-converting landing pages for businesses, ads, products, and lead generation. Drive more conversions with professionally designed pages.</p>
                 <div class="hero-buttons">
-                    <a href="#features" class="btn btn-primary">View Features</a>
+                    <a href="#benefits" class="btn btn-primary">View Benefits</a>
                     <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Landing%20Page%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-whatsapp">
                         <i class="fab fa-whatsapp"></i> Enquiry Now
                     </a>
@@ -860,12 +1263,113 @@
         </div>
     </section>
 
+    <!-- What is a Landing Page Section -->
+    <section class="section" id="what-is">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">What is a Landing Page?</h2>
+                <p class="section-subtitle">Understanding the purpose and power of landing pages</p>
+            </div>
+            
+            <div class="two-column fade-in">
+                <div class="column-content">
+                    <h3>Simple Definition</h3>
+                    <p>A landing page is a single, focused web page created with one specific goal in mind - to get visitors to take a particular action.</p>
+                    <br><br>
+                    <h3>Key Characteristic</h3>
+                    <p>Unlike regular websites with multiple pages and navigation, a landing page has no distractions and guides users toward a single call-to-action (CTA).</p>
+                    <br><br>
+                    <h3>Primary Purpose</h3>
+                    <p>Landing pages are designed to convert visitors into leads or customers by presenting compelling information and clear action buttons.</p>
+                </div>
+                <div class="column-content">
+                    <h3>Common Actions</h3>
+                    <ul style="list-style: none; padding-left: 1.5rem;">
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-phone" style="color: var(--orange); margin-right: 0.5rem;"></i>Contact / Enquiry</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-shopping-cart" style="color: var(--orange); margin-right: 0.5rem;"></i>Buy / Purchase</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-calendar-check" style="color: var(--orange); margin-right: 0.5rem;"></i>Book / Register</li>
+                        <li style="margin-bottom: 0.5rem;"><i class="fas fa-download" style="color: var(--orange); margin-right: 0.5rem;"></i>Download</li>
+                        <li><i class="fab fa-whatsapp" style="color: var(--orange); margin-right: 0.5rem;"></i>Send WhatsApp Message</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Landing Page Uses Section -->
+    <section class="section" id="uses">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Uses of a Landing Page</h2>
+                <p class="section-subtitle">Perfect landing pages for various business and marketing needs</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Product Launch</h3>
+                    <p>Introduce new products with impact and drive initial sales with compelling visuals and clear purchase options</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Ad Campaigns</h3>
+                    <p>Support your marketing campaigns with dedicated pages that align perfectly with your ad messaging and goals</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Service Promotion</h3>
+                    <p>Promote your services and generate qualified leads with professional presentation and clear contact options</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Course/Training</h3>
+                    <p>Enroll students in courses or training programs with detailed information and easy registration process</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Event Registration</h3>
+                    <p>Promote events and manage registrations effectively with event details and sign-up forms</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3>Special Offers</h3>
+                    <p>Highlight special offers, discounts, or limited-time deals to create urgency and drive immediate action</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3>WhatsApp Lead Gen</h3>
+                    <p>Capture leads directly through WhatsApp with pre-filled messages and instant chat initiation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Landing Page Benefits Section -->
     <section class="section" id="benefits">
         <div class="container">
             <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Landing Page Benefits</h2>
-                <p class="section-subtitle">Why your business needs a professional landing page</p>
+                <h2 class="section-title">Why Landing Pages are Powerful</h2>
+                <p class="section-subtitle">Key advantages that make landing pages essential for modern marketing</p>
             </div>
             
             <div class="features-grid">
@@ -874,7 +1378,7 @@
                         <i class="fas fa-chart-line"></i>
                     </div>
                     <h3>Better Conversion</h3>
-                    <p>Optimized design elements and clear CTAs to maximize conversion rates and turn visitors into customers</p>
+                    <p>Optimized design elements and clear CTAs maximize conversion rates and turn visitors into customers effectively</p>
                 </div>
                 
                 <div class="feature-card fade-in">
@@ -882,7 +1386,7 @@
                         <i class="fas fa-bullseye"></i>
                     </div>
                     <h3>Clear Call to Action</h3>
-                    <p>Strategically placed CTAs that guide users toward your desired actions and business goals</p>
+                    <p>Strategically placed CTAs guide users toward desired actions and business goals without confusion</p>
                 </div>
                 
                 <div class="feature-card fade-in">
@@ -890,7 +1394,7 @@
                         <i class="fas fa-box"></i>
                     </div>
                     <h3>Product Promotion</h3>
-                    <p>Perfect for showcasing products, services, or special offers with compelling visuals and copy</p>
+                    <p>Showcase products, services, or special offers with compelling visuals and persuasive copy</p>
                 </div>
                 
                 <div class="feature-card fade-in">
@@ -898,7 +1402,7 @@
                         <i class="fas fa-headset"></i>
                     </div>
                     <h3>Service Enquiries</h3>
-                    <p>Generate quality leads and service inquiries with professional contact forms and information</p>
+                    <p>Generate quality leads and service inquiries with professional contact forms and instant messaging</p>
                 </div>
                 
                 <div class="feature-card fade-in">
@@ -906,7 +1410,23 @@
                         <i class="fas fa-ad"></i>
                     </div>
                     <h3>Ad Campaign Support</h3>
-                    <p>Designed to work seamlessly with your marketing campaigns and advertising efforts</p>
+                    <p>Designed to work seamlessly with Google Ads, Facebook Ads, and other marketing platforms for better ROI</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile Responsive</h3>
+                    <p>Perfect display on all devices and screen sizes with mobile-first approach for optimal user experience</p>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <h3>Fast Loading</h3>
+                    <p>Optimized for speed to reduce bounce rates and improve user engagement and search rankings</p>
                 </div>
             </div>
         </div>
@@ -935,15 +1455,15 @@
                             <i class="fas fa-gift"></i>
                         </div>
                         <h4>Offer Section</h4>
-                        <p>Clear presentation of your value proposition and benefits</p>
+                        <p>Clear presentation of your value proposition and key benefits</p>
                     </div>
                     
                     <div class="structure-item">
                         <div class="structure-icon">
                             <i class="fas fa-quote-left"></i>
                         </div>
-                        <h4>Testimonial Section</h4>
-                        <p>Social proof with customer reviews and testimonials</p>
+                        <h4>Testimonials</h4>
+                        <p>Social proof with customer reviews and success stories</p>
                     </div>
                     
                     <div class="structure-item">
@@ -951,7 +1471,7 @@
                             <i class="fas fa-mouse-pointer"></i>
                         </div>
                         <h4>CTA Buttons</h4>
-                        <p>Strategically placed call-to-action buttons throughout</p>
+                        <p>Strategically placed call-to-action buttons throughout the page</p>
                     </div>
                     
                     <div class="structure-item">
@@ -996,7 +1516,7 @@
                         <i class="fas fa-rocket"></i>
                     </div>
                     <h3>Product Launch</h3>
-                    <p>Introduce new products with impact and drive initial sales</p>
+                    <p>Introduce new products with impact and drive initial sales effectively</p>
                 </div>
                 
                 <div class="best-for-card fade-in">
@@ -1004,7 +1524,7 @@
                         <i class="fas fa-cogs"></i>
                     </div>
                     <h3>Service Business</h3>
-                    <p>Promote your services and generate qualified leads</p>
+                    <p>Promote your services and generate qualified leads consistently</p>
                 </div>
                 
                 <div class="best-for-card fade-in">
@@ -1012,7 +1532,7 @@
                         <i class="fas fa-bullhorn"></i>
                     </div>
                     <h3>Campaign Page</h3>
-                    <p>Support your marketing campaigns with dedicated pages</p>
+                    <p>Support your marketing campaigns with dedicated landing pages</p>
                 </div>
                 
                 <div class="best-for-card fade-in">
@@ -1020,7 +1540,7 @@
                         <i class="fas fa-calendar-alt"></i>
                     </div>
                     <h3>Event Page</h3>
-                    <p>Promote events and manage registrations effectively</p>
+                    <p>Promote events and manage registrations efficiently with online forms</p>
                 </div>
                 
                 <div class="best-for-card fade-in">
@@ -1028,7 +1548,166 @@
                         <i class="fas fa-tags"></i>
                     </div>
                     <h3>Offer Page</h3>
-                    <p>Highlight special offers and drive immediate action</p>
+                    <p>Highlight special offers and drive immediate action with urgency</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Landing Page Request Form Section -->
+    <section class="section" id="landing-request">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Request Your Landing Page</h2>
+                <p class="section-subtitle">Tell us about your project and we'll create the perfect landing page for you</p>
+            </div>
+
+            <div class="landing-request-form fade-in">
+                <form id="landingRequestForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="businessName">Business Name *</label>
+                        <input type="text" id="businessName" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobileNumber">Mobile Number *</label>
+                        <input type="tel" id="mobileNumber" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="businessCategory">Business Category *</label>
+                        <input type="text" id="businessCategory" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="landingPurpose">Landing Page Purpose *</label>
+                        <select id="landingPurpose" class="form-control" required>
+                            <option value="" selected disabled>Select purpose</option>
+                            <option value="product">Product Launch</option>
+                            <option value="service">Service Promotion</option>
+                            <option value="campaign">Ad Campaign</option>
+                            <option value="event">Event Registration</option>
+                            <option value="offer">Special Offer</option>
+                            <option value="lead">Lead Generation</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="productName">Product / Service Name</label>
+                        <input type="text" id="productName" class="form-control">
+                        </div>
+
+                    <div class="form-group">
+                        <label for="needWhatsApp">Need WhatsApp Button? *</label>
+                        <select id="needWhatsApp" class="form-control" required>
+                            <option value="" selected disabled>Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needContactForm">Need Contact Form? *</label>
+                        <select id="needContactForm" class="form-control" required>
+                            <option value="" selected disabled>Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needOffer">Need Offer Section? *</label>
+                        <select id="needOffer" class="form-control" required>
+                            <option value="" selected disabled>Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needTestimonials">Need Testimonials Section? *</label>
+                        <select id="needTestimonials" class="form-control" required>
+                            <option value="" selected disabled>Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needAdPage">Need Ad Landing Page? *</label>
+                        <select id="needAdPage" class="form-control" required>
+                            <option value="" selected disabled>Select option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">Not needed</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectDetails">Project Details / Message</label>
+                        <textarea id="projectDetails" class="form-control" rows="4" placeholder="Tell us about your project requirements"></textarea>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" id="resetForm" class="btn btn-secondary">Reset</button>
+                        <button type="submit" class="btn btn-primary">Send via WhatsApp</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">What Our Clients Say About <span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h2>
+                <p class="section-subtitle">Don't just take our word for it - hear from our satisfied clients</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> created an amazing landing page for our product launch that increased our conversion rate by 40%. The design was professional and the CTA placement was perfect.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">R</div>
+                        <div class="testimonial-info">
+                            <h4>Rahul Sharma</h4>
+                            <div class="testimonial-badge">Product Landing Page</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        Our service landing page, designed by <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>, has helped us generate 3x more qualified leads. The WhatsApp integration has been a game-changer for our business.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">P</div>
+                        <div class="testimonial-info">
+                            <h4>Priya Patel</h4>
+                            <div class="testimonial-badge">Service Landing Page</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        The campaign landing page <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> created for our ad campaign delivered a 60% increase in click-through rate. The mobile optimization was excellent.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">A</div>
+                        <div class="testimonial-info">
+                            <h4>Amit Kumar</h4>
+                            <div class="testimonial-badge">Ad Campaign Page</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1126,7 +1805,7 @@
     <section class="section">
         <div class="container">
             <div class="cta-section fade-in">
-                <h2 class="cta-title">Need a High-Converting Landing Page?</h2>
+                <h2 class="cta-title">Need a Landing Page That Converts?</h2>
                 <p class="section-subtitle">Let's create a landing page that drives results for your business</p>
                 <div class="cta-buttons">
                     <a href="#features" class="btn btn-primary">View Features</a>
@@ -1150,10 +1829,10 @@
                     <p style="margin-bottom: 1rem; color: var(--text-soft);">Design • Develop • Deliver</p>
                     <p style="color: var(--text-soft);"><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> helps students, freelancers, and businesses build modern digital presence with websites, resumes, logos, and project solutions.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="https://instagram.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="https://wa.me/738686895149" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://facebook.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
                 
@@ -1172,12 +1851,13 @@
                 <div class="footer-column">
                     <h3>Landing Page Features</h3>
                     <ul class="footer-links">
-                        <li><a href="#features">Hero Section</a></li>
-                        <li><a href="#features">Offer Section</a></li>
-                        <li><a href="#features">Testimonials</a></li>
-                        <li><a href="#features">CTA Buttons</a></li>
-                        <li><a href="#features">Contact Form</a></li>
-                        <li><a href="#features">WhatsApp Integration</a></li>
+                        <li><a href="#what-is">What is Landing Page</a></li>
+                        <li><a href="#uses">Uses of Landing Page</a></li>
+                        <li><a href="#benefits">Landing Page Benefits</a></li>
+                        <li><a href="#features">Features Included</a></li>
+                        <li><a href="#best-for">Best For</a></li>
+                        <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#landing-request">Request Landing Page</a></li>
                     </ul>
                 </div>
                 
@@ -1218,22 +1898,67 @@
             scrollProgress.style.width = scrolled;
         });
 
-        // Smooth Scrolling for Navigation Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
+        // Mobile Navigation Active State
+        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
+        mobileNavItems.forEach(item => {
+            item.addEventListener('click', function() {
+                mobileNavItems.forEach(navItem => navItem.classList.remove('active'));
+                this.classList.add('active');
                 
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                // Scroll to section
+                const href = this.querySelector('a').getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    const section = document.querySelector(href);
+                    if (section) {
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }
                 }
             });
+        });
+
+        // Landing Page Request Form Submission
+        const landingRequestForm = document.getElementById('landingRequestForm');
+
+        landingRequestForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const businessName = document.getElementById('businessName').value;
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            const businessCategory = document.getElementById('businessCategory').value;
+            const landingPurpose = document.getElementById('landingPurpose').value;
+            const productName = document.getElementById('productName').value;
+            const needWhatsApp = document.getElementById('needWhatsApp').value;
+            const needContactForm = document.getElementById('needContactForm').value;
+            const needOffer = document.getElementById('needOffer').value;
+            const needTestimonials = document.getElementById('needTestimonials').value;
+            const needAdPage = document.getElementById('needAdPage').value;
+            const projectDetails = document.getElementById('projectDetails').value;
+
+            // Build WhatsApp message
+            const message = `Hello Kodingwala, I'm interested in your Landing Page Design service.%0A%0A` +
+                `Full Name: ${fullName}%0A` +
+                `Business Name: ${businessName}%0A` +
+                `Mobile Number: ${mobileNumber}%0A` +
+                `Business Category: ${businessCategory}%0A` +
+                `Landing Page Purpose: ${landingPurpose}%0A` +
+                `Product/Service Name: ${productName || 'Not specified'}%0A` +
+                `Need WhatsApp Button: ${needWhatsApp}%0A` +
+                `Need Contact Form: ${needContactForm}%0A` +
+                `Need Offer Section: ${needOffer}%0A` +
+                `Need Testimonials: ${needTestimonials}%0A` +
+                `Need Ad Landing Page: ${needAdPage}%0A` +
+                `Project Details: ${projectDetails || 'Not provided'}`;
+
+            // Open WhatsApp with the message
+            const whatsappURL = `https://wa.me/738686895149?text=${message}`;
+            window.open(whatsappURL, '_blank');
+        });
+
+        // Reset Form Button
+        document.getElementById('resetForm').addEventListener('click', function() {
+            landingRequestForm.reset();
         });
 
         // FAQ Accordion
@@ -1288,6 +2013,24 @@
         
         window.addEventListener('scroll', checkFade);
         window.addEventListener('load', checkFade);
+        
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
