@@ -229,13 +229,19 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(6, 20, 42, 0.85);
+            background: rgba(6, 20, 42, 0.95);
             backdrop-filter: blur(15px);
             z-index: 1000;
             box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.3);
             border-top: 1px solid var(--border);
             border-radius: 20px 20px 0 0;
-            padding: 12px 0 8px;
+            padding: 10px 0 8px;
+        }
+
+        .mobile-nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
         }
 
         .mobile-nav-item {
@@ -252,31 +258,7 @@
 
         .mobile-nav-item.active {
             color: var(--cyan);
-        }
-
-        .mobile-nav-item.active::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 3px;
-            background: var(--cyan);
-            border-radius: 0 0 3px 3px;
-            box-shadow: 0 0 10px rgba(25, 211, 197, 0.7);
-        }
-
-        .mobile-nav-item.active::after {
-            content: '';
-            position: absolute;
-            top: 4px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 6px;
-            height: 6px;
-            background: var(--orange);
-            border-radius: 50%;
+            text-shadow: 0 0 10px rgba(25, 211, 197, 0.5);
         }
 
         .mobile-nav-item i {
@@ -338,22 +320,28 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1.2fr 1fr;
             gap: 3rem;
             align-items: center;
         }
 
+        .hero-content {
+            min-width: 0;
+        }
+
         .hero-content h1 {
-            font-size: 2.5rem;
-            line-height: 1.2;
+            font-size: clamp(2rem, 5vw, 3rem);
+            line-height: 1.1;
             margin-bottom: 1.5rem;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.8s ease forwards;
+            white-space: normal;
+            word-wrap: break-word;
         }
 
         .hero-content p {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
             color: var(--text-soft);
             margin-bottom: 2rem;
             opacity: 0;
@@ -637,6 +625,147 @@
             padding: 10px 16px;
             font-size: 0.9rem;
             min-width: 100px;
+        }
+
+        /* Resume Request Form Section */
+        .resume-request-form {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-soft);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--cyan);
+            background: rgba(25, 211, 197, 0.05);
+            box-shadow: 0 0 0 3px rgba(25, 211, 197, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b8c4d6' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        select.form-control option {
+            background: var(--bg-card);
+            color: var(--text-main);
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--cyan);
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            color: var(--text-soft);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-style: italic;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -5px;
+            font-size: 3rem;
+            color: var(--cyan);
+            opacity: 0.5;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-main);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-info h4 {
+            margin-bottom: 0.2rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            background: rgba(245, 166, 35, 0.1);
+            border-radius: 50px;
+            color: var(--orange);
+            font-size: 0.75rem;
+            margin-top: 0.3rem;
         }
 
         /* Pricing Section */
@@ -1005,21 +1134,28 @@
         }
 
         /* Responsive Design - Enhanced */
+        @media (max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .desktop-nav {
                 display: none;
             }
 
             .mobile-nav {
-                display: flex;
+                display: block;
             }
 
-            .hero-content h1 {
-                font-size: 2rem;
+            .hero {
+                padding: 4rem 1rem 3rem;
             }
 
             .hero-container {
-                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .cta-section {
@@ -1028,6 +1164,14 @@
 
             .cta-title {
                 font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+
+            .resume-request-form {
+                padding: 2rem 1.5rem;
             }
         }
 
@@ -1086,6 +1230,14 @@
             .sample-resume-description {
                 font-size: 0.9rem;
             }
+
+            .mobile-nav-item span {
+                font-size: 0.6rem;
+            }
+
+            .mobile-nav-item i {
+                font-size: 1.1rem;
+            }
         }
 
         @media (max-width: 380px) {
@@ -1112,11 +1264,15 @@
             }
 
             .mobile-nav-item span {
-                font-size: 0.6rem;
+                font-size: 0.55rem;
             }
 
             .mobile-nav-item i {
-                font-size: 1.1rem;
+                font-size: 1rem;
+            }
+
+            .mobile-nav {
+                padding: 10px 0 5px;
             }
         }
 
@@ -1143,8 +1299,31 @@
                 height: 120px;
             }
 
+            .mobile-nav-item span {
+                font-size: 0.5rem;
+            }
+
+            .mobile-nav-item i {
+                font-size: 0.9rem;
+            }
+
             .mobile-nav {
-                padding: 10px 0 5px;
+                padding: 8px 0 5px;
+            }
+        }
+
+        /* Add bottom padding to body for mobile navigation */
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 70px;
+            }
+
+            .floating-whatsapp {
+                bottom: 80px;
+            }
+
+            .back-to-top {
+                bottom: 150px;
             }
         }
     </style>
@@ -1165,9 +1344,10 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#why-matters">Why Matters</a></li>
+                <li><a href="#why-matters">Why Resume</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#samples">Samples</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#types">Types</a></li>
                 <li><a href="#faq">FAQ</a></li>
@@ -1177,35 +1357,43 @@
 
     <!-- Mobile Bottom Navigation -->
     <nav class="mobile-nav">
-        <div class="mobile-nav-item">
-            <a href="index.html" style="color: inherit;">
-                <i class="fas fa-home"></i>
-                <span>Home</span>
-            </a>
-        </div>
-        <div class="mobile-nav-item">
-            <a href="#features" style="color: inherit;">
-                <i class="fas fa-star"></i>
-                <span>Features</span>
-            </a>
-        </div>
-        <div class="mobile-nav-item">
-            <a href="#samples" style="color: inherit;">
-                <i class="fas fa-images"></i>
-                <span>Samples</span>
-            </a>
-        </div>
-        <div class="mobile-nav-item">
-            <a href="#pricing" style="color: inherit;">
-                <i class="fas fa-tag"></i>
-                <span>Pricing</span>
-            </a>
-        </div>
-        <div class="mobile-nav-item">
-            <a href="#faq" style="color: inherit;">
-                <i class="fas fa-question-circle"></i>
-                <span>FAQ</span>
-            </a>
+        <div class="mobile-nav-items">
+            <div class="mobile-nav-item">
+                <a href="index.html" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#why-matters" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Why Resume</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#features" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-star"></i>
+                    <span>Features</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#samples" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-images"></i>
+                    <span>Samples</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#faq" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-question-circle"></i>
+                    <span>FAQ</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#resume-request" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -1344,12 +1532,12 @@
         </div>
     </section>
 
-    <!-- Sample Resume Designs Section - New -->
+    <!-- Sample Resume Designs Section -->
     <section class="section" id="samples">
         <div class="container">
             <div class="section-title-wrapper fade-in">
                 <h2 class="section-title">Sample Resume Designs</h2>
-                <p class="section-subtitle">Explore a few sample resume layouts designed for students, freshers, professionals, and internship applications. These preview cards show different resume styles. Later I will add real sample resume images.</p>
+                <p class="section-subtitle">Explore a few sample resume layouts designed for students, freshers, professionals, and internship applications. These preview cards show different resume styles.</p>
             </div>
             
             <div class="sample-resumes-grid">
@@ -1458,6 +1646,152 @@
         </div>
     </section>
 
+    <!-- Resume Request Form Section -->
+    <section class="section" id="resume-request">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Request Your Resume Design</h2>
+                <p class="section-subtitle">Tell us about yourself and we'll create a professional resume that helps you stand out</p>
+            </div>
+
+            <div class="resume-request-form fade-in">
+                <form id="resumeRequestForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="shortName">Username / Short Name</label>
+                        <input type="text" id="shortName" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobileNumber">Mobile Number *</label>
+                        <input type="tel" id="mobileNumber" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" id="address" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="qualification">Highest Qualification *</label>
+                        <input type="text" id="qualification" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skills">Skills *</label>
+                        <textarea id="skills" class="form-control" rows="3" required placeholder="List your key skills separated by commas"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="experience">Work Experience</label>
+                        <textarea id="experience" class="form-control" rows="3" placeholder="Describe your work experience (if any)"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="objective">Career Objective</label>
+                        <textarea id="objective" class="form-control" rows="2" placeholder="Your career goals and objectives"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="resumeType">Resume Type *</label>
+                        <select id="resumeType" class="form-control" required>
+                            <option value="" selected disabled>Select a resume type</option>
+                            <option value="student">Student Resume</option>
+                            <option value="fresher">Fresher Resume</option>
+                            <option value="internship">Internship Resume</option>
+                            <option value="professional">Professional Resume</option>
+                            <option value="executive">Executive Resume</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="designStyle">Preferred Design Style *</label>
+                        <select id="designStyle" class="form-control" required>
+                            <option value="" selected disabled>Select a design style</option>
+                            <option value="minimal">Minimal</option>
+                            <option value="modern">Modern</option>
+                            <option value="professional">Professional</option>
+                            <option value="creative">Creative</option>
+                            <option value="academic">Academic</option>
+                            <option value="no-preference">No Preference</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="extraDetails">Extra Details / Message</label>
+                        <textarea id="extraDetails" class="form-control" rows="4" placeholder="Any additional information or special requirements"></textarea>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" id="resetForm" class="btn btn-secondary">Reset</button>
+                        <button type="submit" class="btn btn-primary">Send Request via WhatsApp</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">What Our Clients Say About <span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h2>
+                <p class="section-subtitle">Don't just take our word for it - hear from our satisfied clients</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> designed an amazing resume for me that helped me land my dream job. The design was professional and ATS-friendly, which made all the difference.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">R</div>
+                        <div class="testimonial-info">
+                            <h4>Rahul Sharma</h4>
+                            <div class="testimonial-badge">Software Developer</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        As a fresh graduate, I was struggling to create a professional resume. The team at <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> understood my needs and created a perfect resume that highlighted my skills and projects.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">P</div>
+                        <div class="testimonial-info">
+                            <h4>Priya Patel</h4>
+                            <div class="testimonial-badge">Recent Graduate</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        I needed a resume for an internship application, and <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> delivered exactly what I needed. The design was modern and professional, and I got selected for the internship!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">A</div>
+                        <div class="testimonial-info">
+                            <h4>Amit Kumar</h4>
+                            <div class="testimonial-badge">Engineering Student</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Pricing Section -->
     <section class="section" id="pricing">
         <div class="container">
@@ -1514,54 +1848,6 @@
                     </div>
                     <h3>Professional Resume</h3>
                     <p>For experienced professionals highlighting achievements and career progression</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sample Preview Layout Section -->
-    <section class="section" id="sample-preview">
-        <div class="container">
-            <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Sample Preview Layout</h2>
-                <p class="section-subtitle">Take a look at some of our resume design samples</p>
-            </div>
-            
-            <div class="sample-preview-grid">
-                <div class="sample-preview-card fade-in">
-                    <div class="sample-preview-image">
-                        <div class="sample-preview-placeholder">
-                            <i class="fas fa-file-alt sample-preview-icon"></i>
-                        </div>
-                    </div>
-                    <div class="sample-preview-content">
-                        <h3 class="sample-preview-title">Clean Minimal Resume</h3>
-                        <p>Simple and elegant design with clean lines and ample white space</p>
-                    </div>
-                </div>
-                
-                <div class="sample-preview-card fade-in">
-                    <div class="sample-preview-image">
-                        <div class="sample-preview-placeholder">
-                            <i class="fas fa-briefcase sample-preview-icon"></i>
-                        </div>
-                    </div>
-                    <div class="sample-preview-content">
-                        <h3 class="sample-preview-title">Professional Resume</h3>
-                        <p>Traditional professional design perfect for corporate positions</p>
-                    </div>
-                </div>
-                
-                <div class="sample-preview-card fade-in">
-                    <div class="sample-preview-image">
-                        <div class="sample-preview-placeholder">
-                            <i class="fas fa-user-graduate sample-preview-icon"></i>
-                        </div>
-                    </div>
-                    <div class="sample-preview-content">
-                        <h3 class="sample-preview-title">Student Resume Format</h3>
-                        <p>Designed for students with focus on education and skills</p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1655,10 +1941,10 @@
                     <p style="margin-bottom: 1rem; color: var(--text-soft);">Design • Develop • Deliver</p>
                     <p style="color: var(--text-soft);">We help job seekers create professional resumes that stand out and make a great first impression.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="https://instagram.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="https://wa.me/738686895149" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://facebook.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
                 
@@ -1666,9 +1952,10 @@
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="#why-matters">Why Matters</a></li>
+                        <li><a href="#why-matters">Why Resume</a></li>
                         <li><a href="#features">Features</a></li>
                         <li><a href="#samples">Samples</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
                         <li><a href="#pricing">Pricing</a></li>
                         <li><a href="#types">Types</a></li>
                     </ul>
@@ -1739,6 +2026,51 @@
                     }
                 }
             });
+        });
+
+        // Resume Request Form Submission
+        const resumeRequestForm = document.getElementById('resumeRequestForm');
+
+        resumeRequestForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const shortName = document.getElementById('shortName').value;
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value;
+            const qualification = document.getElementById('qualification').value;
+            const skills = document.getElementById('skills').value;
+            const experience = document.getElementById('experience').value;
+            const objective = document.getElementById('objective').value;
+            const resumeType = document.getElementById('resumeType').value;
+            const designStyle = document.getElementById('designStyle').value;
+            const extraDetails = document.getElementById('extraDetails').value;
+
+            // Build WhatsApp message
+            const message = `Hello Kodingwala, I would like to request a resume design.%0A%0A` +
+                `Full Name: ${fullName}%0A` +
+                `Username/Short Name: ${shortName || 'Not provided'}%0A` +
+                `Mobile Number: ${mobileNumber}%0A` +
+                `Email: ${email}%0A` +
+                `Address: ${address || 'Not provided'}%0A` +
+                `Highest Qualification: ${qualification}%0A` +
+                `Skills: ${skills}%0A` +
+                `Work Experience: ${experience || 'Not provided'}%0A` +
+                `Career Objective: ${objective || 'Not provided'}%0A` +
+                `Resume Type: ${resumeType}%0A` +
+                `Preferred Design Style: ${designStyle}%0A` +
+                `Extra Details: ${extraDetails || 'Not provided'}`;
+
+            // Open WhatsApp with the message
+            const whatsappURL = `https://wa.me/738686895149?text=${message}`;
+            window.open(whatsappURL, '_blank');
+        });
+
+        // Reset Form Button
+        document.getElementById('resetForm').addEventListener('click', function() {
+            resumeRequestForm.reset();
         });
 
         // FAQ Accordion
