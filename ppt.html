@@ -222,20 +222,26 @@
             width: 100%;
         }
 
-        /* Mobile Bottom Navigation */
+        /* Mobile Bottom Navigation - Improved */
         .mobile-nav {
             display: none;
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(6, 20, 42, 0.85);
+            background: rgba(6, 20, 42, 0.95);
             backdrop-filter: blur(15px);
             z-index: 1000;
             box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.3);
             border-top: 1px solid var(--border);
             border-radius: 20px 20px 0 0;
-            padding: 10px 0 5px;
+            padding: 10px 0 8px;
+        }
+
+        .mobile-nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
         }
 
         .mobile-nav-item {
@@ -243,7 +249,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 10px 5px 5px;
+            padding: 8px 4px 4px;
             color: var(--text-soft);
             transition: all 0.3s ease;
             position: relative;
@@ -252,36 +258,12 @@
 
         .mobile-nav-item.active {
             color: var(--cyan);
-        }
-
-        .mobile-nav-item.active::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 4px;
-            background: var(--cyan);
-            border-radius: 0 0 4px 4px;
-            box-shadow: 0 0 10px rgba(25, 211, 197, 0.7);
-        }
-
-        .mobile-nav-item.active::after {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 8px;
-            height: 8px;
-            background: var(--orange);
-            border-radius: 50%;
+            text-shadow: 0 0 10px rgba(25, 211, 197, 0.5);
         }
 
         .mobile-nav-item i {
-            font-size: 1.3rem;
-            margin-bottom: 4px;
+            font-size: 1.2rem;
+            margin-bottom: 3px;
             transition: all 0.3s ease;
         }
 
@@ -290,7 +272,7 @@
         }
 
         .mobile-nav-item span {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 500;
         }
 
@@ -338,22 +320,28 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1.2fr 1fr;
             gap: 3rem;
             align-items: center;
         }
 
+        .hero-content {
+            min-width: 0;
+        }
+
         .hero-content h1 {
-            font-size: 2.5rem;
-            line-height: 1.2;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            line-height: 1.1;
             margin-bottom: 1.5rem;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.8s ease forwards;
+            white-space: normal;
+            word-wrap: break-word;
         }
 
         .hero-content p {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
             color: var(--text-soft);
             margin-bottom: 2rem;
             opacity: 0;
@@ -619,6 +607,147 @@
         .sample-slide-title {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
+        }
+
+        /* Sample Request Form Section */
+        .sample-request-form {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-soft);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--cyan);
+            background: rgba(25, 211, 197, 0.05);
+            box-shadow: 0 0 0 3px rgba(25, 211, 197, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b8c4d6' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        select.form-control option {
+            background: var(--bg-card);
+            color: var(--text-main);
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--cyan);
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            color: var(--text-soft);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-style: italic;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -5px;
+            font-size: 3rem;
+            color: var(--cyan);
+            opacity: 0.5;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-main);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-info h4 {
+            margin-bottom: 0.2rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            background: rgba(245, 166, 35, 0.1);
+            border-radius: 50px;
+            color: var(--orange);
+            font-size: 0.75rem;
+            margin-top: 0.3rem;
         }
 
         /* Why Choose Grid */
@@ -905,22 +1034,29 @@
             transform: translateY(0);
         }
 
-        /* Responsive Design */
+        /* Responsive Design - Enhanced */
+        @media (max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .desktop-nav {
                 display: none;
             }
 
             .mobile-nav {
-                display: flex;
+                display: block;
             }
 
-            .hero-content h1 {
-                font-size: 2rem;
+            .hero {
+                padding: 4rem 1rem 3rem;
             }
 
             .hero-container {
-                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .cta-section {
@@ -929,6 +1065,166 @@
 
             .cta-title {
                 font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+
+            .sample-request-form {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .sample-slide-buttons .btn {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+                min-width: 80px;
+            }
+
+            .sample-slide-preview {
+                height: 160px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .sample-slide-buttons .btn {
+                font-size: 0.75rem;
+                padding: 8px 10px;
+                min-width: 70px;
+            }
+
+            .sample-slide-content {
+                padding: 1rem;
+            }
+
+            .sample-slide-title {
+                font-size: 1.1rem;
+            }
+
+            .sample-slide-description {
+                font-size: 0.9rem;
+            }
+
+            .mobile-nav-item span {
+                font-size: 0.6rem;
+            }
+
+            .mobile-nav-item i {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .sample-slide-buttons .btn {
+                font-size: 0.7rem;
+                padding: 8px 8px;
+                min-width: 60px;
+            }
+
+            .sample-slide-preview {
+                height: 140px;
+            }
+
+            .mobile-nav-item span {
+                font-size: 0.55rem;
+            }
+
+            .mobile-nav-item i {
+                font-size: 1rem;
+            }
+
+            .mobile-nav {
+                padding: 10px 0 5px;
+            }
+        }
+
+        @media (max-width: 340px) {
+            .hero-content h1 {
+                font-size: 1.4rem;
+            }
+
+            .hero-content p {
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .sample-slide-buttons .btn {
+                font-size: 0.65rem;
+                padding: 6px 8px;
+                min-width: 55px;
+            }
+
+            .sample-slide-preview {
+                height: 120px;
+            }
+
+            .mobile-nav-item span {
+                font-size: 0.5rem;
+            }
+
+            .mobile-nav-item i {
+                font-size: 0.9rem;
+            }
+
+            .mobile-nav {
+                padding: 8px 0 5px;
+            }
+        }
+
+        /* Add bottom padding to body for mobile navigation */
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 70px;
+            }
+
+            .floating-whatsapp {
+                bottom: 80px;
+            }
+
+            .back-to-top {
+                bottom: 150px;
             }
         }
     </style>
@@ -953,6 +1249,7 @@
                 <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#styles">Styles</a></li>
                 <li><a href="#samples">Samples</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#why-choose">Why Us</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
@@ -961,35 +1258,43 @@
 
     <!-- Mobile Bottom Navigation -->
     <nav class="mobile-nav">
-        <div class="mobile-nav-item">
-            <a href="index.html" style="color: inherit;">
-                <i class="fas fa-home"></i>
-                <span>Home</span>
-            </a>
-        </div>
-        <div class="mobile-nav-item">
-            <a href="#services" style="color: inherit;">
-                <i class="fas fa-presentation"></i>
-                <span>Services</span>
-            </a>
-        </div>
-        <div class="mobile-nav-item">
-            <a href="#pricing" style="color: inherit;">
-                <i class="fas fa-tag"></i>
-                <span>Pricing</span>
-            </a>
-        </div>
-        <div class="mobile-nav-item">
-            <a href="#samples" style="color: inherit;">
-                <i class="fas fa-images"></i>
-                <span>Samples</span>
-            </a>
-        </div>
-        <div class="mobile-nav-item">
-            <a href="#faq" style="color: inherit;">
-                <i class="fas fa-question-circle"></i>
-                <span>FAQ</span>
-            </a>
+        <div class="mobile-nav-items">
+            <div class="mobile-nav-item">
+                <a href="index.html" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#services" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-presentation"></i>
+                    <span>Services</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#pricing" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-tag"></i>
+                    <span>Pricing</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#samples" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-images"></i>
+                    <span>Samples</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#faq" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-question-circle"></i>
+                    <span>FAQ</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#sample-request" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -1094,7 +1399,7 @@
             
             <div class="pricing-card fade-in">
                 <h3 class="pricing-title">PPT Design</h3>
-                <div class="pricing-price">Starting from ₹399</div>
+                <div class="pricing-price">₹399</div>
                 <p style="color: var(--text-soft); margin-bottom: 2rem;">Get a professional presentation designed to impress your audience and convey your message effectively</p>
                 <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20PPT%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Get a Quote</a>
             </div>
@@ -1215,6 +1520,127 @@
                     <div class="sample-slide-content">
                         <h3 class="sample-slide-title">Summary Slide</h3>
                         <p>Concise summary slides that reinforce key takeaways</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sample Request Form Section -->
+    <section class="section" id="sample-request">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Request Your Sample PPT</h2>
+                <p class="section-subtitle">Tell us about your presentation needs and we'll create a sample design for you</p>
+            </div>
+
+            <div class="sample-request-form fade-in">
+                <form id="sampleRequestForm">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="shortName">Username / Short Name</label>
+                        <input type="text" id="shortName" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectName">Project Name *</label>
+                        <input type="text" id="projectName" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectType">Project Type *</label>
+                        <select id="projectType" class="form-control" required>
+                            <option value="" selected disabled>Select a project type</option>
+                            <option value="academic">Academic/Seminar</option>
+                            <option value="project">Project Presentation</option>
+                            <option value="startup">Startup Pitch</option>
+                            <option value="business">Business Presentation</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectDescription">Project Description *</label>
+                        <textarea id="projectDescription" class="form-control" rows="4" required placeholder="Describe your project and requirements"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="slideCount">Number of Slides *</label>
+                        <input type="number" id="slideCount" class="form-control" min="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="hasImages">Do you have images? *</label>
+                        <select id="hasImages" class="form-control" required>
+                            <option value="" selected disabled>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="additionalNotes">Additional Notes</label>
+                        <textarea id="additionalNotes" class="form-control" rows="3" placeholder="Any additional requirements or preferences"></textarea>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" id="resetForm" class="btn btn-secondary">Reset</button>
+                        <button type="submit" class="btn btn-primary">Send Request via WhatsApp</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">What Our Clients Say About <span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h2>
+                <p class="section-subtitle">Don't just take our word for it - hear from our satisfied clients</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> created an amazing presentation for my college seminar. The design was professional and the content was well-organized, which helped me get an A+ grade.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">R</div>
+                        <div class="testimonial-info">
+                            <h4>Rahul Sharma</h4>
+                            <div class="testimonial-badge">Student</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        We needed a pitch deck for our startup, and <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> delivered beyond our expectations. The design was modern and persuasive, helping us secure funding from investors.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">P</div>
+                        <div class="testimonial-info">
+                            <h4>Priya Patel</h4>
+                            <div class="testimonial-badge">Business</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        The team at <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> understood our requirements perfectly and created a presentation that perfectly represented our brand. Highly recommended!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">A</div>
+                        <div class="testimonial-info">
+                            <h4>Amit Kumar</h4>
+                            <div class="testimonial-badge">Business</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1361,10 +1787,10 @@
                     <p style="margin-bottom: 1rem; color: var(--text-soft);">Design • Develop • Deliver</p>
                     <p style="color: var(--text-soft);">We help students and professionals create impressive presentations that effectively communicate their ideas.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="https://instagram.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="https://wa.me/738686895149" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://facebook.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
                 
@@ -1404,7 +1830,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>. All rights reserved. | Made with <i class="fas fa-heart" style="color: var(--orange);"></i> in India</p>
+                <p>&copy; 2026 <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>. All rights reserved. | Made with <i class="fas fa-heart" style="color: var(--orange);"></i> in India</p>
             </div>
         </div>
     </footer>
@@ -1445,6 +1871,43 @@
                     }
                 }
             });
+        });
+
+        // Sample Request Form Submission
+        const sampleRequestForm = document.getElementById('sampleRequestForm');
+
+        sampleRequestForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const name = document.getElementById('name').value;
+            const shortName = document.getElementById('shortName').value;
+            const projectName = document.getElementById('projectName').value;
+            const projectType = document.getElementById('projectType').value;
+            const projectDescription = document.getElementById('projectDescription').value;
+            const slideCount = document.getElementById('slideCount').value;
+            const hasImages = document.getElementById('hasImages').value;
+            const additionalNotes = document.getElementById('additionalNotes').value;
+
+            // Build WhatsApp message
+            const message = `Hello Kodingwala, I would like to request a sample PPT.%0A%0A` +
+                `Name: ${name}%0A` +
+                `Username/Short Name: ${shortName || 'Not provided'}%0A` +
+                `Project Name: ${projectName}%0A` +
+                `Project Type: ${projectType}%0A` +
+                `Project Description: ${projectDescription}%0A` +
+                `Number of Slides: ${slideCount}%0A` +
+                `Images: ${hasImages}%0A` +
+                `Additional Notes: ${additionalNotes || 'Not provided'}`;
+
+            // Open WhatsApp with the message
+            const whatsappURL = `https://wa.me/738686895149?text=${message}`;
+            window.open(whatsappURL, '_blank');
+        });
+
+        // Reset Form Button
+        document.getElementById('resetForm').addEventListener('click', function() {
+            sampleRequestForm.reset();
         });
 
         // FAQ Accordion
