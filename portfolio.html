@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Website Design - Kodingwala</title>
+    <title>Portfolio Website Design for Students - Kodingwala</title>
     
     <!-- Favicon -->
     <link rel="icon" href="https://i.postimg.cc/3N8yBc2K/unnamed.png">
@@ -222,20 +222,26 @@
             width: 100%;
         }
 
-        /* Mobile Bottom Navigation */
+        /* Mobile Bottom Navigation - Enhanced */
         .mobile-nav {
             display: none;
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            background: rgba(6, 20, 42, 0.85);
+            background: rgba(6, 20, 42, 0.95);
             backdrop-filter: blur(15px);
             z-index: 1000;
             box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.3);
             border-top: 1px solid var(--border);
             border-radius: 20px 20px 0 0;
-            padding: 10px 0 5px;
+            padding: 10px 0 8px;
+        }
+
+        .mobile-nav-items {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
         }
 
         .mobile-nav-item {
@@ -243,7 +249,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 10px 5px 5px;
+            padding: 8px 4px 4px;
             color: var(--text-soft);
             transition: all 0.3s ease;
             position: relative;
@@ -252,36 +258,12 @@
 
         .mobile-nav-item.active {
             color: var(--cyan);
-        }
-
-        .mobile-nav-item.active::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 40px;
-            height: 4px;
-            background: var(--cyan);
-            border-radius: 0 0 4px 4px;
-            box-shadow: 0 0 10px rgba(25, 211, 197, 0.7);
-        }
-
-        .mobile-nav-item.active::after {
-            content: '';
-            position: absolute;
-            top: 5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 8px;
-            height: 8px;
-            background: var(--orange);
-            border-radius: 50%;
+            text-shadow: 0 0 10px rgba(25, 211, 197, 0.5);
         }
 
         .mobile-nav-item i {
-            font-size: 1.3rem;
-            margin-bottom: 4px;
+            font-size: 1.2rem;
+            margin-bottom: 3px;
             transition: all 0.3s ease;
         }
 
@@ -290,7 +272,7 @@
         }
 
         .mobile-nav-item span {
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             font-weight: 500;
         }
 
@@ -338,22 +320,28 @@
             max-width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: 1.2fr 1fr;
             gap: 3rem;
             align-items: center;
         }
 
+        .hero-content {
+            min-width: 0;
+        }
+
         .hero-content h1 {
-            font-size: 2.5rem;
-            line-height: 1.2;
+            font-size: clamp(2.2rem, 5vw, 3.8rem);
+            line-height: 1.1;
             margin-bottom: 1.5rem;
             opacity: 0;
             transform: translateY(20px);
             animation: fadeInUp 0.8s ease forwards;
+            white-space: normal;
+            word-wrap: break-word;
         }
 
         .hero-content p {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
             color: var(--text-soft);
             margin-bottom: 2rem;
             opacity: 0;
@@ -505,41 +493,6 @@
             flex-grow: 1;
         }
 
-        /* Best For Grid */
-        .best-for-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .best-for-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid var(--border);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .best-for-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            border-color: var(--cyan);
-        }
-
-        .best-for-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-orange);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 1.5rem;
-            color: white;
-        }
-
         /* Pricing Section */
         .pricing-card {
             background: var(--bg-card);
@@ -583,11 +536,14 @@
             overflow: hidden;
             border: 1px solid var(--border);
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .sample-portfolio-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
             border-color: var(--cyan);
         }
 
@@ -598,27 +554,248 @@
             overflow: hidden;
         }
 
-        .sample-portfolio-placeholder {
+        .sample-portfolio-preview-placeholder {
             width: 100%;
             height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, rgba(25, 211, 197, 0.1) 0%, rgba(245, 166, 35, 0.1) 100%);
+            position: relative;
         }
 
-        .sample-portfolio-icon {
+        .sample-portfolio-preview-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px dashed rgba(25, 211, 197, 0.3);
+            border-radius: 8px;
+        }
+
+        .sample-portfolio-preview-icon {
             font-size: 3rem;
             color: var(--cyan);
         }
 
         .sample-portfolio-content {
             padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sample-portfolio-badge {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            background: rgba(245, 166, 35, 0.1);
+            border-radius: 50px;
+            color: var(--orange);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
         }
 
         .sample-portfolio-title {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
+            color: var(--text-main);
+        }
+
+        .sample-portfolio-description {
+            color: var(--text-soft);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .sample-portfolio-buttons {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        .sample-portfolio-buttons .btn {
+            flex: 1;
+            padding: 10px 16px;
+            font-size: 0.9rem;
+            min-width: 100px;
+        }
+
+        /* Portfolio Request Form Section */
+        .portfolio-request-form {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-soft);
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: 'Outfit', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--cyan);
+            background: rgba(25, 211, 197, 0.05);
+            box-shadow: 0 0 0 3px rgba(25, 211, 197, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b8c4d6' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        select.form-control option {
+            background: var(--bg-card);
+            color: var(--text-main);
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--cyan);
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            color: var(--text-soft);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            font-style: italic;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .testimonial-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -5px;
+            font-size: 3rem;
+            color: var(--cyan);
+            opacity: 0.5;
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--bg-main);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-info h4 {
+            margin-bottom: 0.2rem;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            background: rgba(245, 166, 35, 0.1);
+            border-radius: 50px;
+            color: var(--orange);
+            font-size: 0.75rem;
+            margin-top: 0.3rem;
+        }
+
+        /* Best For Section */
+        .best-for-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .best-for-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .best-for-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: var(--cyan);
+        }
+
+        .best-for-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: white;
         }
 
         /* FAQ Section */
@@ -870,22 +1047,29 @@
             transform: translateY(0);
         }
 
-        /* Responsive Design */
+        /* Responsive Design - Enhanced */
+        @media (max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
         @media (max-width: 768px) {
             .desktop-nav {
                 display: none;
             }
 
             .mobile-nav {
-                display: flex;
+                display: block;
             }
 
-            .hero-content h1 {
-                font-size: 2rem;
+            .hero {
+                padding: 4rem 1rem 3rem;
             }
 
             .hero-container {
-                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .cta-section {
@@ -894,6 +1078,166 @@
 
             .cta-title {
                 font-size: 1.5rem;
+            }
+
+            .section {
+                padding: 4rem 1rem;
+            }
+
+            .portfolio-request-form {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Enhanced Mobile Responsiveness */
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .sample-portfolio-buttons .btn {
+                font-size: 0.8rem;
+                padding: 8px 12px;
+                min-width: 80px;
+            }
+
+            .sample-portfolio-preview {
+                height: 160px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero-content h1 {
+                font-size: 1.6rem;
+            }
+
+            .hero-content p {
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .sample-portfolio-buttons .btn {
+                font-size: 0.75rem;
+                padding: 8px 10px;
+                min-width: 70px;
+            }
+
+            .sample-portfolio-content {
+                padding: 1rem;
+            }
+
+            .sample-portfolio-title {
+                font-size: 1.1rem;
+            }
+
+            .sample-portfolio-description {
+                font-size: 0.9rem;
+            }
+
+            .mobile-nav-item span {
+                font-size: 0.6rem;
+            }
+
+            .mobile-nav-item i {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .hero-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero-content p {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .sample-portfolio-buttons .btn {
+                font-size: 0.7rem;
+                padding: 8px 8px;
+                min-width: 60px;
+            }
+
+            .sample-portfolio-preview {
+                height: 140px;
+            }
+
+            .mobile-nav-item span {
+                font-size: 0.55rem;
+            }
+
+            .mobile-nav-item i {
+                font-size: 1rem;
+            }
+
+            .mobile-nav {
+                padding: 10px 0 5px;
+            }
+        }
+
+        @media (max-width: 340px) {
+            .hero-content h1 {
+                font-size: 1.4rem;
+            }
+
+            .hero-content p {
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 1.4rem;
+            }
+
+            .sample-portfolio-buttons .btn {
+                font-size: 0.65rem;
+                padding: 6px 8px;
+                min-width: 55px;
+            }
+
+            .sample-portfolio-preview {
+                height: 120px;
+            }
+
+            .mobile-nav-item span {
+                font-size: 0.5rem;
+            }
+
+            .mobile-nav-item i {
+                font-size: 0.9rem;
+            }
+
+            .mobile-nav {
+                padding: 8px 0 5px;
+            }
+        }
+
+        /* Add bottom padding to body for mobile navigation */
+        @media (max-width: 768px) {
+            body {
+                padding-bottom: 70px;
+            }
+
+            .floating-whatsapp {
+                bottom: 80px;
+            }
+
+            .back-to-top {
+                bottom: 150px;
             }
         }
     </style>
@@ -914,11 +1258,12 @@
             </div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#why-matters">Why Matters</a></li>
+                <li><a href="#why-portfolio">Why</a></li>
                 <li><a href="#features">Features</a></li>
                 <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#sample-portfolios">Samples</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#best-for">Best For</a></li>
-                <li><a href="#samples">Samples</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
         </div>
@@ -926,35 +1271,43 @@
 
     <!-- Mobile Bottom Navigation -->
     <nav class="mobile-nav">
-        <div class="mobile-nav-item">
-            <a href="index.html" style="color: inherit;">
-                <i class="fas fa-home"></i>
-                <span>Home</span>
-            </a>
-        </div>
-        <div class="mobile-nav-item">
-            <a href="#features" style="color: inherit;">
-                <i class="fas fa-star"></i>
-                <span>Features</span>
-            </a>
-        </div>
-        <div class="mobile-nav-item">
-            <a href="#pricing" style="color: inherit;">
-                <i class="fas fa-tag"></i>
-                <span>Pricing</span>
-            </a>
-        </div>
-        <div class="mobile-nav-item">
-            <a href="#samples" style="color: inherit;">
-                <i class="fas fa-images"></i>
-                <span>Samples</span>
-            </a>
-        </div>
-        <div class="mobile-nav-item">
-            <a href="#faq" style="color: inherit;">
-                <i class="fas fa-question-circle"></i>
-                <span>FAQ</span>
-            </a>
+        <div class="mobile-nav-items">
+            <div class="mobile-nav-item">
+                <a href="index.html" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#why-portfolio" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-question-circle"></i>
+                    <span>Why</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#features" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-star"></i>
+                    <span>Features</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#pricing" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-tag"></i>
+                    <span>Pricing</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#sample-portfolios" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-images"></i>
+                    <span>Samples</span>
+                </a>
+            </div>
+            <div class="mobile-nav-item">
+                <a href="#portfolio-request" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -962,24 +1315,24 @@
     <section class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>Portfolio Website Design</h1>
-                <p><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> builds modern personal portfolio websites that showcase your projects and skills in the best possible way to attract clients and employers.</p>
+                <h1>Portfolio Website Design for Students</h1>
+                <p><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> creates professional portfolio websites for students, freshers, and job seekers to showcase their skills, projects, and achievements to potential employers.</p>
                 <div class="hero-buttons">
-                    <a href="#samples" class="btn btn-secondary">View Samples</a>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Portfolio%20Website%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                    <a href="#sample-portfolios" class="btn btn-secondary">View Samples</a>
+                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Portfolio%20Website%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                 </div>
                 <div class="trust-badges">
                     <div class="trust-badge">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Student Focused</span>
+                    </div>
+                    <div class="trust-badge">
                         <i class="fas fa-mobile-alt"></i>
-                        <span>Mobile Responsive</span>
+                        <span>Mobile Ready</span>
                     </div>
                     <div class="trust-badge">
-                        <i class="fas fa-palette"></i>
-                        <span>Modern Design</span>
-                    </div>
-                    <div class="trust-badge">
-                        <i class="fas fa-bolt"></i>
-                        <span>Fast Loading</span>
+                        <i class="fas fa-search"></i>
+                        <span>SEO Friendly</span>
                     </div>
                 </div>
             </div>
@@ -990,44 +1343,44 @@
     </section>
 
     <!-- Why Portfolio Matters Section -->
-    <section class="section" id="why-matters">
+    <section class="section" id="why-portfolio">
         <div class="container">
             <div class="section-title-wrapper fade-in">
                 <h2 class="section-title">Why Portfolio Matters</h2>
-                <p class="section-subtitle">A professional portfolio can significantly boost your career and business opportunities</p>
+                <p class="section-subtitle">A professional portfolio can make all the difference in your career journey</p>
             </div>
             
             <div class="features-grid">
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
-                        <i class="fas fa-folder-open"></i>
+                        <i class="fas fa-eye"></i>
                     </div>
-                    <h3>Show Your Projects</h3>
-                    <p>Display your best work in an organized and visually appealing way that highlights your skills and achievements</p>
+                    <h3>Better First Impression</h3>
+                    <p>Make a strong first impression on recruiters and hiring managers with a professional portfolio that stands out</p>
                 </div>
                 
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
-                        <i class="fas fa-globe"></i>
+                        <i class="fas fa-briefcase"></i>
                     </div>
-                    <h3>Build Online Presence</h3>
-                    <p>Establish a professional online presence that makes you easily discoverable by potential clients and employers</p>
+                    <h3>Showcase Your Skills</h3>
+                    <p>Display your technical skills, projects, and achievements in an organized and impressive way</p>
                 </div>
                 
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
-                        <i class="fas fa-star"></i>
+                        <i class="fas fa-search"></i>
                     </div>
-                    <h3>Impress Recruiters</h3>
-                    <p>Stand out from other candidates with a professional portfolio that showcases your capabilities and potential</p>
+                    <h3>Online Visibility</h3>
+                    <p>Get discovered by recruiters searching for talent online with an SEO-optimized portfolio website</p>
                 </div>
                 
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
-                        <i class="fas fa-user-tag"></i>
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    <h3>Personal Branding</h3>
-                    <p>Build and strengthen your personal brand with a consistent online presence that reflects your professional identity</p>
+                    <h3>Career Growth</h3>
+                    <p>A well-designed portfolio can significantly improve your chances of landing better job opportunities</p>
                 </div>
             </div>
         </div>
@@ -1038,72 +1391,48 @@
         <div class="container">
             <div class="section-title-wrapper fade-in">
                 <h2 class="section-title">Portfolio Features</h2>
-                <p class="section-subtitle">Our portfolio websites include all these features to showcase your work effectively</p>
+                <p class="section-subtitle">Our portfolio websites include all these features to help you stand out</p>
             </div>
             
             <div class="features-grid">
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
-                        <i class="fas fa-user"></i>
+                        <i class="fas fa-mobile-alt"></i>
                     </div>
-                    <h3>About Me</h3>
-                    <p>Professional about section that introduces you, your background, and your expertise to visitors</p>
+                    <h3>Responsive Design</h3>
+                    <p>Websites that work perfectly on all devices - desktop, tablet, and mobile with optimized layouts</p>
                 </div>
                 
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
-                        <i class="fas fa-tools"></i>
+                        <i class="fas fa-palette"></i>
                     </div>
-                    <h3>Skills Section</h3>
-                    <p>Visually appealing skills section with progress bars or skill cards that highlight your technical abilities</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-images"></i>
-                    </div>
-                    <h3>Project Gallery</h3>
-                    <p>Beautiful project gallery with detailed descriptions, images, and links to live projects or repositories</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-download"></i>
-                    </div>
-                    <h3>Resume Download</h3>
-                    <p>Integrated resume download button that allows visitors to easily download your CV for reference</p>
+                    <h3>Modern UI</h3>
+                    <p>Clean, attractive, and modern user interface design that follows the latest design trends</p>
                 </div>
                 
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
                         <i class="fas fa-envelope"></i>
                     </div>
-                    <h3>Contact Section</h3>
-                    <p>Easy-to-use contact form with all your contact information for potential clients and employers</p>
+                    <h3>Contact Form</h3>
+                    <p>Professional contact form that allows potential employers to reach out to you directly</p>
                 </div>
                 
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
+                        <i class="fab fa-whatsapp"></i>
                     </div>
-                    <h3>Mobile Responsive</h3>
-                    <p>Fully responsive design that looks great on all devices, from desktop computers to mobile phones</p>
+                    <h3>WhatsApp Integration</h3>
+                    <p>Direct WhatsApp chat integration for easy communication and quick responses</p>
                 </div>
                 
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
-                        <i class="fas fa-share-alt"></i>
+                        <i class="fas fa-search"></i>
                     </div>
-                    <h3>Social Links</h3>
-                    <p>Integrated social media links that help visitors connect with you on various platforms</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <h3>GitHub Integration</h3>
-                    <p>Seamless integration with your GitHub profile to showcase your code repositories and contributions</p>
+                    <h3>SEO Friendly</h3>
+                    <p>Search engine optimized structure to help your portfolio rank better in search results</p>
                 </div>
             </div>
         </div>
@@ -1120,8 +1449,243 @@
             <div class="pricing-card fade-in">
                 <h3 class="pricing-title">Portfolio Website</h3>
                 <div class="pricing-price">Starting from ₹999</div>
-                <p style="color: var(--text-soft); margin-bottom: 2rem;">Get a professional portfolio website that showcases your work and helps you stand out from the crowd</p>
-                <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Portfolio%20Website%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Get a Quote</a>
+                <p style="color: var(--text-soft); margin-bottom: 2rem;">Get a professional portfolio website designed to help you stand out and land your dream job</p>
+                <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Portfolio%20Website%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Get a Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sample Portfolio Layouts Section -->
+    <section class="section" id="sample-portfolios">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Sample Portfolio Layouts</h2>
+                <p class="section-subtitle">Explore our portfolio website designs for students and professionals</p>
+            </div>
+            
+            <div class="sample-portfolio-grid">
+                <div class="sample-portfolio-card fade-in">
+                    <div class="sample-portfolio-preview">
+                        <div class="sample-portfolio-preview-placeholder">
+                            <i class="fas fa-user-graduate sample-portfolio-preview-icon"></i>
+                        </div>
+                    </div>
+                    <div class="sample-portfolio-content">
+                        <div class="sample-portfolio-badge">Student</div>
+                        <h3 class="sample-portfolio-title">Student Portfolio</h3>
+                        <p class="sample-portfolio-description">Clean and modern portfolio design for students showcasing education, skills, and projects.</p>
+                        <div class="sample-portfolio-buttons">
+                            <a href="https://mohithportfolio.site" target="_blank" class="btn btn-secondary">View</a>
+                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20this%20Student%20Portfolio%20design.%20Please%20share%20more%20details." target="_blank" class="btn btn-primary">Enquire Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sample-portfolio-card fade-in">
+                    <div class="sample-portfolio-preview">
+                        <div class="sample-portfolio-preview-placeholder">
+                            <i class="fas fa-briefcase sample-portfolio-preview-icon"></i>
+                        </div>
+                    </div>
+                    <div class="sample-portfolio-content">
+                        <div class="sample-portfolio-badge">Professional</div>
+                        <h3 class="sample-portfolio-title">Professional Portfolio</h3>
+                        <p class="sample-portfolio-description">Professional portfolio design for experienced professionals with focus on achievements and expertise.</p>
+                        <div class="sample-portfolio-buttons">
+                            <a href="http://lakshmidurga.site" target="_blank" class="btn btn-secondary">View</a>
+                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20this%20Professional%20Portfolio%20design.%20Please%20share%20more%20details." target="_blank" class="btn btn-primary">Enquire Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sample-portfolio-card fade-in">
+                    <div class="sample-portfolio-preview">
+                        <div class="sample-portfolio-preview-placeholder">
+                            <i class="fas fa-code sample-portfolio-preview-icon"></i>
+                        </div>
+                    </div>
+                    <div class="sample-portfolio-content">
+                        <div class="sample-portfolio-badge">Developer</div>
+                        <h3 class="sample-portfolio-title">Developer Portfolio</h3>
+                        <p class="sample-portfolio-description">Technical portfolio design for developers featuring code projects, technical skills, and GitHub integration.</p>
+                        <div class="sample-portfolio-buttons">
+                            <a href="https://mohithbatchala.github.io/priya" target="_blank" class="btn btn-secondary">View</a>
+                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20this%20Developer%20Portfolio%20design.%20Please%20share%20more%20details." target="_blank" class="btn btn-primary">Enquire Now</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sample-portfolio-card fade-in">
+                    <div class="sample-portfolio-preview">
+                        <div class="sample-portfolio-preview-placeholder">
+                            <i class="fas fa-paint-brush sample-portfolio-preview-icon"></i>
+                        </div>
+                    </div>
+                    <div class="sample-portfolio-content">
+                        <div class="sample-portfolio-badge">Creative</div>
+                        <h3 class="sample-portfolio-title">Creative Portfolio</h3>
+                        <p class="sample-portfolio-description">Creative portfolio design for artists and designers with focus on visual aesthetics and creativity.</p>
+                        <div class="sample-portfolio-buttons">
+                            <a href="https://mohithbatchala.github.io/vikram" target="_blank" class="btn btn-secondary">View</a>
+                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20this%20Creative%20Portfolio%20design.%20Please%20share%20more%20details." target="_blank" class="btn btn-primary">Enquire Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Request Form Section -->
+    <section class="section" id="portfolio-request">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">Request Your Portfolio Sample</h2>
+                <p class="section-subtitle">Tell us about yourself and we'll create a sample portfolio design for you</p>
+            </div>
+
+            <div class="portfolio-request-form fade-in">
+                <form id="portfolioRequestForm">
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="shortName">Username / Short Name</label>
+                        <input type="text" id="shortName" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="mobileNumber">Mobile Number *</label>
+                        <input type="tel" id="mobileNumber" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="education">Education / Qualification *</label>
+                        <input type="text" id="education" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="collegeName">College Name</label>
+                        <input type="text" id="collegeName" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skills">Skills *</label>
+                        <textarea id="skills" class="form-control" rows="3" required placeholder="List your key skills separated by commas"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projects">Projects</label>
+                        <textarea id="projects" class="form-control" rows="3" placeholder="Describe your academic or personal projects"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="portfolioType">Portfolio Type *</label>
+                        <select id="portfolioType" class="form-control" required>
+                            <option value="" selected disabled>Select a portfolio type</option>
+                            <option value="student">Student Portfolio</option>
+                            <option value="fresher">Fresher Portfolio</option>
+                            <option value="professional">Professional Portfolio</option>
+                            <option value="developer">Developer Portfolio</option>
+                            <option value="creative">Creative Portfolio</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needResume">Need Resume Button? *</label>
+                        <select id="needResume" class="form-control" required>
+                            <option value="" selected disabled>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needContact">Need Contact Form? *</label>
+                        <select id="needContact" class="form-control" required>
+                            <option value="" selected disabled>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="needSocial">Need Social Links? *</label>
+                        <select id="needSocial" class="form-control" required>
+                            <option value="" selected disabled>Select an option</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="extraMessage">Extra Message / Notes</label>
+                        <textarea id="extraMessage" class="form-control" rows="4" placeholder="Any additional information or special requirements"></textarea>
+                    </div>
+
+                    <div class="form-buttons">
+                        <button type="button" id="resetForm" class="btn btn-secondary">Reset</button>
+                        <button type="submit" class="btn btn-primary">Send Request via WhatsApp</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section" id="testimonials">
+        <div class="container">
+            <div class="section-title-wrapper fade-in">
+                <h2 class="section-title">What Our Students Say About <span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h2>
+                <p class="section-subtitle">Don't just take our word for it - hear from our satisfied students</p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> created an amazing portfolio website for me that helped me land my first job. The design was professional and mobile-friendly, which impressed recruiters.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">R</div>
+                        <div class="testimonial-info">
+                            <h4>Rahul Sharma</h4>
+                            <div class="testimonial-badge">Student Portfolio</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        As a fresher, I was struggling to create a portfolio. The team at <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> understood my needs and created a perfect portfolio that highlighted my skills and projects.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">P</div>
+                        <div class="testimonial-info">
+                            <h4>Priya Patel</h4>
+                            <div class="testimonial-badge">Fresher Portfolio</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">
+                        I needed a developer portfolio to showcase my coding projects, and <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> delivered beyond my expectations. The portfolio helped me get multiple interview calls!
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">A</div>
+                        <div class="testimonial-info">
+                            <h4>Amit Kumar</h4>
+                            <div class="testimonial-badge">Developer Portfolio</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1131,40 +1695,40 @@
         <div class="container">
             <div class="section-title-wrapper fade-in">
                 <h2 class="section-title">Best For</h2>
-                <p class="section-subtitle">Portfolio websites are perfect for these professionals</p>
+                <p class="section-subtitle">Portfolio websites are perfect for these students and professionals</p>
             </div>
             
             <div class="best-for-grid">
                 <div class="best-for-card fade-in">
                     <div class="best-for-icon">
-                        <i class="fas fa-graduation-cap"></i>
+                        <i class="fas fa-user-graduate"></i>
                     </div>
                     <h3>Students</h3>
-                    <p>Showcase your academic projects and achievements to potential employers and internship providers</p>
+                    <p>Showcase your academic projects, achievements, and skills for internship and job applications</p>
                 </div>
                 
                 <div class="best-for-card fade-in">
                     <div class="best-for-icon">
-                        <i class="fas fa-code"></i>
+                        <i class="fas fa-user-tie"></i>
                     </div>
-                    <h3>Developers</h3>
-                    <p>Display your coding projects, technical skills, and problem-solving abilities to attract job opportunities</p>
-                </div>
-                
-                <div class="best-for-card fade-in">
-                    <div class="best-for-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>Designers</h3>
-                    <p>Present your creative work, design process, and aesthetic sense to potential clients and employers</p>
+                    <h3>Freshers</h3>
+                    <p>Perfect for recent graduates entering the job market for the first time</p>
                 </div>
                 
                 <div class="best-for-card fade-in">
                     <div class="best-for-icon">
                         <i class="fas fa-briefcase"></i>
                     </div>
-                    <h3>Freelancers</h3>
-                    <p>Build credibility and attract clients by showcasing your portfolio of successful projects and client testimonials</p>
+                    <h3>Internship Seekers</h3>
+                    <p>Targeted portfolios for internship applications with focus on skills and potential</p>
+                </div>
+                
+                <div class="best-for-card fade-in">
+                    <div class="best-for-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Final Year Students</h3>
+                    <p>Comprehensive portfolios for final year students preparing for campus placements</p>
                 </div>
                 
                 <div class="best-for-card fade-in">
@@ -1172,55 +1736,7 @@
                         <i class="fas fa-search"></i>
                     </div>
                     <h3>Job Seekers</h3>
-                    <p>Stand out from other candidates with a professional portfolio that demonstrates your skills and experience</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sample Portfolio Layouts Section -->
-    <section class="section" id="samples">
-        <div class="container">
-            <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Sample Portfolio Layouts</h2>
-                <p class="section-subtitle">Take a look at some of our portfolio design samples</p>
-            </div>
-            
-            <div class="sample-portfolio-grid">
-                <div class="sample-portfolio-card fade-in">
-                    <div class="sample-portfolio-preview">
-                        <div class="sample-portfolio-placeholder">
-                            <i class="fas fa-user-graduate sample-portfolio-icon"></i>
-                        </div>
-                    </div>
-                    <div class="sample-portfolio-content">
-                        <h3 class="sample-portfolio-title">Student Portfolio</h3>
-                        <p>Clean and modern portfolio designed for students to showcase academic projects and achievements</p>
-                    </div>
-                </div>
-                
-                <div class="sample-portfolio-card fade-in">
-                    <div class="sample-portfolio-preview">
-                        <div class="sample-portfolio-placeholder">
-                            <i class="fas fa-code sample-portfolio-icon"></i>
-                        </div>
-                    </div>
-                    <div class="sample-portfolio-content">
-                        <h3 class="sample-portfolio-title">Developer Portfolio</h3>
-                        <p>Technical portfolio with code snippets, project repositories, and technical skill demonstrations</p>
-                    </div>
-                </div>
-                
-                <div class="sample-portfolio-card fade-in">
-                    <div class="sample-portfolio-preview">
-                        <div class="sample-portfolio-placeholder">
-                            <i class="fas fa-palette sample-portfolio-icon"></i>
-                        </div>
-                    </div>
-                    <div class="sample-portfolio-content">
-                        <h3 class="sample-portfolio-title">Creative Portfolio</h3>
-                        <p>Artistic and visually striking portfolio perfect for designers, artists, and creative professionals</p>
-                    </div>
+                    <p>Professional portfolios for job seekers to showcase experience and achievements</p>
                 </div>
             </div>
         </div>
@@ -1237,51 +1753,41 @@
             <div class="faq-container">
                 <div class="faq-item fade-in">
                     <div class="faq-question">
-                        <h3>Can I add custom sections to my portfolio?</h3>
+                        <h3>How long does it take to deliver the portfolio website?</h3>
                         <i class="fas fa-chevron-down faq-icon"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, we can add custom sections based on your specific needs. Whether you need a blog, testimonials, case studies, or any other section, we can customize your portfolio accordingly.</p>
+                        <p>Typically, we deliver portfolio websites within 5-7 working days, depending on the complexity and number of pages. We'll provide a specific timeline after understanding your requirements.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item fade-in">
                     <div class="faq-question">
-                        <h3>Can you link my resume to the portfolio?</h3>
+                        <h3>Will I get an editable version of the portfolio?</h3>
                         <i class="fas fa-chevron-down faq-icon"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Absolutely! We can integrate your resume into the portfolio with a download button, embed it as a section, or create a dedicated page for it. We'll discuss the best approach based on your needs.</p>
+                        <p>Yes, we provide both the final portfolio website and the source code, allowing you to make updates in the future if needed.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item fade-in">
                     <div class="faq-question">
-                        <h3>How long does it take to deliver a portfolio website?</h3>
+                        <h3>Do you provide domain and hosting?</h3>
                         <i class="fas fa-chevron-down faq-icon"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Typically, we deliver portfolio websites within 5-7 working days, depending on the complexity and number of projects to be included. We'll provide a specific timeline after understanding your requirements.</p>
+                        <p>Domain registration and hosting are not included in our portfolio package, but we can guide you through the process of purchasing and setting them up.</p>
                     </div>
                 </div>
                 
                 <div class="faq-item fade-in">
                     <div class="faq-question">
-                        <h3>Do you provide hosting for the portfolio?</h3>
+                        <h3>Can I update my portfolio content myself?</h3>
                         <i class="fas fa-chevron-down faq-icon"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>We don't provide hosting directly, but we can guide you in choosing the right hosting provider based on your needs and budget. We'll also help you deploy your portfolio to the hosting server.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <h3>Do you help with domain registration?</h3>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, we can help you choose and register a domain name for your portfolio. We'll suggest appropriate domain names and guide you through the registration process.</p>
+                        <p>Yes, with the source code provided, you can update text, images, and other content yourself. We also provide documentation for easy updates.</p>
                     </div>
                 </div>
             </div>
@@ -1292,11 +1798,11 @@
     <section class="section">
         <div class="container">
             <div class="cta-section fade-in">
-                <h2 class="cta-title">Need Your Own Portfolio Website?</h2>
-                <p>Let <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> create a professional portfolio that showcases your work and helps you achieve your career goals.</p>
+                <h2 class="cta-title">Need Your Student Portfolio Website?</h2>
+                <p>Let <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> create a professional portfolio that helps you stand out and land your dream job.</p>
                 <div class="cta-buttons">
-                    <a href="#samples" class="btn btn-secondary">View Samples</a>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Portfolio%20Website%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                    <a href="#sample-portfolios" class="btn btn-secondary">View Samples</a>
+                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Portfolio%20Website%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                 </div>
             </div>
         </div>
@@ -1312,12 +1818,12 @@
                         <h3><span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h3>
                     </div>
                     <p style="margin-bottom: 1rem; color: var(--text-soft);">Design • Develop • Deliver</p>
-                    <p style="color: var(--text-soft);">We help professionals create impressive portfolio websites that showcase their work and attract opportunities.</p>
+                    <p style="color: var(--text-soft);">We help students and professionals create impressive portfolios that showcase their skills and achievements.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="https://instagram.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://youtube.com/@kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="https://wa.me/738686895149" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://facebook.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
                 
@@ -1325,11 +1831,11 @@
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="#why-matters">Why Matters</a></li>
+                        <li><a href="#why-portfolio">Why Portfolio</a></li>
                         <li><a href="#features">Features</a></li>
                         <li><a href="#pricing">Pricing</a></li>
+                        <li><a href="#sample-portfolios">Samples</a></li>
                         <li><a href="#best-for">Best For</a></li>
-                        <li><a href="#samples">Samples</a></li>
                     </ul>
                 </div>
                 
@@ -1363,7 +1869,7 @@
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Portfolio%20Website%20service.%20Please%20share%20details." target="_blank" class="floating-whatsapp">
+    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Portfolio%20Website%20Design%20service.%20Please%20share%20details." target="_blank" class="floating-whatsapp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -1398,6 +1904,53 @@
                     }
                 }
             });
+        });
+
+        // Portfolio Request Form Submission
+        const portfolioRequestForm = document.getElementById('portfolioRequestForm');
+
+        portfolioRequestForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const shortName = document.getElementById('shortName').value;
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            const email = document.getElementById('email').value;
+            const education = document.getElementById('education').value;
+            const collegeName = document.getElementById('collegeName').value;
+            const skills = document.getElementById('skills').value;
+            const projects = document.getElementById('projects').value;
+            const portfolioType = document.getElementById('portfolioType').value;
+            const needResume = document.getElementById('needResume').value;
+            const needContact = document.getElementById('needContact').value;
+            const needSocial = document.getElementById('needSocial').value;
+            const extraMessage = document.getElementById('extraMessage').value;
+
+            // Build WhatsApp message
+            const message = `Hello Kodingwala, I would like to request a portfolio website.%0A%0A` +
+                `Full Name: ${fullName}%0A` +
+                `Username/Short Name: ${shortName || 'Not provided'}%0A` +
+                `Mobile Number: ${mobileNumber}%0A` +
+                `Email: ${email}%0A` +
+                `Education: ${education}%0A` +
+                `College Name: ${collegeName || 'Not provided'}%0A` +
+                `Skills: ${skills}%0A` +
+                `Projects: ${projects || 'Not provided'}%0A` +
+                `Portfolio Type: ${portfolioType}%0A` +
+                `Need Resume Button: ${needResume}%0A` +
+                `Need Contact Form: ${needContact}%0A` +
+                `Need Social Links: ${needSocial}%0A` +
+                `Extra Message: ${extraMessage || 'Not provided'}`;
+
+            // Open WhatsApp with the message
+            const whatsappURL = `https://wa.me/738686895149?text=${message}`;
+            window.open(whatsappURL, '_blank');
+        });
+
+        // Reset Form Button
+        document.getElementById('resetForm').addEventListener('click', function() {
+            portfolioRequestForm.reset();
         });
 
         // FAQ Accordion
