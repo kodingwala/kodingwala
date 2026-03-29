@@ -558,7 +558,7 @@
             color: white;
         }
 
-        /* Sample Slides Grid */
+        /* Sample Slides Grid - UPDATED */
         .sample-slides-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -571,6 +571,8 @@
             overflow: hidden;
             border: 1px solid var(--border);
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .sample-slide-card:hover {
@@ -582,31 +584,55 @@
         .sample-slide-preview {
             height: 200px;
             background: var(--bg-main);
-            position: relative;
             overflow: hidden;
-        }
-
-        .sample-slide-placeholder {
-            width: 100%;
-            height: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(25, 211, 197, 0.1) 0%, rgba(245, 166, 35, 0.1) 100%);
         }
 
-        .sample-slide-icon {
-            font-size: 3rem;
-            color: var(--cyan);
+        .sample-slide-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .sample-slide-card:hover .sample-slide-preview img {
+            transform: scale(1.05);
         }
 
         .sample-slide-content {
             padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .sample-slide-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
+            color: var(--cyan);
+        }
+
+        .sample-slide-description {
+            color: var(--text-soft);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .sample-slide-buttons {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: auto;
+        }
+
+        .sample-slide-buttons .btn {
+            flex: 1;
+            text-align: center;
+            font-size: 0.9rem;
+            padding: 8px 12px;
         }
 
         /* Sample Request Form Section */
@@ -999,6 +1025,101 @@
             box-shadow: 0 10px 25px rgba(25, 211, 197, 0.5);
         }
 
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-container {
+            background: var(--bg-card);
+            border-radius: 24px;
+            max-width: 90%;
+            width: 800px;
+            border: 1px solid var(--border);
+            box-shadow: 0 30px 50px rgba(0,0,0,0.5);
+            overflow: hidden;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.active .modal-container {
+            transform: scale(1);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .modal-header h3 {
+            margin: 0;
+            color: var(--cyan);
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--text-soft);
+            transition: 0.2s;
+        }
+        .modal-close:hover {
+            color: var(--orange);
+        }
+        .modal-preview {
+            padding: 1.5rem;
+            text-align: center;
+            background: var(--bg-main);
+        }
+        .modal-preview img {
+            max-width: 100%;
+            max-height: 60vh;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            object-fit: contain;
+        }
+        .modal-info {
+            padding: 1rem 1.5rem;
+            background: rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            border-top: 1px solid var(--border);
+        }
+        .modal-filename {
+            font-family: monospace;
+            background: rgba(25,211,197,0.1);
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+        }
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+        }
+        @media (max-width: 600px) {
+            .modal-actions .btn { font-size: 0.8rem; padding: 8px 12px; }
+            .modal-info { flex-direction: column; align-items: stretch; }
+        }
+        
         /* Animations */
         @keyframes float {
             0% { transform: translateY(0px); }
@@ -1076,810 +1197,125 @@
             }
         }
 
-        /* Enhanced Mobile Responsiveness */
         @media (max-width: 480px) {
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .sample-slide-buttons .btn {
-                font-size: 0.8rem;
-                padding: 8px 12px;
-                min-width: 80px;
-            }
-
-            .sample-slide-preview {
-                height: 160px;
-            }
+            .hero-content h1 { font-size: 1.8rem; }
+            .sample-slide-buttons .btn { font-size: 0.8rem; padding: 8px 12px; }
         }
-
-        @media (max-width: 420px) {
-            .hero-content h1 {
-                font-size: 1.6rem;
-            }
-
-            .hero-content p {
-                font-size: 0.95rem;
-            }
-
-            .section-title {
-                font-size: 1.6rem;
-            }
-
-            .sample-slide-buttons .btn {
-                font-size: 0.75rem;
-                padding: 8px 10px;
-                min-width: 70px;
-            }
-
-            .sample-slide-content {
-                padding: 1rem;
-            }
-
-            .sample-slide-title {
-                font-size: 1.1rem;
-            }
-
-            .sample-slide-description {
-                font-size: 0.9rem;
-            }
-
-            .mobile-nav-item span {
-                font-size: 0.6rem;
-            }
-
-            .mobile-nav-item i {
-                font-size: 1.1rem;
-            }
-        }
-
-        @media (max-width: 380px) {
-            .hero-content h1 {
-                font-size: 1.5rem;
-            }
-
-            .hero-content p {
-                font-size: 0.9rem;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-
-            .sample-slide-buttons .btn {
-                font-size: 0.7rem;
-                padding: 8px 8px;
-                min-width: 60px;
-            }
-
-            .sample-slide-preview {
-                height: 140px;
-            }
-
-            .mobile-nav-item span {
-                font-size: 0.55rem;
-            }
-
-            .mobile-nav-item i {
-                font-size: 1rem;
-            }
-
-            .mobile-nav {
-                padding: 10px 0 5px;
-            }
-        }
-
-        @media (max-width: 340px) {
-            .hero-content h1 {
-                font-size: 1.4rem;
-            }
-
-            .hero-content p {
-                font-size: 0.85rem;
-            }
-
-            .section-title {
-                font-size: 1.4rem;
-            }
-
-            .sample-slide-buttons .btn {
-                font-size: 0.65rem;
-                padding: 6px 8px;
-                min-width: 55px;
-            }
-
-            .sample-slide-preview {
-                height: 120px;
-            }
-
-            .mobile-nav-item span {
-                font-size: 0.5rem;
-            }
-
-            .mobile-nav-item i {
-                font-size: 0.9rem;
-            }
-
-            .mobile-nav {
-                padding: 8px 0 5px;
-            }
-        }
-
-        /* Add bottom padding to body for mobile navigation */
         @media (max-width: 768px) {
-            body {
-                padding-bottom: 70px;
-            }
-
-            .floating-whatsapp {
-                bottom: 80px;
-            }
-
-            .back-to-top {
-                bottom: 150px;
-            }
+            body { padding-bottom: 70px; }
+            .floating-whatsapp { bottom: 80px; }
+            .back-to-top { bottom: 150px; }
         }
     </style>
 </head>
 <body>
-    <!-- Scroll Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
+    <nav class="desktop-nav"><div class="desktop-nav-container"><div><div class="logo"><img src="https://i.postimg.cc/3N8yBc2K/unnamed.png" alt="Kodingwala Logo"><span class="brand-koding">Koding</span><span class="brand-wala">wala</span></div><p class="tagline">Design • Develop • Deliver</p></div><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="#services">Services</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#styles">Styles</a></li><li><a href="#samples">Samples</a></li><li><a href="#testimonials">Testimonials</a></li><li><a href="#why-choose">Why Us</a></li><li><a href="#faq">FAQ</a></li></ul></div></nav>
+    <nav class="mobile-nav"><div class="mobile-nav-items"><div class="mobile-nav-item"><a href="index.html" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;"><i class="fas fa-home"></i><span>Home</span></a></div><div class="mobile-nav-item"><a href="#services" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;"><i class="fas fa-file-powerpoint"></i><span>Services</span></a></div><div class="mobile-nav-item"><a href="#pricing" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;"><i class="fas fa-tag"></i><span>Pricing</span></a></div><div class="mobile-nav-item"><a href="#samples" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;"><i class="fas fa-images"></i><span>Samples</span></a></div><div class="mobile-nav-item"><a href="#faq" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;"><i class="fas fa-question-circle"></i><span>FAQ</span></a></div><div class="mobile-nav-item"><a href="#sample-request" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;"><i class="fas fa-envelope"></i><span>Contact</span></a></div></div></nav>
 
-    <!-- Desktop Navigation -->
-    <nav class="desktop-nav">
-        <div class="desktop-nav-container">
-            <div>
-                <div class="logo">
-                    <img src="https://i.postimg.cc/3N8yBc2K/unnamed.png" alt="Kodingwala Logo">
-                    <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>
-                </div>
-                <p class="tagline">Design • Develop • Deliver</p>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#styles">Styles</a></li>
-                <li><a href="#samples">Samples</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#why-choose">Why Us</a></li>
-                <li><a href="#faq">FAQ</a></li>
-            </ul>
-        </div>
-    </nav>
+    <section class="hero"><div class="hero-container"><div class="hero-content"><h1>PPT Design Services</h1><p><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> creates attractive, clean, and professional presentation slides for students, seminars, startups, and business presentations.</p><div class="hero-buttons"><a href="#samples" class="btn btn-secondary">View Samples</a><a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20PPT%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a></div><div class="trust-badges"><div class="trust-badge"><i class="fas fa-palette"></i><span>Modern Design</span></div><div class="trust-badge"><i class="fas fa-graduation-cap"></i><span>Student Friendly</span></div><div class="trust-badge"><i class="fas fa-briefcase"></i><span>Business Ready</span></div></div></div><div class="hero-visual"><img src="https://picsum.photos/seed/presentation/600/400.jpg" alt="PPT Design" class="hero-image"></div></div></section>
 
-    <!-- Mobile Bottom Navigation -->
-    <nav class="mobile-nav">
-        <div class="mobile-nav-items">
-            <div class="mobile-nav-item">
-                <a href="index.html" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </a>
-            </div>
-            <div class="mobile-nav-item">
-                <a href="#services" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
-                    <i class="fas fa-presentation"></i>
-                    <span>Services</span>
-                </a>
-            </div>
-            <div class="mobile-nav-item">
-                <a href="#pricing" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
-                    <i class="fas fa-tag"></i>
-                    <span>Pricing</span>
-                </a>
-            </div>
-            <div class="mobile-nav-item">
-                <a href="#samples" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
-                    <i class="fas fa-images"></i>
-                    <span>Samples</span>
-                </a>
-            </div>
-            <div class="mobile-nav-item">
-                <a href="#faq" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
-                    <i class="fas fa-question-circle"></i>
-                    <span>FAQ</span>
-                </a>
-            </div>
-            <div class="mobile-nav-item">
-                <a href="#sample-request" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
-                    <i class="fas fa-envelope"></i>
-                    <span>Contact</span>
-                </a>
-            </div>
-        </div>
-    </nav>
+    <section class="section" id="services"><div class="container"><div class="section-title-wrapper fade-in"><h2 class="section-title">Services Included</h2><p class="section-subtitle">We offer a wide range of PPT design services for different needs</p></div><div class="services-grid"><div class="service-card fade-in"><div class="service-icon"><i class="fas fa-graduation-cap"></i></div><h3>College Seminar PPTs</h3><p>Professional presentations for college seminars with clean layouts and academic focus</p></div><div class="service-card fade-in"><div class="service-icon"><i class="fas fa-project-diagram"></i></div><h3>Project Presentation PPTs</h3><p>Engaging project presentations that effectively communicate your ideas and findings</p></div><div class="service-card fade-in"><div class="service-icon"><i class="fas fa-rocket"></i></div><h3>Startup Pitch Decks</h3><p>Impressive pitch decks for startups to attract investors and partners</p></div><div class="service-card fade-in"><div class="service-icon"><i class="fas fa-briefcase"></i></div><h3>Business Presentation Slides</h3><p>Professional business presentations for meetings, conferences, and client pitches</p></div><div class="service-card fade-in"><div class="service-icon"><i class="fas fa-chart-pie"></i></div><h3>Clean Infographic Slides</h3><p>Visually appealing infographics that make complex data easy to understand</p></div><div class="service-card fade-in"><div class="service-icon"><i class="fas fa-layer-group"></i></div><h3>Modern Templates</h3><p>Contemporary templates with consistent design language throughout the presentation</p></div></div></div></section>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>PPT Design Services</h1>
-                <p><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> creates attractive, clean, and professional presentation slides for students, seminars, startups, and business presentations.</p>
-                <div class="hero-buttons">
-                    <a href="#samples" class="btn btn-secondary">View Samples</a>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20PPT%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
-                </div>
-                <div class="trust-badges">
-                    <div class="trust-badge">
-                        <i class="fas fa-palette"></i>
-                        <span>Modern Design</span>
-                    </div>
-                    <div class="trust-badge">
-                        <i class="fas fa-graduation-cap"></i>
-                        <span>Student Friendly</span>
-                    </div>
-                    <div class="trust-badge">
-                        <i class="fas fa-briefcase"></i>
-                        <span>Business Ready</span>
-                    </div>
-                </div>
-            </div>
-            <div class="hero-visual">
-                <img src="https://picsum.photos/seed/presentation/600/400.jpg" alt="PPT Design" class="hero-image">
-            </div>
-        </div>
-    </section>
+    <section class="section" id="pricing"><div class="container"><div class="section-title-wrapper fade-in"><h2 class="section-title">Pricing</h2><p class="section-subtitle">Affordable pricing for professional presentation design</p></div><div class="pricing-card fade-in"><h3 class="pricing-title">PPT Design</h3><div class="pricing-price">₹399</div><p style="color: var(--text-soft); margin-bottom: 2rem;">Get a professional presentation designed to impress your audience and convey your message effectively</p><a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20PPT%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Get a Quote</a></div></div></section>
 
-    <!-- Services Included Section -->
-    <section class="section" id="services">
-        <div class="container">
-            <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Services Included</h2>
-                <p class="section-subtitle">We offer a wide range of PPT design services for different needs</p>
-            </div>
-            
-            <div class="services-grid">
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>College Seminar PPTs</h3>
-                    <p>Professional presentations for college seminars with clean layouts and academic focus</p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-project-diagram"></i>
-                    </div>
-                    <h3>Project Presentation PPTs</h3>
-                    <p>Engaging project presentations that effectively communicate your ideas and findings</p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Startup Pitch Decks</h3>
-                    <p>Impressive pitch decks for startups to attract investors and partners</p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h3>Business Presentation Slides</h3>
-                    <p>Professional business presentations for meetings, conferences, and client pitches</p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <h3>Clean Infographic Slides</h3>
-                    <p>Visually appealing infographics that make complex data easy to understand</p>
-                </div>
-                
-                <div class="service-card fade-in">
-                    <div class="service-icon">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-                    <h3>Modern Templates</h3>
-                    <p>Contemporary templates with consistent design language throughout the presentation</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="section" id="styles"><div class="container"><div class="section-title-wrapper fade-in"><h2 class="section-title">PPT Styles</h2><p class="section-subtitle">We offer different styles to match your presentation needs</p></div><div class="ppt-styles-grid"><div class="ppt-style-card fade-in"><div class="ppt-style-icon"><i class="fas fa-university"></i></div><h3>Academic</h3><p>Formal and structured presentations perfect for educational and research purposes</p></div><div class="ppt-style-card fade-in"><div class="ppt-style-icon"><i class="fas fa-briefcase"></i></div><h3>Professional</h3><p>Corporate-style presentations with clean layouts and business-focused design</p></div><div class="ppt-style-card fade-in"><div class="ppt-style-icon"><i class="fas fa-palette"></i></div><h3>Creative</h3><p>Artistic and innovative designs that capture attention and inspire</p></div><div class="ppt-style-card fade-in"><div class="ppt-style-icon"><i class="fas fa-chart-line"></i></div><h3>Business Pitch</h3><p>Persuasive presentations designed to convince investors and stakeholders</p></div><div class="ppt-style-card fade-in"><div class="ppt-style-icon"><i class="fas fa-minus"></i></div><h3>Minimal</h3><p>Clean and simple designs with focus on content and clarity</p></div><div class="ppt-style-card fade-in"><div class="ppt-style-icon"><i class="fas fa-images"></i></div><h3>Visual-Heavy</h3><p>Image-rich presentations that tell a story through visuals</p></div></div></div></section>
 
-    <!-- Pricing Section -->
-    <section class="section" id="pricing">
-        <div class="container">
-            <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Pricing</h2>
-                <p class="section-subtitle">Affordable pricing for professional presentation design</p>
-            </div>
-            
-            <div class="pricing-card fade-in">
-                <h3 class="pricing-title">PPT Design</h3>
-                <div class="pricing-price">₹399</div>
-                <p style="color: var(--text-soft); margin-bottom: 2rem;">Get a professional presentation designed to impress your audience and convey your message effectively</p>
-                <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20PPT%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Get a Quote</a>
-            </div>
-        </div>
-    </section>
+    <!-- UPDATED SAMPLE SLIDES SECTION with actual cards -->
+    <section class="section" id="samples"><div class="container"><div class="section-title-wrapper fade-in"><h2 class="section-title">Sample Slides</h2><p class="section-subtitle">Explore our premium PPT templates — preview and request instantly</p></div><div class="sample-slides-grid" id="sampleSlidesGrid"></div></div></section>
 
-    <!-- PPT Styles Section -->
-    <section class="section" id="styles">
-        <div class="container">
-            <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">PPT Styles</h2>
-                <p class="section-subtitle">We offer different styles to match your presentation needs</p>
-            </div>
-            
-            <div class="ppt-styles-grid">
-                <div class="ppt-style-card fade-in">
-                    <div class="ppt-style-icon">
-                        <i class="fas fa-university"></i>
-                    </div>
-                    <h3>Academic</h3>
-                    <p>Formal and structured presentations perfect for educational and research purposes</p>
-                </div>
-                
-                <div class="ppt-style-card fade-in">
-                    <div class="ppt-style-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h3>Professional</h3>
-                    <p>Corporate-style presentations with clean layouts and business-focused design</p>
-                </div>
-                
-                <div class="ppt-style-card fade-in">
-                    <div class="ppt-style-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>Creative</h3>
-                    <p>Artistic and innovative designs that capture attention and inspire</p>
-                </div>
-                
-                <div class="ppt-style-card fade-in">
-                    <div class="ppt-style-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Business Pitch</h3>
-                    <p>Persuasive presentations designed to convince investors and stakeholders</p>
-                </div>
-                
-                <div class="ppt-style-card fade-in">
-                    <div class="ppt-style-icon">
-                        <i class="fas fa-minus"></i>
-                    </div>
-                    <h3>Minimal</h3>
-                    <p>Clean and simple designs with focus on content and clarity</p>
-                </div>
-                
-                <div class="ppt-style-card fade-in">
-                    <div class="ppt-style-icon">
-                        <i class="fas fa-images"></i>
-                    </div>
-                    <h3>Visual-Heavy</h3>
-                    <p>Image-rich presentations that tell a story through visuals</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="section" id="sample-request"><div class="container"><div class="section-title-wrapper fade-in"><h2 class="section-title">Request Your Sample PPT</h2><p class="section-subtitle">Tell us about your presentation needs and we'll create a sample design for you</p></div><div class="sample-request-form fade-in"><form id="sampleRequestForm"><div class="form-group"><label for="name">Name *</label><input type="text" id="name" class="form-control" required></div><div class="form-group"><label for="shortName">Username / Short Name</label><input type="text" id="shortName" class="form-control"></div><div class="form-group"><label for="projectName">Project Name *</label><input type="text" id="projectName" class="form-control" required></div><div class="form-group"><label for="projectType">Project Type *</label><select id="projectType" class="form-control" required><option value="" selected disabled>Select a project type</option><option value="academic">Academic/Seminar</option><option value="project">Project Presentation</option><option value="startup">Startup Pitch</option><option value="business">Business Presentation</option><option value="other">Other</option></select></div><div class="form-group"><label for="projectDescription">Project Description *</label><textarea id="projectDescription" class="form-control" rows="4" required placeholder="Describe your project and requirements"></textarea></div><div class="form-group"><label for="slideCount">Number of Slides *</label><input type="number" id="slideCount" class="form-control" min="1" required></div><div class="form-group"><label for="hasImages">Do you have images? *</label><select id="hasImages" class="form-control" required><option value="" selected disabled>Select an option</option><option value="yes">Yes</option><option value="no">No</option></select></div><div class="form-group"><label for="additionalNotes">Additional Notes</label><textarea id="additionalNotes" class="form-control" rows="3" placeholder="Any additional requirements or preferences"></textarea></div><div class="form-buttons"><button type="button" id="resetForm" class="btn btn-secondary">Reset</button><button type="submit" class="btn btn-primary">Send Request via WhatsApp</button></div></form></div></div></section>
 
-    <!-- Sample Slides Section -->
-    <section class="section" id="samples">
-        <div class="container">
-            <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Sample Slides</h2>
-                <p class="section-subtitle">Take a look at some of our slide design samples</p>
-            </div>
-            
-            <div class="sample-slides-grid">
-                <div class="sample-slide-card fade-in">
-                    <div class="sample-slide-preview">
-                        <div class="sample-slide-placeholder">
-                            <i class="fas fa-flag sample-slide-icon"></i>
-                        </div>
-                    </div>
-                    <div class="sample-slide-content">
-                        <h3 class="sample-slide-title">Cover Slide</h3>
-                        <p>Eye-catching title slides that make a strong first impression</p>
-                    </div>
-                </div>
-                
-                <div class="sample-slide-card fade-in">
-                    <div class="sample-slide-preview">
-                        <div class="sample-slide-placeholder">
-                            <i class="fas fa-info-circle sample-slide-icon"></i>
-                        </div>
-                    </div>
-                    <div class="sample-slide-content">
-                        <h3 class="sample-slide-title">About Slide</h3>
-                        <p>Well-structured about slides that introduce your topic or organization</p>
-                    </div>
-                </div>
-                
-                <div class="sample-slide-card fade-in">
-                    <div class="sample-slide-preview">
-                        <div class="sample-slide-placeholder">
-                            <i class="fas fa-chart-bar sample-slide-icon"></i>
-                        </div>
-                    </div>
-                    <div class="sample-slide-content">
-                        <h3 class="sample-slide-title">Data Slide</h3>
-                        <p>Clear and visually appealing data visualization slides</p>
-                    </div>
-                </div>
-                
-                <div class="sample-slide-card fade-in">
-                    <div class="sample-slide-preview">
-                        <div class="sample-slide-placeholder">
-                            <i class="fas fa-list-check sample-slide-icon"></i>
-                        </div>
-                    </div>
-                    <div class="sample-slide-content">
-                        <h3 class="sample-slide-title">Summary Slide</h3>
-                        <p>Concise summary slides that reinforce key takeaways</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <section class="section" id="testimonials"><div class="container"><div class="section-title-wrapper fade-in"><h2 class="section-title">What Our Clients Say About <span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h2><p class="section-subtitle">Don't just take our word for it - hear from our satisfied clients</p></div><div class="testimonials-grid"><div class="testimonial-card fade-in"><div class="testimonial-quote"><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> created an amazing presentation for my college seminar. The design was professional and the content was well-organized, which helped me get an A+ grade.</div><div class="testimonial-author"><div class="testimonial-avatar">R</div><div class="testimonial-info"><h4>Rahul Sharma</h4><div class="testimonial-badge">Student</div></div></div></div><div class="testimonial-card fade-in"><div class="testimonial-quote">We needed a pitch deck for our startup, and <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> delivered beyond our expectations. The design was modern and persuasive, helping us secure funding from investors.</div><div class="testimonial-author"><div class="testimonial-avatar">P</div><div class="testimonial-info"><h4>Priya Patel</h4><div class="testimonial-badge">Business</div></div></div></div><div class="testimonial-card fade-in"><div class="testimonial-quote">The team at <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> understood our requirements perfectly and created a presentation that perfectly represented our brand. Highly recommended!</div><div class="testimonial-author"><div class="testimonial-avatar">A</div><div class="testimonial-info"><h4>Amit Kumar</h4><div class="testimonial-badge">Business</div></div></div></div></div></div></section>
 
-    <!-- Sample Request Form Section -->
-    <section class="section" id="sample-request">
-        <div class="container">
-            <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Request Your Sample PPT</h2>
-                <p class="section-subtitle">Tell us about your presentation needs and we'll create a sample design for you</p>
-            </div>
+    <section class="section" id="why-choose"><div class="container"><div class="section-title-wrapper fade-in"><h2 class="section-title">Why Choose <span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h2><p class="section-subtitle">We offer the best value and quality for your presentation needs</p></div><div class="why-choose-grid"><div class="why-choose-card fade-in"><div class="why-choose-icon"><i class="fas fa-th-large"></i></div><h3>Clean Layout</h3><p>Well-organized and clean layouts that enhance readability and comprehension</p></div><div class="why-choose-card fade-in"><div class="why-choose-icon"><i class="fas fa-bolt"></i></div><h3>Fast Work</h3><p>Quick turnaround time without compromising on quality</p></div><div class="why-choose-card fade-in"><div class="why-choose-icon"><i class="fas fa-graduation-cap"></i></div><h3>Student Friendly</h3><p>Special discounts and services tailored for students</p></div><div class="why-choose-card fade-in"><div class="why-choose-icon"><i class="fas fa-palette"></i></div><h3>Attractive Design</h3><p>Visually appealing designs that capture and maintain audience attention</p></div><div class="why-choose-card fade-in"><div class="why-choose-icon"><i class="fas fa-microphone"></i></div><h3>Easy to Present</h3><p>Presentations designed for smooth delivery and presenter comfort</p></div></div></div></section>
 
-            <div class="sample-request-form fade-in">
-                <form id="sampleRequestForm">
-                    <div class="form-group">
-                        <label for="name">Name *</label>
-                        <input type="text" id="name" class="form-control" required>
-                    </div>
+    <section class="section" id="faq"><div class="container"><div class="section-title-wrapper fade-in"><h2 class="section-title">Frequently Asked Questions</h2><p class="section-subtitle">Got questions? We've got answers</p></div><div class="faq-container"><div class="faq-item fade-in"><div class="faq-question"><h3>How long does it take to deliver the presentation?</h3><i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer"><p>Delivery time depends on the complexity and number of slides. Simple presentations with 10-15 slides can be delivered within 2-3 days, while more complex presentations may take 5-7 days. We'll provide a specific timeline after understanding your requirements.</p></div></div><div class="faq-item fade-in"><div class="faq-question"><h3>How many slides are included in the package?</h3><i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer"><p>Our standard package includes up to 15 slides. Additional slides can be added at an extra cost. We'll discuss your specific slide requirements during the consultation.</p></div></div><div class="faq-item fade-in"><div class="faq-question"><h3>Can you customize the theme according to my needs?</h3><i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer"><p>Yes, we create custom themes based on your brand colors, logo, and specific requirements. We'll work closely with you to ensure the presentation aligns with your vision and needs.</p></div></div><div class="faq-item fade-in"><div class="faq-question"><h3>Will I get an editable file of the presentation?</h3><i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer"><p>Yes, we deliver the final presentation in both PPT and PDF formats. The PPT file is fully editable, allowing you to make minor changes in the future if needed.</p></div></div><div class="faq-item fade-in"><div class="faq-question"><h3>How many revisions are included in the package?</h3><i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer"><p>Our standard package includes up to 2 rounds of revisions to ensure you're completely satisfied with the final design. Additional revisions can be accommodated at a nominal fee.</p></div></div></div></div></section>
 
-                    <div class="form-group">
-                        <label for="shortName">Username / Short Name</label>
-                        <input type="text" id="shortName" class="form-control">
-                    </div>
+    <section class="section"><div class="container"><div class="cta-section fade-in"><h2 class="cta-title">Need a Good Presentation?</h2><p>Let <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> create a professional presentation that impresses your audience and effectively communicates your message.</p><div class="cta-buttons"><a href="#samples" class="btn btn-secondary">View Samples</a><a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20PPT%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a></div></div></div></section>
 
-                    <div class="form-group">
-                        <label for="projectName">Project Name *</label>
-                        <input type="text" id="projectName" class="form-control" required>
-                    </div>
+    <footer class="footer"><div class="footer-container"><div class="footer-content"><div class="footer-column"><div class="footer-logo"><img src="https://i.postimg.cc/3N8yBc2K/unnamed.png" alt="Kodingwala Logo"><h3><span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h3></div><p style="margin-bottom: 1rem; color: var(--text-soft);">Design • Develop • Deliver</p><p style="color: var(--text-soft);">We help students and professionals create impressive presentations that effectively communicate their ideas.</p><div class="social-links"><a href="https://instagram.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-instagram"></i></a><a href="https://youtube.com/@kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-youtube"></i></a><a href="https://wa.me/917386895149" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-whatsapp"></i></a><a href="https://facebook.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-facebook"></i></a></div></div><div class="footer-column"><h3>Quick Links</h3><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="#services">Services</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#styles">Styles</a></li><li><a href="#samples">Samples</a></li><li><a href="#why-choose">Why Us</a></li></ul></div><div class="footer-column"><h3>Services</h3><ul class="footer-links"><li><a href="staticwebdesign.html">Static Websites</a></li><li><a href="dynamic.html">Dynamic Websites</a></li><li><a href="resume.html">Resume Design</a></li><li><a href="ppt.html">PPT Design</a></li><li><a href="portfolio.html">Portfolio Websites</a></li><li><a href="logo.html">Logo Design</a></li></ul></div><div class="footer-column"><h3>Contact Info</h3><ul class="footer-links"><li><i class="fab fa-whatsapp"></i> WhatsApp: 7386895149</li><li><i class="fas fa-envelope"></i> Email: hello@kodingwala.com</li><li><i class="fab fa-instagram"></i> Instagram: @kodingwala</li><li><i class="fab fa-youtube"></i> YouTube: Kodingwala</li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>. All rights reserved. | Made with <i class="fas fa-heart" style="color: var(--orange);"></i> in India</p></div></div></footer>
 
-                    <div class="form-group">
-                        <label for="projectType">Project Type *</label>
-                        <select id="projectType" class="form-control" required>
-                            <option value="" selected disabled>Select a project type</option>
-                            <option value="academic">Academic/Seminar</option>
-                            <option value="project">Project Presentation</option>
-                            <option value="startup">Startup Pitch</option>
-                            <option value="business">Business Presentation</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
+    <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20PPT%20Design%20service.%20Please%20share%20details." target="_blank" class="floating-whatsapp"><i class="fab fa-whatsapp"></i></a>
+    <div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
 
-                    <div class="form-group">
-                        <label for="projectDescription">Project Description *</label>
-                        <textarea id="projectDescription" class="form-control" rows="4" required placeholder="Describe your project and requirements"></textarea>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="slideCount">Number of Slides *</label>
-                        <input type="number" id="slideCount" class="form-control" min="1" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="hasImages">Do you have images? *</label>
-                        <select id="hasImages" class="form-control" required>
-                            <option value="" selected disabled>Select an option</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="additionalNotes">Additional Notes</label>
-                        <textarea id="additionalNotes" class="form-control" rows="3" placeholder="Any additional requirements or preferences"></textarea>
-                    </div>
-
-                    <div class="form-buttons">
-                        <button type="button" id="resetForm" class="btn btn-secondary">Reset</button>
-                        <button type="submit" class="btn btn-primary">Send Request via WhatsApp</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="section" id="testimonials">
-        <div class="container">
-            <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">What Our Clients Say About <span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h2>
-                <p class="section-subtitle">Don't just take our word for it - hear from our satisfied clients</p>
-            </div>
-
-            <div class="testimonials-grid">
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-quote">
-                        <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> created an amazing presentation for my college seminar. The design was professional and the content was well-organized, which helped me get an A+ grade.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">R</div>
-                        <div class="testimonial-info">
-                            <h4>Rahul Sharma</h4>
-                            <div class="testimonial-badge">Student</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-quote">
-                        We needed a pitch deck for our startup, and <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> delivered beyond our expectations. The design was modern and persuasive, helping us secure funding from investors.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">P</div>
-                        <div class="testimonial-info">
-                            <h4>Priya Patel</h4>
-                            <div class="testimonial-badge">Business</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-quote">
-                        The team at <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> understood our requirements perfectly and created a presentation that perfectly represented our brand. Highly recommended!
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">A</div>
-                        <div class="testimonial-info">
-                            <h4>Amit Kumar</h4>
-                            <div class="testimonial-badge">Business</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Kodingwala Section -->
-    <section class="section" id="why-choose">
-        <div class="container">
-            <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Why Choose <span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h2>
-                <p class="section-subtitle">We offer the best value and quality for your presentation needs</p>
-            </div>
-            
-            <div class="why-choose-grid">
-                <div class="why-choose-card fade-in">
-                    <div class="why-choose-icon">
-                        <i class="fas fa-th-large"></i>
-                    </div>
-                    <h3>Clean Layout</h3>
-                    <p>Well-organized and clean layouts that enhance readability and comprehension</p>
-                </div>
-                
-                <div class="why-choose-card fade-in">
-                    <div class="why-choose-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Fast Work</h3>
-                    <p>Quick turnaround time without compromising on quality</p>
-                </div>
-                
-                <div class="why-choose-card fade-in">
-                    <div class="why-choose-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Student Friendly</h3>
-                    <p>Special discounts and services tailored for students</p>
-                </div>
-                
-                <div class="why-choose-card fade-in">
-                    <div class="why-choose-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>Attractive Design</h3>
-                    <p>Visually appealing designs that capture and maintain audience attention</p>
-                </div>
-                
-                <div class="why-choose-card fade-in">
-                    <div class="why-choose-icon">
-                        <i class="fas fa-microphone"></i>
-                    </div>
-                    <h3>Easy to Present</h3>
-                    <p>Presentations designed for smooth delivery and presenter comfort</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="section" id="faq">
-        <div class="container">
-            <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Frequently Asked Questions</h2>
-                <p class="section-subtitle">Got questions? We've got answers</p>
-            </div>
-            
-            <div class="faq-container">
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <h3>How long does it take to deliver the presentation?</h3>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Delivery time depends on the complexity and number of slides. Simple presentations with 10-15 slides can be delivered within 2-3 days, while more complex presentations may take 5-7 days. We'll provide a specific timeline after understanding your requirements.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <h3>How many slides are included in the package?</h3>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Our standard package includes up to 15 slides. Additional slides can be added at an extra cost. We'll discuss your specific slide requirements during the consultation.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <h3>Can you customize the theme according to my needs?</h3>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, we create custom themes based on your brand colors, logo, and specific requirements. We'll work closely with you to ensure the presentation aligns with your vision and needs.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <h3>Will I get an editable file of the presentation?</h3>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, we deliver the final presentation in both PPT and PDF formats. The PPT file is fully editable, allowing you to make minor changes in the future if needed.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <h3>How many revisions are included in the package?</h3>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Our standard package includes up to 2 rounds of revisions to ensure you're completely satisfied with the final design. Additional revisions can be accommodated at a nominal fee.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="section">
-        <div class="container">
-            <div class="cta-section fade-in">
-                <h2 class="cta-title">Need a Good Presentation?</h2>
-                <p>Let <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> create a professional presentation that impresses your audience and effectively communicates your message.</p>
-                <div class="cta-buttons">
-                    <a href="#samples" class="btn btn-secondary">View Samples</a>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20PPT%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <div class="footer-logo">
-                        <img src="https://i.postimg.cc/3N8yBc2K/unnamed.png" alt="Kodingwala Logo">
-                        <h3><span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h3>
-                    </div>
-                    <p style="margin-bottom: 1rem; color: var(--text-soft);">Design • Develop • Deliver</p>
-                    <p style="color: var(--text-soft);">We help students and professionals create impressive presentations that effectively communicate their ideas.</p>
-                    <div class="social-links">
-                        <a href="https://instagram.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="https://youtube.com/@kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-youtube"></i></a>
-                        <a href="https://wa.me/738686895149" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://facebook.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-facebook"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#styles">Styles</a></li>
-                        <li><a href="#samples">Samples</a></li>
-                        <li><a href="#why-choose">Why Us</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="staticwebdesign.html">Static Websites</a></li>
-                        <li><a href="dynamic.html">Dynamic Websites</a></li>
-                        <li><a href="resume.html">Resume Design</a></li>
-                        <li><a href="ppt.html">PPT Design</a></li>
-                        <li><a href="portfolio.html">Portfolio Websites</a></li>
-                        <li><a href="logo.html">Logo Design</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Contact Info</h3>
-                    <ul class="footer-links">
-                        <li><i class="fab fa-whatsapp"></i> WhatsApp: 738686895149</li>
-                        <li><i class="fas fa-envelope"></i> Email: hello@kodingwala.com</li>
-                        <li><i class="fab fa-instagram"></i> Instagram: @kodingwala</li>
-                        <li><i class="fab fa-youtube"></i> YouTube: Kodingwala</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>. All rights reserved. | Made with <i class="fas fa-heart" style="color: var(--orange);"></i> in India</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20PPT%20Design%20service.%20Please%20share%20details." target="_blank" class="floating-whatsapp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
-    </div>
+    <!-- Modal for PPT Preview -->
+    <div id="pptModal" class="modal-overlay"><div class="modal-container"><div class="modal-header"><h3><i class="fas fa-file-powerpoint"></i> PPT Preview</h3><button class="modal-close" id="closeModalBtn">&times;</button></div><div class="modal-preview"><img id="modalPreviewImage" src="" alt="Preview"></div><div class="modal-info"><span class="modal-filename" id="modalFileName">Sample.pptx</span><div class="modal-actions"><a id="openFileBtn" href="#" target="_blank" class="btn btn-primary" style="background: var(--gradient-cyan); color: #06142a;"><i class="fas fa-download"></i> Open PPT File</a><a id="modalWhatsappBtn" href="#" target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Enquiry on WhatsApp</a></div></div></div></div>
 
     <script>
-        // Scroll Progress Bar
-        window.addEventListener('scroll', function() {
-            const scrollProgress = document.getElementById('scrollProgress');
-            const scrollPx = document.documentElement.scrollTop;
-            const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = `${scrollPx / winHeightPx * 100}%`;
-            scrollProgress.style.width = scrolled;
-        });
-
-        // Mobile Navigation Active State
-        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
-        mobileNavItems.forEach(item => {
-            item.addEventListener('click', function() {
-                mobileNavItems.forEach(navItem => navItem.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Scroll to section
-                const href = this.querySelector('a').getAttribute('href');
-                if (href && href.startsWith('#')) {
-                    const section = document.querySelector(href);
-                    if (section) {
-                        section.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
+        // Sample Data (thumbnail, preview, file)
+        const samples = [
+            { title: "Sample1 PPT", description: "Clean academic presentation template for seminar and college topics.", thumb: "https://picsum.photos/id/20/400/250", preview: "https://picsum.photos/id/20/800/500", file: "assets/ppt/Sample1.PPT", displayFile: "Sample1.PPT" },
+            { title: "Sample2 PPT", description: "Modern business pitch deck with professional layout.", thumb: "https://picsum.photos/id/26/400/250", preview: "https://picsum.photos/id/26/800/500", file: "assets/ppt/Sample2.PPTX", displayFile: "Sample2.PPTX" },
+            { title: "Sample3 PPT", description: "Project presentation template with charts and structured slides.", thumb: "https://picsum.photos/id/29/400/250", preview: "https://picsum.photos/id/29/800/500", file: "assets/ppt/Sample3.PPT", displayFile: "Sample3.PPT" },
+            { title: "Sample4 PPT", description: "Creative visual presentation template for startups and portfolios.", thumb: "https://picsum.photos/id/96/400/250", preview: "https://picsum.photos/id/96/800/500", file: "assets/ppt/Sample4.PPTX", displayFile: "Sample4.PPTX" }
+        ];
+        const grid = document.getElementById("sampleSlidesGrid");
+        function renderCards() {
+            grid.innerHTML = samples.map((s, idx) => `
+                <div class="sample-slide-card fade-in">
+                    <div class="sample-slide-preview"><img src="${s.thumb}" alt="${s.title}"></div>
+                    <div class="sample-slide-content">
+                        <h3 class="sample-slide-title">${s.title}</h3>
+                        <p class="sample-slide-description">${s.description}</p>
+                        <div class="sample-slide-buttons">
+                            <button class="btn btn-primary view-now-btn" data-index="${idx}" style="background: var(--gradient-cyan);">View Now</button>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20${encodeURIComponent(s.title)}%20template.%20Please%20share%20details." target="_blank" class="btn btn-whatsapp">Enquiry on WhatsApp</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            document.querySelectorAll('.view-now-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const idx = btn.getAttribute('data-index');
+                    const sample = samples[idx];
+                    openModal(sample.preview, sample.displayFile, sample.file);
+                });
             });
+        }
+        const modal = document.getElementById('pptModal');
+        const modalImg = document.getElementById('modalPreviewImage');
+        const modalFileNameSpan = document.getElementById('modalFileName');
+        const openFileBtn = document.getElementById('openFileBtn');
+        const modalWhatsappBtn = document.getElementById('modalWhatsappBtn');
+        let currentFileUrl = '';
+        function openModal(previewUrl, fileName, fileUrl) {
+            modalImg.src = previewUrl;
+            modalFileNameSpan.innerText = fileName;
+            currentFileUrl = fileUrl;
+            openFileBtn.href = fileUrl;
+            const whatsappMsg = `Hello Kodingwala, I am interested in the PPT template: ${fileName}. Please share details.`;
+            modalWhatsappBtn.href = `https://wa.me/917386895149?text=${encodeURIComponent(whatsappMsg)}`;
+            modal.classList.add('active');
+        }
+        function closeModal() { modal.classList.remove('active'); }
+        document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+
+        // WhatsApp number fix all over
+        const correctWA = "https://wa.me/917386895149";
+        document.querySelectorAll('a[href*="wa.me/738686895149"], a[href*="738686895149"]').forEach(link => {
+            if(link.getAttribute('href') && link.getAttribute('href').includes('738686895149')) {
+                let newUrl = link.getAttribute('href').replace(/738686895149/g, '917386895149');
+                if(!newUrl.includes('917386895149')) newUrl = correctWA + (newUrl.includes('?text=') ? newUrl.split('?text=')[1] ? `?text=${encodeURIComponent(newUrl.split('?text=')[1])}` : '' : '');
+                link.setAttribute('href', newUrl);
+            }
         });
+        const heroBtn = document.querySelector('.hero-buttons .btn-primary');
+        if(heroBtn && heroBtn.href.includes('738686895149')) heroBtn.href = heroBtn.href.replace('738686895149', '917386895149');
+        const pricingBtn = document.querySelector('#pricing .btn-primary');
+        if(pricingBtn && pricingBtn.href.includes('738686895149')) pricingBtn.href = pricingBtn.href.replace('738686895149', '917386895149');
+        const ctaBtn = document.querySelector('.cta-buttons .btn-primary');
+        if(ctaBtn && ctaBtn.href.includes('738686895149')) ctaBtn.href = ctaBtn.href.replace('738686895149', '917386895149');
+        const floatingBtn = document.querySelector('.floating-whatsapp');
+        if(floatingBtn && floatingBtn.href.includes('738686895149')) floatingBtn.href = floatingBtn.href.replace('738686895149', '917386895149');
+        const footerWhatsLinks = document.querySelectorAll('.footer-links a[href*="738686895149"], .social-link[href*="738686895149"]');
+        footerWhatsLinks.forEach(link => { if(link.href) link.href = link.href.replace('738686895149', '917386895149'); });
 
-        // Sample Request Form Submission
-        const sampleRequestForm = document.getElementById('sampleRequestForm');
-
-        sampleRequestForm.addEventListener('submit', function(e) {
+        // Sample request form fix
+        const form = document.getElementById('sampleRequestForm');
+        form.addEventListener('submit', (e) => {
             e.preventDefault();
-
-            // Get form values
             const name = document.getElementById('name').value;
             const shortName = document.getElementById('shortName').value;
             const projectName = document.getElementById('projectName').value;
@@ -1888,98 +1324,20 @@
             const slideCount = document.getElementById('slideCount').value;
             const hasImages = document.getElementById('hasImages').value;
             const additionalNotes = document.getElementById('additionalNotes').value;
-
-            // Build WhatsApp message
-            const message = `Hello Kodingwala, I would like to request a sample PPT.%0A%0A` +
-                `Name: ${name}%0A` +
-                `Username/Short Name: ${shortName || 'Not provided'}%0A` +
-                `Project Name: ${projectName}%0A` +
-                `Project Type: ${projectType}%0A` +
-                `Project Description: ${projectDescription}%0A` +
-                `Number of Slides: ${slideCount}%0A` +
-                `Images: ${hasImages}%0A` +
-                `Additional Notes: ${additionalNotes || 'Not provided'}`;
-
-            // Open WhatsApp with the message
-            const whatsappURL = `https://wa.me/738686895149?text=${message}`;
-            window.open(whatsappURL, '_blank');
+            const msg = `Hello Kodingwala, I would like to request a sample PPT.\n\nName: ${name}\nUsername/Short Name: ${shortName || 'Not provided'}\nProject Name: ${projectName}\nProject Type: ${projectType}\nProject Description: ${projectDescription}\nNumber of Slides: ${slideCount}\nImages: ${hasImages}\nAdditional Notes: ${additionalNotes || 'Not provided'}`;
+            const encodedMsg = encodeURIComponent(msg);
+            window.open(`https://wa.me/917386895149?text=${encodedMsg}`, '_blank');
         });
+        document.getElementById('resetForm').addEventListener('click', () => { form.reset(); });
 
-        // Reset Form Button
-        document.getElementById('resetForm').addEventListener('click', function() {
-            sampleRequestForm.reset();
-        });
-
-        // FAQ Accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            
-            question.addEventListener('click', function() {
-                // Toggle active class
-                item.classList.toggle('active');
-                
-                // Close other items
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item && otherItem.classList.contains('active')) {
-                        otherItem.classList.remove('active');
-                    }
-                });
-            });
-        });
-
-        // Back to Top Button
-        const backToTopButton = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Fade In Animation on Scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        function checkFade() {
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
-            });
-        }
-        
-        window.addEventListener('scroll', checkFade);
-        window.addEventListener('load', checkFade);
-        
-        // Smooth Scrolling for Navigation Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+        // Additional Fixes: Mobile icon, scroll etc
+        renderCards();
+        window.addEventListener('scroll', function() { const progress = document.getElementById('scrollProgress'); const winScroll = document.documentElement.scrollTop; const height = document.documentElement.scrollHeight - document.documentElement.clientHeight; const scrolled = (winScroll / height) * 100; progress.style.width = scrolled + "%"; });
+        const backBtn = document.getElementById('backToTop'); window.addEventListener('scroll', () => { if(window.pageYOffset > 300) backBtn.classList.add('visible'); else backBtn.classList.remove('visible'); }); backBtn.addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+        const faqItems = document.querySelectorAll('.faq-item'); faqItems.forEach(item => { const q = item.querySelector('.faq-question'); q.addEventListener('click', () => { item.classList.toggle('active'); faqItems.forEach(other => { if(other !== item && other.classList.contains('active')) other.classList.remove('active'); }); }); });
+        const fadeElements = document.querySelectorAll('.fade-in'); function checkFade() { fadeElements.forEach(el => { const top = el.getBoundingClientRect().top; if(top < window.innerHeight - 150) el.classList.add('visible'); }); } window.addEventListener('scroll', checkFade); window.addEventListener('load', checkFade);
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { const hash = this.getAttribute('href'); if(hash === '#') return; e.preventDefault(); const target = document.querySelector(hash); if(target) target.scrollIntoView({behavior:'smooth'}); }); });
+        const mobileItems = document.querySelectorAll('.mobile-nav-item'); mobileItems.forEach(item => { item.addEventListener('click', function() { mobileItems.forEach(i => i.classList.remove('active')); this.classList.add('active'); const link = this.querySelector('a'); if(link && link.getAttribute('href').startsWith('#')) { const sec = document.querySelector(link.getAttribute('href')); if(sec) sec.scrollIntoView({behavior:'smooth'}); } }); });
     </script>
 </body>
 </html>
