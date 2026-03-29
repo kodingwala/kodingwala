@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1071,6 +1072,19 @@
             transform: translateY(0);
         }
 
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
         /* Responsive Design - Enhanced */
         @media (max-width: 992px) {
             .hero-container {
@@ -1208,276 +1222,6 @@
             }
         }
 
-        @media (max-width: 420px) {
-            .hero-content h1 {
-                font-size: 1.6rem;
-            }
-
-            .hero-content p {
-                font-size: 0.95rem;
-            }
-
-            .section-title {
-                font-size: 1.6rem;
-            }
-
-            .service-card {
-                padding: 1.5rem;
-            }
-
-            .service-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
-            }
-
-            .feature-card {
-                padding: 1.5rem;
-            }
-
-            .feature-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-            }
-
-            .benefit-card {
-                padding: 1.5rem;
-            }
-
-            .benefit-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-            }
-
-            .detailed-features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .detailed-feature-item {
-                padding: 1.5rem;
-            }
-
-            .detailed-feature-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
-            }
-
-            .use-case-card {
-                padding: 1.5rem;
-            }
-
-            .use-case-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
-            }
-
-            .pricing-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .pricing-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.3rem;
-            }
-
-            .pricing-title {
-                font-size: 1.2rem;
-            }
-
-            .pricing-description {
-                font-size: 0.9rem;
-            }
-
-            .pricing-features {
-                font-size: 0.85rem;
-            }
-        }
-
-        @media (max-width: 380px) {
-            .hero-content h1 {
-                font-size: 1.5rem;
-            }
-
-            .hero-content p {
-                font-size: 0.9rem;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-
-            .service-card {
-                padding: 1.5rem;
-            }
-
-            .service-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
-            }
-
-            .feature-card {
-                padding: 1.5rem;
-            }
-
-            .feature-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
-            }
-
-            .benefit-card {
-                padding: 1.5rem;
-            }
-
-            .benefit-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
-            }
-
-            .detailed-features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .detailed-feature-item {
-                padding: 1.5rem;
-            }
-
-            .detailed-feature-icon {
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
-            }
-
-            .use-case-card {
-                padding: 1.5rem;
-            }
-
-            .use-case-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
-            }
-
-            .pricing-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .pricing-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 1.2rem;
-            }
-
-            .pricing-title {
-                font-size: 1.2rem;
-            }
-
-            .pricing-description {
-                font-size: 0.85rem;
-            }
-
-            .pricing-features {
-                font-size: 0.8rem;
-            }
-        }
-
-        @media (max-width: 340px) {
-            .hero-content h1 {
-                font-size: 1.4rem;
-            }
-
-            .hero-content p {
-                font-size: 0.85rem;
-            }
-
-            .section-title {
-                font-size: 1.4rem;
-            }
-
-            .service-card {
-                padding: 1.5rem;
-            }
-
-            .service-icon {
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
-            }
-
-            .feature-card {
-                padding: 1.5rem;
-            }
-
-            .feature-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
-            }
-
-            .benefit-card {
-                padding: 1.5rem;
-            }
-
-            .benefit-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
-            }
-
-            .detailed-features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .detailed-feature-item {
-                padding: 1.5rem;
-            }
-
-            .detailed-feature-icon {
-                width: 30px;
-                height: 30px;
-                font-size: 0.9rem;
-            }
-
-            .use-case-card {
-                padding: 1.5rem;
-            }
-
-            .use-case-icon {
-                width: 35px;
-                height: 35px;
-                font-size: 1rem;
-            }
-
-            .pricing-card {
-                padding: 2rem 1.5rem;
-            }
-
-            .pricing-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
-            }
-
-            .pricing-title {
-                font-size: 1.1rem;
-            }
-
-            .pricing-description {
-                font-size: 0.8rem;
-            }
-
-            .pricing-features {
-                font-size: 0.75rem;
-            }
-        }
-
         /* Add bottom padding to body for mobile navigation */
         @media (max-width: 768px) {
             body {
@@ -1570,7 +1314,7 @@
                 <p><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> builds custom dynamic websites with admin panels, dashboards, user management, payment integration, and custom business features. Perfect for modern businesses that need complete control.</p>
                 <div class="hero-buttons">
                     <a href="#features" class="btn btn-primary">View Features</a>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Dynamic%20Website%20service.%20Please%20share%20details." target="_blank" class="btn btn-whatsapp">
+                    <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Dynamic%20Website%20service.%20Please%20share%20details." target="_blank" class="btn btn-whatsapp">
                         <i class="fab fa-whatsapp"></i> Enquiry Now
                     </a>
                 </div>
@@ -1594,7 +1338,7 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <img src="https://i.postimg.cc/3N8yBc2K/unnamed.png" alt="Dynamic Website" class="hero-image">
+                <img src="https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Dynamic Website Dashboard" class="hero-image">
             </div>
         </div>
     </section>
@@ -2184,7 +1928,7 @@
                     <div class="social-links">
                         <a href="https://instagram.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-instagram"></i></a>
                         <a href="https://youtube.com/@kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-youtube"></i></a>
-                        <a href="https://wa.me/738686895149" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://wa.me/917386895149" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-whatsapp"></i></a>
                         <a href="https://facebook.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
@@ -2217,7 +1961,7 @@
                 <div class="footer-column">
                     <h3>Contact Info</h3>
                     <ul class="footer-links">
-                        <li><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/738686895149" target="_blank" rel="noopener noreferrer">738686895149</a></li>
+                        <li><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/917386895149" target="_blank" rel="noopener noreferrer">+91 7386895149</a></li>
                         <li><i class="fas fa-envelope"></i> Email: <a href="mailto:hello@kodingwala.com" target="_blank" rel="noopener noreferrer">hello@kodingwala.com</a></li>
                         <li><i class="fab fa-instagram"></i> Instagram: <a href="https://instagram.com/kodingwala" target="_blank" rel="noopener noreferrer">@kodingwala</a></li>
                         <li><i class="fab fa-youtube"></i> YouTube: <a href="https://youtube.com/@kodingwala" target="_blank" rel="noopener noreferrer">Kodingwala</a></li>
@@ -2232,7 +1976,7 @@
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Dynamic%20Website%20service.%20Please%20share%20details." target="_blank" class="floating-whatsapp">
+    <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Dynamic%20Website%20service.%20Please%20share%20details." target="_blank" class="floating-whatsapp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -2292,26 +2036,29 @@
             const needCustomFeatures = document.getElementById('needCustomFeatures').value;
             const projectDetails = document.getElementById('projectDetails').value;
 
-            // Build WhatsApp message
-            const message = `Hello Kodingwala, I'm interested in your Dynamic Website service.%0A%0A` +
-                `Full Name: ${fullName}%0A` +
-                `Business Name: ${businessName}%0A` +
-                `Mobile Number: ${mobileNumber}%0A` +
-                `Email: ${email}%0A` +
-                `Business Category: ${businessCategory}%0A` +
-                `Website Purpose: ${websitePurpose}%0A` +
-                `Need Admin Panel: ${needAdminPanel}%0A` +
-                `Need Login System: ${needLoginSystem}%0A` +
-                `Need Payment Integration: ${needPayment}%0A` +
-                `Need Product Management: ${needProducts}%0A` +
-                `Need Booking System: ${needBooking}%0A` +
-                `Need Dashboard: ${needDashboard}%0A` +
-                `Need Authentication: ${needAuthentication}%0A` +
-                `Need Custom Features: ${needCustomFeatures}%0A` +
-                `Project Details: ${projectDetails || 'Not provided'}`;
+            // Build WhatsApp message with proper formatting
+            const messageText = `Hello Kodingwala, I'm interested in your Dynamic Website service.
 
-            // Open WhatsApp with the message
-            const whatsappURL = `https://wa.me/738686895149?text=${message}`;
+Full Name: ${fullName}
+Business Name: ${businessName}
+Mobile Number: ${mobileNumber}
+Email: ${email}
+Business Category: ${businessCategory}
+Website Purpose: ${websitePurpose}
+Need Admin Panel: ${needAdminPanel}
+Need Login System: ${needLoginSystem}
+Need Payment Integration: ${needPayment}
+Need Product Management: ${needProducts}
+Need Booking System: ${needBooking}
+Need Dashboard: ${needDashboard}
+Need Authentication: ${needAuthentication}
+Need Custom Features: ${needCustomFeatures}
+Project Details: ${projectDetails || 'Not provided'}`;
+
+            const encodedMessage = encodeURIComponent(messageText);
+            
+            // Open WhatsApp with the message using correct number
+            const whatsappURL = `https://wa.me/917386895149?text=${encodedMessage}`;
             window.open(whatsappURL, '_blank');
         });
 
