@@ -55,7 +55,6 @@
             color: var(--cyan-light);
         }
 
-        /* Brand Styling */
         .brand-koding {
             color: var(--cyan);
             font-family: 'Fredoka', sans-serif;
@@ -68,7 +67,6 @@
             font-weight: 700;
         }
 
-        /* Buttons */
         .btn {
             display: inline-block;
             padding: 12px 24px;
@@ -134,8 +132,17 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.4);
         }
+        
+        .btn-outline-light {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-soft);
+        }
+        .btn-outline-light:hover {
+            background: rgba(255,255,255,0.05);
+            color: var(--cyan);
+        }
 
-        /* Scroll Progress Bar */
         .scroll-progress {
             position: fixed;
             top: 0;
@@ -147,7 +154,6 @@
             transition: width 0.2s ease;
         }
 
-        /* Desktop Navigation */
         .desktop-nav {
             position: fixed;
             top: 0;
@@ -198,31 +204,10 @@
             transition: all 0.3s ease;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: var(--cyan);
         }
 
-        .nav-links a.active {
-            color: var(--cyan);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--orange);
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            width: 100%;
-        }
-
-        /* Mobile Bottom Navigation */
         .mobile-nav {
             display: none;
             position: fixed;
@@ -261,26 +246,6 @@
             text-shadow: 0 0 10px rgba(25, 211, 197, 0.5);
         }
 
-        .mobile-nav-item i {
-            font-size: 1.2rem;
-            margin-bottom: 3px;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-nav-item.active i {
-            transform: scale(1.1);
-        }
-
-        .mobile-nav-item span {
-            font-size: 0.65rem;
-            font-weight: 500;
-        }
-
-        .mobile-nav-item:active {
-            transform: scale(0.95);
-        }
-
-        /* Hero Section */
         .hero {
             padding: 7rem 1.5rem 3rem;
             min-height: 100vh;
@@ -288,32 +253,6 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -10%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(25, 211, 197, 0.15) 0%, rgba(25, 211, 197, 0) 70%);
-            border-radius: 50%;
-            z-index: -1;
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: url('https://i.postimg.cc/3N8yBc2K/unnamed.png') no-repeat center;
-            background-size: contain;
-            opacity: 0.03;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: -1;
         }
 
         .hero-container {
@@ -382,38 +321,11 @@
             color: var(--cyan);
         }
 
-        .trust-badge i {
-            color: var(--orange);
-        }
-
-        /* Floating Animation */
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px);}
+            to { opacity: 1; transform: translateY(0);}
         }
 
-        /* Section Styles */
         .section {
             padding: 5rem 1.5rem;
         }
@@ -443,7 +355,6 @@
             margin: 0 auto;
         }
 
-        /* Logo Types Grid */
         .logo-types-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -467,16 +378,6 @@
             border-color: var(--cyan);
         }
 
-        .logo-type-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient-cyan);
-        }
-
         .logo-type-icon {
             width: 100px;
             height: 100px;
@@ -490,11 +391,6 @@
             color: var(--bg-main);
         }
 
-        .logo-type-title {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-        }
-
         .logo-type-price {
             font-size: 2rem;
             font-weight: 700;
@@ -502,12 +398,33 @@
             margin-bottom: 1rem;
         }
 
-        .logo-type-description {
-            color: var(--text-soft);
-            margin-bottom: 1.5rem;
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
         }
 
-        /* Sample Style Logos Section */
+        .feature-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: white;
+        }
+
         .sample-logos-section {
             background: var(--bg-card);
             border-radius: 16px;
@@ -535,12 +452,6 @@
             font-size: 0.9rem;
         }
 
-        .category-btn:hover {
-            background: rgba(25, 211, 197, 0.1);
-            border-color: var(--cyan);
-            color: var(--cyan);
-        }
-
         .category-btn.active {
             background: var(--gradient-cyan);
             border-color: var(--cyan);
@@ -549,16 +460,15 @@
 
         .sample-logos-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
         .sample-logo-card {
             background: rgba(255, 255, 255, 0.02);
             border-radius: 12px;
-            padding: 2rem;
+            padding: 1.5rem;
             border: 1px solid var(--border);
-            text-align: center;
             transition: all 0.3s ease;
         }
 
@@ -571,44 +481,23 @@
         .sample-logo-preview {
             height: 180px;
             background: var(--bg-main);
-            border-radius: 8px;
+            border-radius: 12px;
             margin-bottom: 1.5rem;
+            overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
-            overflow: hidden;
         }
 
-        .sample-logo-preview-placeholder {
+        .sample-logo-preview img {
             width: 100%;
             height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(25, 211, 197, 0.1) 0%, rgba(245, 166, 35, 0.1) 100%);
-            position: relative;
+            object-fit: cover;
+            transition: transform 0.3s ease;
         }
-
-        .sample-logo-preview-placeholder::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border: 2px dashed rgba(25, 211, 197, 0.3);
-            border-radius: 6px;
-        }
-
-        .sample-logo-icon {
-            font-size: 3rem;
-            color: var(--cyan);
-        }
-
-        .sample-logo-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+        .sample-logo-preview img:hover {
+            transform: scale(1.03);
         }
 
         .sample-logo-type {
@@ -620,8 +509,109 @@
             font-size: 0.75rem;
             margin-bottom: 0.5rem;
         }
+        
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+        }
+        .card-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+        .card-buttons .btn {
+            flex: 1;
+            text-align: center;
+            padding: 8px 0;
+        }
 
-        /* Logo Request Form Section */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        .modal-overlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .modal-container {
+            background: var(--bg-card);
+            max-width: 900px;
+            width: 90%;
+            border-radius: 28px;
+            border: 1px solid var(--border);
+            box-shadow: 0 30px 50px rgba(0,0,0,0.5);
+            overflow: hidden;
+            transform: scale(0.95);
+            transition: transform 0.2s ease;
+        }
+        .modal-overlay.active .modal-container {
+            transform: scale(1);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 1.8rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .modal-header h3 {
+            margin-bottom: 0;
+            font-size: 1.5rem;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-soft);
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .modal-close:hover {
+            color: var(--orange);
+        }
+        .modal-body {
+            padding: 2rem;
+            text-align: center;
+        }
+        .modal-preview {
+            background: var(--bg-main);
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            aspect-ratio: 16 / 9;
+        }
+        .modal-preview img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .modal-title {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.8rem;
+        }
+
         .logo-request-form {
             background: var(--bg-card);
             border-radius: 16px;
@@ -630,18 +620,9 @@
             max-width: 800px;
             margin: 0 auto;
         }
-
         .form-group {
             margin-bottom: 1.5rem;
         }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--text-soft);
-            font-weight: 500;
-        }
-
         .form-control {
             width: 100%;
             padding: 0.8rem 1rem;
@@ -650,125 +631,30 @@
             border-radius: 8px;
             color: var(--text-main);
             font-family: 'Outfit', sans-serif;
-            transition: all 0.3s ease;
         }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--cyan);
-            background: rgba(25, 211, 197, 0.05);
-            box-shadow: 0 0 0 3px rgba(25, 211, 197, 0.1);
-        }
-
-        textarea.form-control {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        select.form-control {
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b8c4d6' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            padding-right: 2.5rem;
-        }
-
-        select.form-control option {
-            background: var(--bg-card);
-            color: var(--text-main);
-        }
-
-        .form-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-
-        /* Feature Cards */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .feature-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            padding: 2rem;
-            border: 1px solid var(--border);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: var(--cyan);
-        }
-
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient-orange);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 1.8rem;
-            color: white;
-        }
-
-        /* Testimonials Section */
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
-
         .testimonial-card {
             background: var(--bg-card);
             border-radius: 16px;
             padding: 2rem;
             border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            position: relative;
         }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            border-color: var(--cyan);
-        }
-
         .testimonial-quote {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-soft);
             margin-bottom: 1.5rem;
             line-height: 1.6;
             font-style: italic;
-            position: relative;
-            padding-left: 1.5rem;
         }
-
-        .testimonial-quote::before {
-            content: '"';
-            position: absolute;
-            left: 0;
-            top: -5px;
-            font-size: 3rem;
-            color: var(--cyan);
-            opacity: 0.5;
-            font-family: 'Fredoka', sans-serif;
-        }
-
         .testimonial-author {
             display: flex;
             align-items: center;
             gap: 1rem;
         }
-
         .testimonial-avatar {
             width: 50px;
             height: 50px;
@@ -777,32 +663,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--bg-main);
             font-weight: 700;
             font-size: 1.2rem;
         }
-
-        .testimonial-info h4 {
-            margin-bottom: 0.2rem;
-            font-size: 1.1rem;
-        }
-
-        .testimonial-badge {
-            display: inline-block;
-            padding: 0.2rem 0.6rem;
-            background: rgba(245, 166, 35, 0.1);
-            border-radius: 50px;
-            color: var(--orange);
-            font-size: 0.75rem;
-            margin-top: 0.3rem;
-        }
-
-        /* FAQ Section */
         .faq-container {
             max-width: 800px;
             margin: 0 auto;
         }
-
         .faq-item {
             background: var(--bg-card);
             border-radius: 16px;
@@ -810,167 +677,119 @@
             overflow: hidden;
             border: 1px solid var(--border);
         }
-
         .faq-question {
             padding: 1.5rem;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: all 0.3s ease;
         }
-
-        .faq-question:hover {
-            background: rgba(25, 211, 197, 0.05);
-        }
-
-        .faq-question h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0;
-        }
-
-        .faq-icon {
-            transition: transform 0.3s ease;
-            color: var(--orange);
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-
         .faq-answer {
             padding: 0 1.5rem;
             max-height: 0;
             overflow: hidden;
             transition: all 0.3s ease;
         }
-
         .faq-item.active .faq-answer {
             padding: 0 1.5rem 1.5rem;
             max-height: 500px;
         }
-
-        /* CTA Section */
         .cta-section {
             background: linear-gradient(135deg, rgba(25, 211, 197, 0.05) 0%, rgba(245, 166, 35, 0.05) 100%);
             border-radius: 20px;
             padding: 3rem;
-            border: 1px solid var(--border);
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--gradient-cyan);
-        }
-
-        .cta-section::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--gradient-orange);
-        }
-
-        .cta-title {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* Footer */
+        
+        /* Footer Styles */
         .footer {
             background: var(--bg-card);
             padding: 3rem 1.5rem 1.5rem;
             border-top: 1px solid var(--border);
+            margin-top: 2rem;
         }
-
+        
         .footer-container {
             max-width: 1200px;
             margin: 0 auto;
         }
-
+        
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
         }
-
+        
         .footer-logo {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-
-        .footer-logo img {
-            max-width: 100px;
             margin-bottom: 1rem;
-            object-fit: contain;
         }
-
+        
+        .footer-logo img {
+            max-width: 60px;
+            margin-bottom: 0.5rem;
+        }
+        
         .footer-logo h3 {
             font-size: 1.8rem;
             margin-bottom: 0.5rem;
         }
-
+        
+        .footer-column h3 {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-main);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gradient-cyan);
+            border-radius: 2px;
+        }
+        
         .footer-links {
             list-style: none;
+            padding: 0;
         }
-
+        
         .footer-links li {
             margin-bottom: 0.8rem;
         }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background: rgba(25, 211, 197, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--cyan);
+        
+        .footer-links a {
+            color: var(--text-soft);
             transition: all 0.3s ease;
+            font-size: 0.95rem;
         }
-
-        .social-link:hover {
-            background: var(--cyan);
-            color: var(--bg-main);
-            transform: translateY(-3px);
+        
+        .footer-links a:hover {
+            color: var(--cyan);
+            padding-left: 5px;
         }
-
+        
+        .footer-links i {
+            margin-right: 8px;
+            color: var(--cyan);
+            width: 20px;
+        }
+        
         .footer-bottom {
             text-align: center;
-            padding-top: 2rem;
+            padding-top: 1.5rem;
             border-top: 1px solid var(--border);
             color: var(--text-soft);
             font-size: 0.9rem;
         }
-
-        /* Floating WhatsApp Button */
+        
         .floating-whatsapp {
             position: fixed;
             bottom: 30px;
@@ -984,23 +803,9 @@
             justify-content: center;
             color: white;
             font-size: 1.5rem;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
             z-index: 999;
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
         }
-
-        .floating-whatsapp:hover {
-            transform: scale(1.1);
-        }
-
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-        }
-
-        /* Back to Top Button */
+        
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -1014,1185 +819,275 @@
             justify-content: center;
             color: var(--bg-main);
             font-size: 1.2rem;
-            box-shadow: 0 5px 15px rgba(25, 211, 197, 0.4);
             z-index: 999;
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
-
         .back-to-top.visible {
             opacity: 1;
             visibility: visible;
         }
-
-        .back-to-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(25, 211, 197, 0.5);
-        }
-
-        /* Animation on Scroll */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
             transition: all 0.6s ease;
         }
-
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Responsive Design - Enhanced */
         @media (max-width: 768px) {
-            .desktop-nav {
-                display: none;
+            .desktop-nav { display: none; }
+            .mobile-nav { display: block; }
+            body { padding-bottom: 70px; }
+            .floating-whatsapp { bottom: 80px; }
+            .back-to-top { bottom: 150px; }
+            .sample-logos-section { padding: 1.5rem; }
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
-            
-            .mobile-nav {
-                display: block;
-            }
-            
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            
-            .cta-title {
-                font-size: 1.5rem;
-            }
-
-            .sample-logos-section {
-                padding: 2rem 1rem;
-            }
-
-            .logo-request-form {
-                padding: 2rem 1.5rem;
-            }
-        }
-
-        /* Enhanced Mobile Responsiveness */
-        @media (max-width: 480px) {
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero-content p {
-                font-size: 1rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .logo-type-card {
-                padding: 1.5rem;
-            }
-
-            .logo-type-icon {
-                width: 80px;
-                height: 80px;
-                font-size: 2rem;
-            }
-
-            .sample-logo-preview {
-                height: 140px;
-            }
-
-            .sample-logo-icon {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 420px) {
-            .hero-content h1 {
-                font-size: 1.6rem;
-            }
-
-            .hero-content p {
-                font-size: 0.95rem;
-            }
-
-            .section-title {
-                font-size: 1.6rem;
-            }
-
-            .logo-type-card {
-                padding: 1.5rem;
-            }
-
-            .logo-type-icon {
-                width: 70px;
-                height: 70px;
-                font-size: 1.8rem;
-            }
-
-            .sample-logo-preview {
-                height: 120px;
-            }
-
-            .sample-logo-icon {
-                font-size: 2rem;
-            }
-
-            .mobile-nav-item span {
-                font-size: 0.6rem;
-            }
-
-            .mobile-nav-item i {
-                font-size: 1.1rem;
-            }
-        }
-
-        @media (max-width: 380px) {
-            .hero-content h1 {
-                font-size: 1.5rem;
-            }
-
-            .hero-content p {
-                font-size: 0.9rem;
-            }
-
-            .section-title {
-                font-size: 1.5rem;
-            }
-
-            .logo-type-card {
-                padding: 1.2rem;
-            }
-
-            .logo-type-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.6rem;
-            }
-
-            .sample-logo-preview {
-                height: 100px;
-            }
-
-            .sample-logo-icon {
-                font-size: 1.8rem;
-            }
-
-            .mobile-nav {
-                padding: 10px 0 5px;
-            }
-        }
-
-        @media (max-width: 340px) {
-            .hero-content h1 {
-                font-size: 1.4rem;
-            }
-
-            .hero-content p {
-                font-size: 0.85rem;
-            }
-
-            .section-title {
-                font-size: 1.4rem;
-            }
-
-            .logo-type-card {
-                padding: 1rem;
-            }
-
-            .logo-type-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.4rem;
-            }
-
-            .sample-logo-preview {
-                height: 90px;
-            }
-
-            .sample-logo-icon {
-                font-size: 1.6rem;
-            }
-
-            .mobile-nav-item span {
-                font-size: 0.55rem;
-            }
-
-            .mobile-nav-item i {
-                font-size: 1rem;
-            }
-
-            .mobile-nav {
-                padding: 8px 0 5px;
-            }
-        }
-
-        /* Add bottom padding to body for mobile navigation */
-        @media (max-width: 768px) {
-            body {
-                padding-bottom: 70px;
-            }
-
-            .floating-whatsapp {
-                bottom: 80px;
-            }
-
-            .back-to-top {
-                bottom: 150px;
+            .footer-column h3:after {
+                left: 50%;
+                transform: translateX(-50%);
             }
         }
     </style>
 </head>
 <body>
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
+<div class="scroll-progress" id="scrollProgress"></div>
+<nav class="desktop-nav"><div class="desktop-nav-container"><div><div class="logo"><img src="https://i.postimg.cc/3N8yBc2K/unnamed.png" alt="Kodingwala Logo"><span class="brand-koding">Koding</span><span class="brand-wala">wala</span></div><p class="tagline">Design • Develop • Deliver</p></div><ul class="nav-links"><li><a href="index.html">Home</a></li><li><a href="index.html#services">Services</a></li><li><a href="index.html#pricing">Pricing</a></li><li><a href="index.html#showcase">Showcase</a></li><li><a href="index.html#about">About</a></li><li><a href="index.html#contact">Contact</a></li></ul></div></nav>
+<nav class="mobile-nav"><div class="mobile-nav-items"><div class="mobile-nav-item"><a href="index.html" style="color: inherit; display: flex; flex-direction: column; align-items: center;"><i class="fas fa-home"></i><span>Home</span></a></div><div class="mobile-nav-item"><a href="#logo-types" style="color: inherit;"><i class="fas fa-shapes"></i><span>Types</span></a></div><div class="mobile-nav-item"><a href="#sample-logos" style="color: inherit;"><i class="fas fa-images"></i><span>Samples</span></a></div><div class="mobile-nav-item"><a href="#logo-request" style="color: inherit;"><i class="fas fa-edit"></i><span>Form</span></a></div><div class="mobile-nav-item"><a href="#faq" style="color: inherit;"><i class="fas fa-question-circle"></i><span>FAQ</span></a></div></div></nav>
 
-    <!-- Desktop Navigation -->
-    <nav class="desktop-nav">
-        <div class="desktop-nav-container">
-            <div>
-                <div class="logo">
+<section class="hero"><div class="hero-container"><div class="hero-content"><h1>Logo Design Services</h1><p>Create unique, professional, and creative logos for your brand and business with <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>. Stand out from the competition with a memorable brand identity.</p><div class="hero-buttons"><a href="#logo-types" class="btn btn-primary">View Logo Types</a><a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Logo%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Enquiry Now</a></div><div class="trust-badges"><div class="trust-badge"><i class="fas fa-pen-nib"></i><span>Unique Designs</span></div><div class="trust-badge"><i class="fas fa-palette"></i><span>Creative Concepts</span></div><div class="trust-badge"><i class="fas fa-rupee-sign"></i><span>Affordable Pricing</span></div><div class="trust-badge"><i class="fas fa-bolt"></i><span>Fast Delivery</span></div></div></div></div></section>
+
+<section class="section" id="logo-types"><div class="container"><div class="section-title-wrapper fade-in"><h2 class="section-title">Logo Types</h2><p class="section-subtitle">Choose the perfect logo style for your brand</p></div><div class="logo-types-grid">
+    <div class="logo-type-card fade-in"><div class="logo-type-icon"><i class="fas fa-font"></i></div><h3>Text Logo</h3><div class="logo-type-price">₹299</div><p>Simple and elegant text-based logo design with typography focus</p><a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20Text%20Logo%20design" target="_blank" class="btn btn-secondary" style="width:100%">Enquire Now</a></div>
+    <div class="logo-type-card fade-in"><div class="logo-type-icon"><i class="fas fa-shapes"></i></div><h3>Minimal Logo</h3><div class="logo-type-price">₹499</div><p>Clean and minimalist logo design with simple shapes and elements</p><a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20Minimal%20Logo" target="_blank" class="btn btn-secondary" style="width:100%">Enquire Now</a></div>
+    <div class="logo-type-card fade-in"><div class="logo-type-icon"><i class="fas fa-briefcase"></i></div><h3>Professional Business Logo</h3><div class="logo-type-price">₹799</div><p>Professional logo design suitable for businesses and corporate brands</p><a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20Business%20Logo" target="_blank" class="btn btn-secondary" style="width:100%">Enquire Now</a></div>
+    <div class="logo-type-card fade-in"><div class="logo-type-icon"><i class="fas fa-smile"></i></div><h3>Mascot / Creative Logo</h3><div class="logo-type-price">₹1,499</div><p>Unique mascot or creative logo design with character illustrations</p><a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20Mascot%20Logo" target="_blank" class="btn btn-secondary" style="width:100%">Enquire Now</a></div>
+    <div class="logo-type-card fade-in"><div class="logo-type-icon"><i class="fas fa-crown"></i></div><h3>Premium Brand Identity</h3><div class="logo-type-price">₹2,499</div><p>Complete brand identity package with logo, color palette, and style guide</p><a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20Brand%20Identity" target="_blank" class="btn btn-secondary" style="width:100%">Enquire Now</a></div>
+    <div class="logo-type-card fade-in"><div class="logo-type-icon"><i class="fas fa-font"></i></div><h3>Lettermark Logo</h3><div class="logo-type-price">₹599</div><p>Stylish lettermark logo using initials or brand name</p><a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20Lettermark%20Logo" target="_blank" class="btn btn-secondary" style="width:100%">Enquire Now</a></div>
+    <div class="logo-type-card fade-in"><div class="logo-type-icon"><i class="fas fa-layer-group"></i></div><h3>Monogram Logo</h3><div class="logo-type-price">₹699</div><p>Creative monogram logo with combined letters</p><a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20Monogram%20Logo" target="_blank" class="btn btn-secondary" style="width:100%">Enquire Now</a></div>
+    <div class="logo-type-card fade-in"><div class="logo-type-icon"><i class="fas fa-icons"></i></div><h3>Icon / Symbol Logo</h3><div class="logo-type-price">₹899</div><p>Custom symbol-based logo representing your brand</p><a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20Icon%20Logo" target="_blank" class="btn btn-secondary" style="width:100%">Enquire Now</a></div>
+    <div class="logo-type-card fade-in"><div class="logo-type-icon"><i class="fas fa-certificate"></i></div><h3>Badge Logo</h3><div class="logo-type-price">₹999</div><p>Badge-style logo perfect for apps and digital branding</p><a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20Badge%20Logo" target="_blank" class="btn btn-secondary" style="width:100%">Enquire Now</a></div>
+    <div class="logo-type-card fade-in"><div class="logo-type-icon"><i class="fas fa-shield-alt"></i></div><h3>Emblem Logo</h3><div class="logo-type-price">₹1,099</div><p>Traditional emblem logo with strong identity feel</p><a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20Emblem%20Logo" target="_blank" class="btn btn-secondary" style="width:100%">Enquire Now</a></div>
+    <div class="logo-type-card fade-in"><div class="logo-type-icon"><i class="fas fa-signature"></i></div><h3>Signature Logo</h3><div class="logo-type-price">₹799</div><p>Elegant handwritten or signature-style logo</p><a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20Signature%20Logo" target="_blank" class="btn btn-secondary" style="width:100%">Enquire Now</a></div>
+    <div class="logo-type-card fade-in"><div class="logo-type-icon"><i class="fas fa-gem"></i></div><h3>Luxury Logo</h3><div class="logo-type-price">₹1,999</div><p>Premium luxury logo with elegant design style</p><a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20Luxury%20Logo" target="_blank" class="btn btn-secondary" style="width:100%">Enquire Now</a></div>
+    <div class="logo-type-card fade-in"><div class="logo-type-icon"><i class="fas fa-rocket"></i></div><h3>Modern Startup Logo</h3><div class="logo-type-price">₹1,299</div><p>Modern startup logo with bold and clean aesthetics</p><a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20Startup%20Logo" target="_blank" class="btn btn-secondary" style="width:100%">Enquire Now</a></div>
+</div></div></section>
+
+<section class="section" id="included"><div class="container"><div class="section-title-wrapper fade-in"><h2 class="section-title">What is Included</h2><p class="section-subtitle">Everything you need for a professional logo design</p></div><div class="features-grid"><div class="feature-card fade-in"><div class="feature-icon"><i class="fas fa-bullseye"></i></div><h3>Brand-Focused Design</h3><p>Logos designed to represent your brand values</p></div><div class="feature-card fade-in"><div class="feature-icon"><i class="fas fa-layer-group"></i></div><h3>Multiple Style Options</h3><p>Get 2-3 different logo concepts to choose from</p></div><div class="feature-card fade-in"><div class="feature-icon"><i class="fas fa-palette"></i></div><h3>Color Suggestions</h3><p>Professional color palette recommendations</p></div><div class="feature-card fade-in"><div class="feature-icon"><i class="fas fa-share-alt"></i></div><h3>Social Media Use</h3><p>Logos optimized for all social media platforms</p></div></div></div></section>
+
+<section class="section" id="sample-logos"><div class="container"><div class="section-title-wrapper fade-in"><h2 class="section-title">Sample Style Logos</h2><p class="section-subtitle">Get a glimpse of our logo design styles</p></div><div class="sample-logos-section fade-in"><div class="category-filter"><button class="category-btn active" data-category="text">Text Logo</button><button class="category-btn" data-category="minimal">Minimal Logo</button><button class="category-btn" data-category="business">Business Logo</button><button class="category-btn" data-category="mascot">Mascot Logo</button><button class="category-btn" data-category="premium">Premium Logo</button><button class="category-btn" data-category="badge">Badge Logo</button><button class="category-btn" data-category="luxury">Luxury Logo</button></div><div class="sample-logos-grid" id="sampleGrid"></div></div></div></section>
+
+<section class="section" id="logo-request"><div class="container"><div class="section-title-wrapper fade-in"><h2 class="section-title">Request Your Logo Design</h2><p class="section-subtitle">Tell us about your brand and we'll create a logo that represents you perfectly</p></div><div class="logo-request-form fade-in"><form id="logoRequestForm"><div class="form-group"><label>Full Name *</label><input type="text" id="fullName" class="form-control" required></div><div class="form-group"><label>Brand / Business Name *</label><input type="text" id="brandName" class="form-control" required></div><div class="form-group"><label>Logo Type Wanted *</label><select id="logoType" class="form-control" required><option value="">Select a logo type</option><option>Text Logo</option><option>Minimal Logo</option><option>Business Logo</option><option>Mascot Logo</option><option>Premium Brand Identity</option><option>Lettermark Logo</option><option>Monogram Logo</option><option>Icon/Symbol Logo</option><option>Badge Logo</option><option>Emblem Logo</option><option>Signature Logo</option><option>Luxury Logo</option><option>Modern Startup Logo</option></select></div><div class="form-group"><label>Business Category *</label><input type="text" id="businessCategory" class="form-control" required></div><div class="form-group"><label>Tagline Needed? *</label><select id="tagline" class="form-control"><option>Yes</option><option>No</option></select></div><div class="form-group"><label>Preferred Colors</label><input type="text" id="preferredColors" class="form-control" placeholder="e.g., Blue and White"></div><div class="form-group"><label>Extra Notes / Message</label><textarea id="extraNotes" class="form-control" rows="4" placeholder="Any additional information"></textarea></div><div class="form-buttons"><button type="button" id="resetForm" class="btn btn-secondary">Reset</button><button type="submit" class="btn btn-primary">Send Request via WhatsApp</button></div></form></div></div></section>
+
+<section class="section" id="testimonials"><div class="container"><div class="section-title-wrapper fade-in"><h2 class="section-title">What Our Clients Say About <span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h2><p class="section-subtitle">Don't just take our word for it - hear from our satisfied clients</p></div><div class="testimonials-grid"><div class="testimonial-card fade-in"><div class="testimonial-quote"><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> created an amazing boutique logo that perfectly represents our brand. The design was unique and helped us stand out in the market.</div><div class="testimonial-author"><div class="testimonial-avatar">R</div><div class="testimonial-info"><h4>Rahul Sharma</h4><div class="testimonial-badge">Boutique Logo</div></div></div></div><div class="testimonial-card fade-in"><div class="testimonial-quote">We needed a professional business logo for our startup, and <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> delivered beyond our expectations. The logo is modern and appeals to our target audience.</div><div class="testimonial-author"><div class="testimonial-avatar">P</div><div class="testimonial-info"><h4>Priya Patel</h4><div class="testimonial-badge">Business Logo</div></div></div></div><div class="testimonial-card fade-in"><div class="testimonial-quote">The mascot logo <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> designed for our brand is fantastic! Our customers love it and it has become a key part of our brand identity.</div><div class="testimonial-author"><div class="testimonial-avatar">A</div><div class="testimonial-info"><h4>Amit Kumar</h4><div class="testimonial-badge">Mascot Logo</div></div></div></div></div></div></section>
+
+<section class="section" id="faq"><div class="container"><div class="section-title-wrapper fade-in"><h2 class="section-title">Frequently Asked Questions</h2><p class="section-subtitle">Got questions about our logo design services?</p></div><div class="faq-container"><div class="faq-item fade-in"><div class="faq-question"><h3>How many revisions do I get?</h3><i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer"><p>You get up to 3 revisions on your selected logo concept.</p></div></div><div class="faq-item fade-in"><div class="faq-question"><h3>What is the delivery time?</h3><i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer"><p>Standard logo designs are delivered within 3-5 business days.</p></div></div><div class="faq-item fade-in"><div class="faq-question"><h3>What file types do I receive?</h3><i class="fas fa-chevron-down faq-icon"></i></div><div class="faq-answer"><p>You receive high-resolution PNG, JPG, and vector files (AI, EPS, SVG).</p></div></div></div></div></section>
+
+<section class="section"><div class="container"><div class="cta-section"><h2 class="cta-title">Need a Logo for Your Brand?</h2><p class="section-subtitle">Let's create a memorable logo that represents your brand perfectly</p><div class="cta-buttons"><a href="#logo-types" class="btn btn-primary">View Logo Types</a><a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Logo%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Enquiry Now</a></div></div></div></section>
+
+<!-- Footer - Updated with fixes -->
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-content">
+            <!-- Brand Column -->
+            <div class="footer-column">
+                <div class="footer-logo">
                     <img src="https://i.postimg.cc/3N8yBc2K/unnamed.png" alt="Kodingwala Logo">
-                    <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>
+                    <h3><span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h3>
                 </div>
-                <p class="tagline">Design • Develop • Deliver</p>
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#services">Services</a></li>
-                <li><a href="index.html#pricing">Pricing</a></li>
-                <li><a href="index.html#showcase">Showcase</a></li>
-                <li><a href="index.html#about">About</a></li>
-                <li><a href="index.html#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Mobile Bottom Navigation -->
-    <nav class="mobile-nav">
-        <div class="mobile-nav-items">
-            <div class="mobile-nav-item">
-                <a href="index.html" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </a>
-            </div>
-            <div class="mobile-nav-item">
-                <a href="#logo-types" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
-                    <i class="fas fa-shapes"></i>
-                    <span>Types</span>
-                </a>
-            </div>
-            <div class="mobile-nav-item">
-                <a href="#sample-logos" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
-                    <i class="fas fa-images"></i>
-                    <span>Samples</span>
-                </a>
-            </div>
-            <div class="mobile-nav-item">
-                <a href="#logo-request" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
-                    <i class="fas fa-edit"></i>
-                    <span>Form</span>
-                </a>
-            </div>
-            <div class="mobile-nav-item">
-                <a href="#faq" style="color: inherit; display: flex; flex-direction: column; align-items: center; width: 100%;">
-                    <i class="fas fa-question-circle"></i>
-                    <span>FAQ</span>
-                </a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Logo Design Services</h1>
-                <p>Create unique, professional, and creative logos for your brand and business with <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>. Stand out from the competition with a memorable brand identity.</p>
-                <div class="hero-buttons">
-                    <a href="#logo-types" class="btn btn-primary">View Logo Types</a>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Logo%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-whatsapp">
-                        <i class="fab fa-whatsapp"></i> Enquiry Now
-                    </a>
-                </div>
-                <div class="trust-badges">
-                    <div class="trust-badge">
-                        <i class="fas fa-pen-nib"></i>
-                        <span>Unique Designs</span>
-                    </div>
-                    <div class="trust-badge">
-                        <i class="fas fa-palette"></i>
-                        <span>Creative Concepts</span>
-                    </div>
-                    <div class="trust-badge">
-                        <i class="fas fa-rupee-sign"></i>
-                        <span>Affordable Pricing</span>
-                    </div>
-                    <div class="trust-badge">
-                        <i class="fas fa-bolt"></i>
-                        <span>Fast Delivery</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Logo Types Section -->
-    <section class="section" id="logo-types">
-        <div class="container">
-            <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Logo Types</h2>
-                <p class="section-subtitle">Choose the perfect logo style for your brand</p>
+                <p style="color: var(--text-soft); font-size: 0.9rem;">Design • Develop • Deliver</p>
+                <p style="color: var(--text-soft); margin-top: 1rem; font-size: 0.9rem;">Creating memorable brand identities and digital solutions.</p>
             </div>
             
-            <div class="logo-types-grid">
-                <div class="logo-type-card fade-in">
-                    <div class="logo-type-icon">
-                        <i class="fas fa-font"></i>
-                    </div>
-                    <h3 class="logo-type-title">Text Logo</h3>
-                    <div class="logo-type-price">₹299</div>
-                    <p class="logo-type-description">Simple and elegant text-based logo design with typography focus</p>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Text%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-secondary" style="width: 100%;">Enquire Now</a>
-                </div>
-                
-                <div class="logo-type-card fade-in">
-                    <div class="logo-type-icon">
-                        <i class="fas fa-shapes"></i>
-                    </div>
-                    <h3 class="logo-type-title">Minimal Logo</h3>
-                    <div class="logo-type-price">₹499</div>
-                    <p class="logo-type-description">Clean and minimalist logo design with simple shapes and elements</p>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Minimal%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-secondary" style="width: 100%;">Enquire Now</a>
-                </div>
-                
-                <div class="logo-type-card fade-in">
-                    <div class="logo-type-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h3 class="logo-type-title">Professional Business Logo</h3>
-                    <div class="logo-type-price">₹799</div>
-                    <p class="logo-type-description">Professional logo design suitable for businesses and corporate brands</p>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Business%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-secondary" style="width: 100%;">Enquire Now</a>
-                </div>
-                
-                <div class="logo-type-card fade-in">
-                    <div class="logo-type-icon">
-                        <i class="fas fa-smile"></i>
-                    </div>
-                    <h3 class="logo-type-title">Mascot / Creative Logo</h3>
-                    <div class="logo-type-price">₹1,499</div>
-                    <p class="logo-type-description">Unique mascot or creative logo design with character illustrations</p>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Mascot%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-secondary" style="width: 100%;">Enquire Now</a>
-                </div>
-                
-                <div class="logo-type-card fade-in">
-                    <div class="logo-type-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <h3 class="logo-type-title">Premium Brand Identity</h3>
-                    <div class="logo-type-price">₹2,499</div>
-                    <p class="logo-type-description">Complete brand identity package with logo, color palette, and style guide</p>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Brand%20Identity%20package.%20Please%20share%20details." target="_blank" class="btn btn-secondary" style="width: 100%;">Enquire Now</a>
-                </div>
-
-                <div class="logo-type-card fade-in">
-                    <div class="logo-type-icon">
-                        <i class="fas fa-font"></i>
-                    </div>
-                    <h3 class="logo-type-title">Lettermark Logo</h3>
-                    <div class="logo-type-price">₹599</div>
-                    <p class="logo-type-description">Stylish lettermark logo using brand initials or full name</p>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Lettermark%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-secondary" style="width: 100%;">Enquire Now</a>
-                </div>
-
-                <div class="logo-type-card fade-in">
-                    <div class="logo-type-icon">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-                    <h3 class="logo-type-title">Monogram Logo</h3>
-                    <div class="logo-type-price">₹699</div>
-                    <p class="logo-type-description">Creative monogram design using combined letters or symbols</p>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Monogram%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-secondary" style="width: 100%;">Enquire Now</a>
-                </div>
-
-                <div class="logo-type-card fade-in">
-                    <div class="logo-type-icon">
-                        <i class="fas fa-icons"></i>
-                    </div>
-                    <h3 class="logo-type-title">Icon / Symbol Logo</h3>
-                    <div class="logo-type-price">₹899</div>
-                    <p class="logo-type-description">Custom icon or symbol logo representing your brand essence</p>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Icon%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-secondary" style="width: 100%;">Enquire Now</a>
-                </div>
-
-                <div class="logo-type-card fade-in">
-                    <div class="logo-type-icon">
-                        <i class="fas fa-certificate"></i>
-                    </div>
-                    <h3 class="logo-type-title">Badge Logo</h3>
-                    <div class="logo-type-price">₹999</div>
-                    <p class="logo-type-description">Professional badge-style logo perfect for apps and digital platforms</p>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Badge%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-secondary" style="width: 100%;">Enquire Now</a>
-                </div>
-
-                <div class="logo-type-card fade-in">
-                    <div class="logo-type-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3 class="logo-type-title">Emblem Logo</h3>
-                    <div class="logo-type-price">₹1,099</div>
-                    <p class="logo-type-description">Traditional emblem logo with shield or crest design elements</p>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Emblem%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-secondary" style="width: 100%;">Enquire Now</a>
-                </div>
-
-                <div class="logo-type-card fade-in">
-                    <div class="logo-type-icon">
-                        <i class="fas fa-signature"></i>
-                    </div>
-                    <h3 class="logo-type-title">Signature Logo</h3>
-                    <div class="logo-type-price">₹799</div>
-                    <p class="logo-type-description">Elegant signature-style logo using handwritten or custom fonts</p>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Signature%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-secondary" style="width: 100%;">Enquire Now</a>
-                </div>
-
-                <div class="logo-type-card fade-in">
-                    <div class="logo-type-icon">
-                        <i class="fas fa-gem"></i>
-                    </div>
-                    <h3 class="logo-type-title">Luxury Logo</h3>
-                    <div class="logo-type-price">₹1,999</div>
-                    <p class="logo-type-description">Premium luxury logo design with elegant and sophisticated elements</p>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Luxury%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-secondary" style="width: 100%;">Enquire Now</a>
-                </div>
-
-                <div class="logo-type-card fade-in">
-                    <div class="logo-type-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3 class="logo-type-title">Modern Startup Logo</h3>
-                    <div class="logo-type-price">₹1,299</div>
-                    <p class="logo-type-description">Contemporary startup logo design with modern aesthetics and appeal</p>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Startup%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-secondary" style="width: 100%;">Enquire Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- What is Included Section -->
-    <section class="section" id="included">
-        <div class="container">
-            <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">What is Included</h2>
-                <p class="section-subtitle">Everything you need for a professional logo design</p>
+            <!-- Quick Links Column -->
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#logo-types"><i class="fas fa-shapes"></i> Logo Types</a></li>
+                    <li><a href="#sample-logos"><i class="fas fa-images"></i> Sample Logos</a></li>
+                    <li><a href="#logo-request"><i class="fas fa-edit"></i> Request Form</a></li>
+                    <li><a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                </ul>
             </div>
             
-            <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3>Brand-Focused Design</h3>
-                    <p>Logos designed to represent your brand values and connect with your target audience</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-layer-group"></i>
-                    </div>
-                    <h3>Multiple Style Options</h3>
-                    <p>Get 2-3 different logo concepts to choose from based on your preferences</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>Color Suggestions</h3>
-                    <p>Professional color palette recommendations that align with your brand identity</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-share-alt"></i>
-                    </div>
-                    <h3>Social Media Use</h3>
-                    <p>Logos optimized for use across all social media platforms and digital channels</p>
-                </div>
-                
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h3>Business-Friendly Output</h3>
-                    <p>High-resolution files suitable for both digital and print applications</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Sample Style Logos Section -->
-    <section class="section" id="sample-logos">
-        <div class="container">
-            <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Sample Style Logos</h2>
-                <p class="section-subtitle">Get a glimpse of our logo design styles</p>
+            <!-- Services Column -->
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul class="footer-links">
+                    <li><a href="#logo-types"><i class="fas fa-font"></i> Text & Minimal Logos</a></li>
+                    <li><a href="#logo-types"><i class="fas fa-briefcase"></i> Business & Corporate Logos</a></li>
+                    <li><a href="#logo-types"><i class="fas fa-smile"></i> Mascot & Creative Logos</a></li>
+                    <li><a href="#logo-types"><i class="fas fa-crown"></i> Premium Brand Identity</a></li>
+                    <li><a href="#logo-types"><i class="fas fa-gem"></i> Luxury & Startup Logos</a></li>
+                </ul>
             </div>
             
-            <div class="sample-logos-section fade-in">
-                <div class="category-filter">
-                    <button class="category-btn active" data-category="text">Text Logo</button>
-                    <button class="category-btn" data-category="minimal">Minimal Logo</button>
-                    <button class="category-btn" data-category="business">Business Logo</button>
-                    <button class="category-btn" data-category="mascot">Mascot Logo</button>
-                    <button class="category-btn" data-category="premium">Premium Logo</button>
-                    <button class="category-btn" data-category="badge">Badge Logo</button>
-                    <button class="category-btn" data-category="luxury">Luxury Logo</button>
-                </div>
-
-                <div class="sample-logos-grid">
-                    <!-- Text Logo Samples -->
-                    <div class="sample-logo-card category-item" data-category="text">
-                        <div class="sample-logo-preview">
-                            <div class="sample-logo-preview-placeholder">
-                                <i class="fas fa-font sample-logo-icon"></i>
-                            </div>
-                        </div>
-                        <div class="sample-logo-content">
-                            <h3 class="sample-logo-title">Sample Text Logo 1</h3>
-                            <div class="sample-logo-type">Text Logo</div>
-                            <p class="sample-logo-description">Clean typography-based logo design example</p>
-                        </div>
-                    </div>
-                    <div class="sample-logo-card category-item" data-category="text">
-                        <div class="sample-logo-preview">
-                            <div class="sample-logo-preview-placeholder">
-                                <i class="fas fa-font sample-logo-icon"></i>
-                            </div>
-                        </div>
-                        <div class="sample-logo-content">
-                            <h3 class="sample-logo-title">Sample Text Logo 2</h3>
-                            <div class="sample-logo-type">Text Logo</div>
-                            <p class="sample-logo-description">Professional text logo with custom typography</p>
-                        </div>
-                    </div>
-
-                    <!-- Minimal Logo Samples -->
-                    <div class="sample-logo-card category-item" data-category="minimal" style="display: none;">
-                        <div class="sample-logo-preview">
-                            <div class="sample-logo-preview-placeholder">
-                                <i class="fas fa-shapes sample-logo-icon"></i>
-                            </div>
-                        </div>
-                        <div class="sample-logo-content">
-                            <h3 class="sample-logo-title">Sample Minimal Logo 1</h3>
-                            <div class="sample-logo-type">Minimal Logo</div>
-                            <p class="sample-logo-description">Simple geometric minimal logo design</p>
-                        </div>
-                    </div>
-                    <div class="sample-logo-card category-item" data-category="minimal" style="display: none;">
-                        <div class="sample-logo-preview">
-                            <div class="sample-logo-preview-placeholder">
-                                <i class="fas fa-shapes sample-logo-icon"></i>
-                            </div>
-                        </div>
-                        <div class="sample-logo-content">
-                            <h3 class="sample-logo-title">Sample Minimal Logo 2</h3>
-                            <div class="sample-logo-type">Minimal Logo</div>
-                            <p class="sample-logo-description">Clean minimalist logo with simple elements</p>
-                        </div>
-                    </div>
-
-                    <!-- Business Logo Samples -->
-                    <div class="sample-logo-card category-item" data-category="business" style="display: none;">
-                        <div class="sample-logo-preview">
-                            <div class="sample-logo-preview-placeholder">
-                                <i class="fas fa-briefcase sample-logo-icon"></i>
-                            </div>
-                        </div>
-                        <div class="sample-logo-content">
-                            <h3 class="sample-logo-title">Sample Business Logo 1</h3>
-                            <div class="sample-logo-type">Business Logo</div>
-                            <p class="sample-logo-description">Corporate business logo with professional styling</p>
-                        </div>
-                    </div>
-                    <div class="sample-logo-card category-item" data-category="business" style="display: none;">
-                        <div class="sample-logo-preview">
-                            <div class="sample-logo-preview-placeholder">
-                                <i class="fas fa-briefcase sample-logo-icon"></i>
-                            </div>
-                        </div>
-                        <div class="sample-logo-content">
-                            <h3 class="sample-logo-title">Sample Business Logo 2</h3>
-                            <div class="sample-logo-type">Business Logo</div>
-                            <p class="sample-logo-description">Modern business logo for corporate identity</p>
-                        </div>
-                    </div>
-
-                    <!-- Mascot Logo Samples -->
-                    <div class="sample-logo-card category-item" data-category="mascot" style="display: none;">
-                        <div class="sample-logo-preview">
-                            <div class="sample-logo-preview-placeholder">
-                                <i class="fas fa-smile sample-logo-icon"></i>
-                            </div>
-                        </div>
-                        <div class="sample-logo-content">
-                            <h3 class="sample-logo-title">Sample Mascot Logo 1</h3>
-                            <div class="sample-logo-type">Mascot Logo</div>
-                            <p class="sample-logo-description">Friendly mascot character logo design</p>
-                        </div>
-                    </div>
-                    <div class="sample-logo-card category-item" data-category="mascot" style="display: none;">
-                        <div class="sample-logo-preview">
-                            <div class="sample-logo-preview-placeholder">
-                                <i class="fas fa-smile sample-logo-icon"></i>
-                            </div>
-                        </div>
-                        <div class="sample-logo-content">
-                            <h3 class="sample-logo-title">Sample Mascot Logo 2</h3>
-                            <div class="sample-logo-type">Mascot Logo</div>
-                            <p class="sample-logo-description">Creative mascot logo with character design</p>
-                        </div>
-                    </div>
-
-                    <!-- Premium Logo Samples -->
-                    <div class="sample-logo-card category-item" data-category="premium" style="display: none;">
-                        <div class="sample-logo-preview">
-                            <div class="sample-logo-preview-placeholder">
-                                <i class="fas fa-crown sample-logo-icon"></i>
-                            </div>
-                        </div>
-                        <div class="sample-logo-content">
-                            <h3 class="sample-logo-title">Sample Premium Logo 1</h3>
-                            <div class="sample-logo-type">Premium Logo</div>
-                            <p class="sample-logo-description">Premium brand identity with complete styling</p>
-                        </div>
-                    </div>
-                    <div class="sample-logo-card category-item" data-category="premium" style="display: none;">
-                        <div class="sample-logo-preview">
-                            <div class="sample-logo-preview-placeholder">
-                                <i class="fas fa-crown sample-logo-icon"></i>
-                            </div>
-                        </div>
-                        <div class="sample-logo-content">
-                            <h3 class="sample-logo-title">Sample Premium Logo 2</h3>
-                            <div class="sample-logo-type">Premium Logo</div>
-                            <p class="sample-logo-description">High-end premium logo with luxury elements</p>
-                        </div>
-                    </div>
-
-                    <!-- Badge Logo Samples -->
-                    <div class="sample-logo-card category-item" data-category="badge" style="display: none;">
-                        <div class="sample-logo-preview">
-                            <div class="sample-logo-preview-placeholder">
-                                <i class="fas fa-certificate sample-logo-icon"></i>
-                            </div>
-                        </div>
-                        <div class="sample-logo-content">
-                            <h3 class="sample-logo-title">Sample Badge Logo 1</h3>
-                            <div class="sample-logo-type">Badge Logo</div>
-                            <p class="sample-logo-description">Modern badge logo for digital platforms</p>
-                        </div>
-                    </div>
-                    <div class="sample-logo-card category-item" data-category="badge" style="display: none;">
-                        <div class="sample-logo-preview">
-                            <div class="sample-logo-preview-placeholder">
-                                <i class="fas fa-certificate sample-logo-icon"></i>
-                            </div>
-                        </div>
-                        <div class="sample-logo-content">
-                            <h3 class="sample-logo-title">Sample Badge Logo 2</h3>
-                            <div class="sample-logo-type">Badge Logo</div>
-                            <p class="sample-logo-description">Professional badge-style logo design</p>
-                        </div>
-                    </div>
-
-                    <!-- Luxury Logo Samples -->
-                    <div class="sample-logo-card category-item" data-category="luxury" style="display: none;">
-                        <div class="sample-logo-preview">
-                            <div class="sample-logo-preview-placeholder">
-                                <i class="fas fa-gem sample-logo-icon"></i>
-                            </div>
-                        </div>
-                        <div class="sample-logo-content">
-                            <h3 class="sample-logo-title">Sample Luxury Logo 1</h3>
-                            <div class="sample-logo-type">Luxury Logo</div>
-                            <p class="sample-logo-description">Elegant luxury logo with premium styling</p>
-                        </div>
-                    </div>
-                    <div class="sample-logo-card category-item" data-category="luxury" style="display: none;">
-                        <div class="sample-logo-preview">
-                            <div class="sample-logo-preview-placeholder">
-                                <i class="fas fa-gem sample-logo-icon"></i>
-                            </div>
-                        </div>
-                        <div class="sample-logo-content">
-                            <h3 class="sample-logo-title">Sample Luxury Logo 2</h3>
-                            <div class="sample-logo-type">Luxury Logo</div>
-                            <p class="sample-logo-description">Sophisticated luxury brand identity design</p>
-                        </div>
-                    </div>
-                </div>
+            <!-- Contact Information Column -->
+            <div class="footer-column">
+                <h3>Contact Information</h3>
+                <ul class="footer-links">
+                    <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/917386895149" target="_blank">+91 7386895149</a></li>
+                    <li><i class="fas fa-envelope"></i> <a href="mailto:hello@kodingwala.com">hello@kodingwala.com</a></li>
+                    <li><i class="fas fa-map-marker-alt"></i> India</li>
+                </ul>
             </div>
         </div>
-    </section>
-
-    <!-- Logo Request Form Section -->
-    <section class="section" id="logo-request">
-        <div class="container">
-            <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Request Your Logo Design</h2>
-                <p class="section-subtitle">Tell us about your brand and we'll create a logo that represents you perfectly</p>
-            </div>
-
-            <div class="logo-request-form fade-in">
-                <form id="logoRequestForm">
-                    <div class="form-group">
-                        <label for="fullName">Full Name *</label>
-                        <input type="text" id="fullName" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="brandName">Brand / Business Name *</label>
-                        <input type="text" id="brandName" class="form-control" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="logoType">Logo Type Wanted *</label>
-                        <select id="logoType" class="form-control" required>
-                            <option value="" selected disabled>Select a logo type</option>
-                            <option value="text">Text Logo</option>
-                            <option value="minimal">Minimal Logo</option>
-                            <option value="business">Business Logo</option>
-                            <option value="mascot">Mascot Logo</option>
-                            <option value="premium">Premium Brand Identity</option>
-                            <option value="lettermark">Lettermark Logo</option>
-                            <option value="monogram">Monogram Logo</option>
-                            <option value="icon">Icon/Symbol Logo</option>
-                            <option value="badge">Badge Logo</option>
-                            <option value="emblem">Emblem Logo</option>
-                            <option value="signature">Signature Logo</option>
-                            <option value="luxury">Luxury Logo</option>
-                            <option value="startup">Modern Startup Logo</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="businessCategory">Business Category *</label>
-                        <input type="text" id="businessCategory" class="form-control" required>
-                        </div>
-
-                    <div class="form-group">
-                        <label for="tagline">Tagline Needed? *</label>
-                        <select id="tagline" class="form-control" required>
-                            <option value="" selected disabled>Select an option</option>
-                            <option value="yes">Yes</option>
-                            <option value="no">No</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="preferredColors">Preferred Colors</label>
-                        <input type="text" id="preferredColors" class="form-control" placeholder="e.g., Blue and White">
-                        </div>
-
-                    <div class="form-group">
-                        <label for="stylePreference">Style Preference</label>
-                        <input type="text" id="stylePreference" class="form-control" placeholder="e.g., Modern, Classic, Minimal">
-                        </div>
-
-                    <div class="form-group">
-                        <label for="usage">Where Will You Use It? *</label>
-                        <select id="usage" class="form-control" required>
-                            <option value="" selected disabled>Select usage</option>
-                            <option value="social">Social Media</option>
-                            <option value="website">Website</option>
-                            <option value="print">Print</option>
-                            <option value="all">All Platforms</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="needSymbol">Need Symbol or Text? *</label>
-                        <select id="needSymbol" class="form-control" required>
-                            <option value="" selected disabled>Select an option</option>
-                            <option value="text">Text Only</option>
-                            <option value="symbol">Symbol Only</option>
-                            <option value="both">Both Text and Symbol</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="extraNotes">Extra Notes / Message</label>
-                        <textarea id="extraNotes" class="form-control" rows="4" placeholder="Any additional information or special requirements"></textarea>
-                    </div>
-
-                    <div class="form-buttons">
-                        <button type="button" id="resetForm" class="btn btn-secondary">Reset</button>
-                        <button type="submit" class="btn btn-primary">Send Request via WhatsApp</button>
-                    </div>
-                </form>
-            </div>
+        
+        <!-- Copyright Line - Centered with Branding -->
+        <div class="footer-bottom">
+            <p>© 2026 <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>. All rights reserved. | Made with <i class="fas fa-heart" style="color: var(--orange);"></i> in India</p>
         </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="section" id="testimonials">
-        <div class="container">
-            <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">What Our Clients Say About <span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h2>
-                <p class="section-subtitle">Don't just take our word for it - hear from our satisfied clients</p>
-            </div>
-
-            <div class="testimonials-grid">
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-quote">
-                        <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> created an amazing boutique logo that perfectly represents our brand. The design was unique and helped us stand out in the market.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">R</div>
-                        <div class="testimonial-info">
-                            <h4>Rahul Sharma</h4>
-                            <div class="testimonial-badge">Boutique Logo</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-quote">
-                        We needed a professional business logo for our startup, and <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> delivered beyond our expectations. The logo is modern and appeals to our target audience.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">P</div>
-                        <div class="testimonial-info">
-                            <h4>Priya Patel</h4>
-                            <div class="testimonial-badge">Business Logo</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card fade-in">
-                    <div class="testimonial-quote">
-                        The mascot logo <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> designed for our brand is fantastic! Our customers love it and it has become a key part of our brand identity.
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="testimonial-avatar">A</div>
-                        <div class="testimonial-info">
-                            <h4>Amit Kumar</h4>
-                            <div class="testimonial-badge">Mascot Logo</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="section" id="faq">
-        <div class="container">
-            <div class="section-title-wrapper fade-in">
-                <h2 class="section-title">Frequently Asked Questions</h2>
-                <p class="section-subtitle">Got questions about our logo design services?</p>
-            </div>
-            
-            <div class="faq-container">
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <h3>How many revisions do I get?</h3>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>You get up to 3 revisions on your selected logo concept. Additional revisions can be discussed based on your requirements. We want to ensure you're completely satisfied with your final logo.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <h3>What is the delivery time?</h3>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Standard logo designs are delivered within 3-5 business days. Complex mascot logos and brand identity packages may take 7-10 days. We'll provide a timeline with our quote.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <h3>What file types do I receive?</h3>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>You receive high-resolution PNG, JPG, and vector files (AI, EPS, SVG) for maximum flexibility. We also provide files optimized for web, print, and social media use.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <h3>Can you create a custom branding style?</h3>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Absolutely! We specialize in creating custom branding styles that match your vision. Share your preferences, industry, and target audience, and we'll create something unique for you.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item fade-in">
-                    <div class="faq-question">
-                        <h3>Do you create custom logos?</h3>
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, all our logos are custom-designed based on your specific requirements. We don't use templates - each logo is uniquely created for your brand.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="section">
-        <div class="container">
-            <div class="cta-section fade-in">
-                <h2 class="cta-title">Need a Logo for Your Brand?</h2>
-                <p class="section-subtitle">Let's create a memorable logo that represents your brand perfectly</p>
-                <div class="cta-buttons">
-                    <a href="#logo-types" class="btn btn-primary">View Logo Types</a>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Logo%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-whatsapp">
-                        <i class="fab fa-whatsapp"></i> Enquiry Now
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <div class="footer-logo">
-                        <img src="https://i.postimg.cc/3N8yBc2K/unnamed.png" alt="Kodingwala Logo">
-                        <h3><span class="brand-koding">Koding</span><span class="brand-wala">wala</span></h3>
-                    </div>
-                    <p style="margin-bottom: 1rem; color: var(--text-soft);">Design • Develop • Deliver</p>
-                    <p style="color: var(--text-soft);"><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> helps students, freelancers, and businesses build modern digital presence with websites, resumes, logos, and project solutions.</p>
-                    <div class="social-links">
-                        <a href="https://instagram.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="https://youtube.com/@kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-youtube"></i></a>
-                        <a href="https://wa.me/738686895149" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://facebook.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-facebook"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="index.html#services">Services</a></li>
-                        <li><a href="index.html#pricing">Pricing</a></li>
-                        <li><a href="index.html#showcase">Showcase</a></li>
-                        <li><a href="index.html#about">About</a></li>
-                        <li><a href="index.html#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Logo Services</h3>
-                    <ul class="footer-links">
-                        <li><a href="#logo-types">Text Logo</a></li>
-                        <li><a href="#logo-types">Minimal Logo</a></li>
-                        <li><a href="#logo-types">Business Logo</a></li>
-                        <li><a href="#logo-types">Mascot Logo</a></li>
-                        <li><a href="#logo-types">Brand Identity</a></li>
-                        <li><a href="#sample-logos">Style Preview</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Contact Info</h3>
-                    <ul class="footer-links">
-                        <li><i class="fab fa-whatsapp"></i> WhatsApp: 738686895149</li>
-                        <li><i class="fas fa-envelope"></i> Email: hello@kodingwala.com</li>
-                        <li><i class="fab fa-instagram"></i> Instagram: @kodingwala</li>
-                        <li><i class="fab fa-youtube"></i> YouTube: Kodingwala</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2026 <span class="brand-koding">Koding</span><span class="brand-wala">wala</span>. All rights reserved. | Made with <i class="fas fa-heart" style="color: var(--orange);"></i> in India</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Logo%20Design%20service.%20Please%20share%20details." target="_blank" class="floating-whatsapp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="backToTop">
-        <i class="fas fa-arrow-up"></i>
     </div>
+</footer>
 
-    <script>
-        // Scroll Progress Bar
-        window.addEventListener('scroll', function() {
-            const scrollProgress = document.getElementById('scrollProgress');
-            const scrollPx = document.documentElement.scrollTop;
-            const winHeightPx = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            const scrolled = `${scrollPx / winHeightPx * 100}%`;
-            scrollProgress.style.width = scrolled;
+<a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20Logo%20Design" target="_blank" class="floating-whatsapp"><i class="fab fa-whatsapp"></i></a>
+<div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
+
+<div id="logoModal" class="modal-overlay"><div class="modal-container"><div class="modal-header"><h3>Logo Preview</h3><button class="modal-close" id="closeModalBtn">&times;</button></div><div class="modal-body"><div class="modal-preview"><img id="modalPreviewImg" src="" alt="Logo Preview"></div><h3 id="modalLogoTitle" class="modal-title"></h3><div class="modal-buttons"><button id="modalBuyBtn" class="btn btn-primary">Buy This Type</button><button id="modalEnquiryBtn" class="btn btn-whatsapp">Enquiry Now</button><button id="modalCloseActionBtn" class="btn btn-secondary">Close</button></div></div></div></div>
+
+<script>
+    const sampleData = [
+        { category:"text", title:"Sample Text Logo 1", type:"Text Logo", desc:"Clean typography-based logo", thumb:"assets/logos/text-logo-1-thumb.jpg", landscape:"assets/logos/text-logo-1-preview-landscape.jpg", buyMsg:"Hello Kodingwala, I want to buy this logo style (Text Logo). Please share payment and next steps.", enquiryMsg:"Hello Kodingwala, I am interested in this logo style (Text Logo). Please share more details." },
+        { category:"text", title:"Sample Text Logo 2", type:"Text Logo", desc:"Professional text logo", thumb:"assets/logos/text-logo-2-thumb.jpg", landscape:"assets/logos/text-logo-2-preview-landscape.jpg", buyMsg:"Hello Kodingwala, I want to buy this logo style (Text Logo 2). Please share payment.", enquiryMsg:"Hello Kodingwala, I am interested in this Text Logo style." },
+        { category:"minimal", title:"Sample Minimal Logo 1", type:"Minimal Logo", desc:"Simple geometric minimal", thumb:"assets/logos/minimal-logo-1-thumb.jpg", landscape:"assets/logos/minimal-logo-1-preview-landscape.jpg", buyMsg:"Buy Minimal Logo style", enquiryMsg:"Interested in Minimal Logo" },
+        { category:"minimal", title:"Sample Minimal Logo 2", type:"Minimal Logo", desc:"Clean minimalist", thumb:"assets/logos/minimal-logo-2-thumb.jpg", landscape:"assets/logos/minimal-logo-2-preview-landscape.jpg", buyMsg:"Buy Minimal Logo 2", enquiryMsg:"Interested in Minimal Logo 2" },
+        { category:"business", title:"Sample Business Logo 1", type:"Business Logo", desc:"Corporate styling", thumb:"assets/logos/business-logo-1-thumb.jpg", landscape:"assets/logos/business-logo-1-preview-landscape.jpg", buyMsg:"Buy Business Logo", enquiryMsg:"Interested in Business Logo" },
+        { category:"business", title:"Sample Business Logo 2", type:"Business Logo", desc:"Modern business", thumb:"assets/logos/business-logo-2-thumb.jpg", landscape:"assets/logos/business-logo-2-preview-landscape.jpg", buyMsg:"Buy Business Logo 2", enquiryMsg:"Interested in Business Logo 2" },
+        { category:"mascot", title:"Sample Mascot Logo 1", type:"Mascot Logo", desc:"Friendly character", thumb:"assets/logos/mascot-logo-1-thumb.jpg", landscape:"assets/logos/mascot-logo-1-preview-landscape.jpg", buyMsg:"Buy Mascot Logo", enquiryMsg:"Interested in Mascot Logo" },
+        { category:"mascot", title:"Sample Mascot Logo 2", type:"Mascot Logo", desc:"Creative mascot", thumb:"assets/logos/mascot-logo-2-thumb.jpg", landscape:"assets/logos/mascot-logo-2-preview-landscape.jpg", buyMsg:"Buy Mascot Logo 2", enquiryMsg:"Interested in Mascot Logo 2" },
+        { category:"premium", title:"Sample Premium Logo 1", type:"Premium Logo", desc:"Complete identity", thumb:"assets/logos/premium-logo-1-thumb.jpg", landscape:"assets/logos/premium-logo-1-preview-landscape.jpg", buyMsg:"Buy Premium Identity", enquiryMsg:"Interested in Premium Logo" },
+        { category:"premium", title:"Sample Premium Logo 2", type:"Premium Logo", desc:"High-end premium", thumb:"assets/logos/premium-logo-2-thumb.jpg", landscape:"assets/logos/premium-logo-2-preview-landscape.jpg", buyMsg:"Buy Premium 2", enquiryMsg:"Interested in Premium 2" },
+        { category:"badge", title:"Sample Badge Logo 1", type:"Badge Logo", desc:"Modern badge", thumb:"assets/logos/badge-logo-1-thumb.jpg", landscape:"assets/logos/badge-logo-1-preview-landscape.jpg", buyMsg:"Buy Badge Logo", enquiryMsg:"Interested in Badge Logo" },
+        { category:"badge", title:"Sample Badge Logo 2", type:"Badge Logo", desc:"Professional badge", thumb:"assets/logos/badge-logo-2-thumb.jpg", landscape:"assets/logos/badge-logo-2-preview-landscape.jpg", buyMsg:"Buy Badge Logo 2", enquiryMsg:"Interested in Badge 2" },
+        { category:"luxury", title:"Sample Luxury Logo 1", type:"Luxury Logo", desc:"Elegant luxury", thumb:"assets/logos/luxury-logo-1-thumb.jpg", landscape:"assets/logos/luxury-logo-1-preview-landscape.jpg", buyMsg:"Buy Luxury Logo", enquiryMsg:"Interested in Luxury Logo" },
+        { category:"luxury", title:"Sample Luxury Logo 2", type:"Luxury Logo", desc:"Sophisticated", thumb:"assets/logos/luxury-logo-2-thumb.jpg", landscape:"assets/logos/luxury-logo-2-preview-landscape.jpg", buyMsg:"Buy Luxury 2", enquiryMsg:"Interested in Luxury 2" }
+    ];
+    
+    function buildSampleGrid() {
+        const grid = document.getElementById('sampleGrid');
+        if(!grid) return;
+        grid.innerHTML = '';
+        sampleData.forEach((item, idx) => {
+            const card = document.createElement('div');
+            card.className = 'sample-logo-card category-item';
+            card.setAttribute('data-category', item.category);
+            card.style.display = item.category === 'text' ? 'block' : 'none';
+            card.innerHTML = `
+                <div class="sample-logo-preview">
+                    <img src="${item.thumb}" alt="${item.title}" onerror="this.src='https://placehold.co/400x300/0d1f3a/19d3c5?text=Logo+Preview'">
+                </div>
+                <div class="sample-logo-content">
+                    <h3 class="sample-logo-title">${item.title}</h3>
+                    <div class="sample-logo-type">${item.type}</div>
+                    <p class="sample-logo-description">${item.desc}</p>
+                    <div class="card-buttons">
+                        <button class="btn btn-primary btn-sm view-btn" data-index="${idx}">View</button>
+                        <a href="https://wa.me/917386895149?text=${encodeURIComponent(item.enquiryMsg)}" target="_blank" class="btn btn-whatsapp btn-sm">Enquiry Now</a>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
         });
-
-        // Mobile Navigation Active State
-        const mobileNavItems = document.querySelectorAll('.mobile-nav-item');
-        mobileNavItems.forEach(item => {
-            item.addEventListener('click', function() {
-                mobileNavItems.forEach(navItem => navItem.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Scroll to section
-                const href = this.querySelector('a').getAttribute('href');
-                if (href && href.startsWith('#')) {
-                    const section = document.querySelector(href);
-                    if (section) {
-                        section.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const idx = parseInt(btn.getAttribute('data-index'));
+                const data = sampleData[idx];
+                openModal(data);
             });
         });
-
-        // Category Filter for Sample Logos
-        const categoryBtns = document.querySelectorAll('.category-btn');
-        const categoryItems = document.querySelectorAll('.category-item');
-
-        categoryBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                // Update active button
-                categoryBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-
-                // Filter items
-                const category = this.getAttribute('data-category');
-                categoryItems.forEach(item => {
-                    if (item.getAttribute('data-category') === category) {
-                        item.style.display = 'block';
-                    } else {
-                        item.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Logo Request Form Submission
-        const logoRequestForm = document.getElementById('logoRequestForm');
-
-        logoRequestForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Get form values
-            const fullName = document.getElementById('fullName').value;
-            const brandName = document.getElementById('brandName').value;
-            const logoType = document.getElementById('logoType').value;
-            const businessCategory = document.getElementById('businessCategory').value;
-            const tagline = document.getElementById('tagline').value;
-            const preferredColors = document.getElementById('preferredColors').value;
-            const stylePreference = document.getElementById('stylePreference').value;
-            const usage = document.getElementById('usage').value;
-            const needSymbol = document.getElementById('needSymbol').value;
-            const extraNotes = document.getElementById('extraNotes').value;
-
-            // Build WhatsApp message
-            const message = `Hello Kodingwala, I would like to request a logo design.%0A%0A` +
-                `Full Name: ${fullName}%0A` +
-                `Brand/Business Name: ${brandName}%0A` +
-                `Logo Type: ${logoType}%0A` +
-                `Business Category: ${businessCategory}%0A` +
-                `Tagline: ${tagline}%0A` +
-                `Preferred Colors: ${preferredColors || 'Not specified'}%0A` +
-                `Style Preference: ${stylePreference || 'Not specified'}%0A` +
-                `Usage: ${usage}%0A` +
-                `Text/Symbol: ${needSymbol}%0A` +
-                `Extra Notes: ${extraNotes || 'Not provided'}`;
-
-            // Open WhatsApp with the message
-            const whatsappURL = `https://wa.me/738686895149?text=${message}`;
-            window.open(whatsappURL, '_blank');
-        });
-
-        // Reset Form Button
-        document.getElementById('resetForm').addEventListener('click', function() {
-            logoRequestForm.reset();
-        });
-
-        // FAQ Accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            
-            question.addEventListener('click', function() {
-                // Toggle active class
-                item.classList.toggle('active');
-                
-                // Close other items
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item && otherItem.classList.contains('active')) {
-                        otherItem.classList.remove('active');
-                    }
-                });
-            });
-        });
-
-        // Back to Top Button
-        const backToTopButton = document.getElementById('backToTop');
-        
-        window.addEventListener('scroll', function() {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('visible');
-            } else {
-                backToTopButton.classList.remove('visible');
-            }
-        });
-        
-        backToTopButton.addEventListener('click', function() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Fade In Animation on Scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        function checkFade() {
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
-            });
+    }
+    
+    let currentModalData = null;
+    const modal = document.getElementById('logoModal');
+    const modalImg = document.getElementById('modalPreviewImg');
+    const modalTitle = document.getElementById('modalLogoTitle');
+    const buyBtn = document.getElementById('modalBuyBtn');
+    const enquiryBtn = document.getElementById('modalEnquiryBtn');
+    
+    function openModal(data) {
+        currentModalData = data;
+        modalImg.src = data.landscape;
+        modalImg.alt = data.title;
+        modalTitle.innerText = data.title;
+        modal.classList.add('active');
+    }
+    function closeModal() { modal.classList.remove('active'); }
+    document.getElementById('closeModalBtn').addEventListener('click', closeModal);
+    document.getElementById('modalCloseActionBtn').addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+    
+    buyBtn.addEventListener('click', () => {
+        if(currentModalData) {
+            window.open(`https://wa.me/917386895149?text=${encodeURIComponent(currentModalData.buyMsg)}`, '_blank');
         }
-        
-        window.addEventListener('scroll', checkFade);
-        window.addEventListener('load', checkFade);
-        
-        // Smooth Scrolling for Navigation Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
+    });
+    enquiryBtn.addEventListener('click', () => {
+        if(currentModalData) {
+            window.open(`https://wa.me/917386895149?text=${encodeURIComponent(currentModalData.enquiryMsg)}`, '_blank');
+        }
+    });
+    
+    const catBtns = document.querySelectorAll('.category-btn');
+    function filterCategory(cat) {
+        document.querySelectorAll('.category-item').forEach(el => {
+            el.style.display = el.getAttribute('data-category') === cat ? 'block' : 'none';
         });
-    </script>
+    }
+    catBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            catBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            filterCategory(this.getAttribute('data-category'));
+        });
+    });
+    
+    const form = document.getElementById('logoRequestForm');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fullName = document.getElementById('fullName').value;
+        const brandName = document.getElementById('brandName').value;
+        const logoType = document.getElementById('logoType').value;
+        const category = document.getElementById('businessCategory').value;
+        const tagline = document.getElementById('tagline').value;
+        const colors = document.getElementById('preferredColors').value;
+        const notes = document.getElementById('extraNotes').value;
+        let msg = `Logo Request%0A%0AFull Name: ${fullName}%0ABrand: ${brandName}%0ALogo Type: ${logoType}%0ABusiness: ${category}%0ATagline: ${tagline}%0AColors: ${colors || 'Not specified'}%0ANotes: ${notes || 'None'}`;
+        window.open(`https://wa.me/917386895149?text=${msg}`, '_blank');
+    });
+    document.getElementById('resetForm').addEventListener('click', () => form.reset());
+    
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.querySelector('.faq-question').addEventListener('click', () => item.classList.toggle('active'));
+    });
+    
+    window.addEventListener('scroll', () => {
+        const winScroll = document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById('scrollProgress').style.width = scrolled + '%';
+        const backBtn = document.getElementById('backToTop');
+        if (window.scrollY > 300) backBtn.classList.add('visible');
+        else backBtn.classList.remove('visible');
+    });
+    document.getElementById('backToTop').addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+    
+    const fadeElements = document.querySelectorAll('.fade-in');
+    function checkFade() { fadeElements.forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('visible'); }); }
+    window.addEventListener('scroll', checkFade);
+    window.addEventListener('load', () => { buildSampleGrid(); checkFade(); });
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if(target) { e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
+        });
+    });
+</script>
 </body>
 </html>
