@@ -11,6 +11,86 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- ADD THIS CSS PATCH FOR BOOK NOW DROPDOWN VISIBILITY -->
+    <style>
+        /* Book Now Modal Select Styling */
+        .modal .form-select,
+        .modal select,
+        #bookService,
+        .form-group select {
+            background-color: #0a1a2f;
+            color: #ffffff;
+            border: 1px solid #ff8c00;
+            border-radius: 8px;
+            padding: 12px 15px;
+            width: 100%;
+            font-size: 16px;
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23ff8c00' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 16px;
+        }
+
+        .modal .form-select option,
+        .modal select option,
+        #bookService option,
+        .form-group select option {
+            background-color: #0a1a2f;
+            color: #ffffff;
+            padding: 10px;
+        }
+
+        .modal .form-select:focus,
+        .modal select:focus,
+        #bookService:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #64ffda;
+            box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.2);
+        }
+
+        /* Mobile friendly adjustments */
+        @media (max-width: 768px) {
+            .modal .form-select,
+            .modal select,
+            #bookService,
+            .form-group select {
+                font-size: 14px;
+                padding: 10px 12px;
+                background-size: 14px;
+            }
+        }
+
+        /* FIX: Button alignment for Dynamic Website Development card */
+        .service-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: auto;
+        }
+        
+        .service-buttons .btn {
+            flex: 1;
+            text-align: center;
+            white-space: nowrap;
+        }
+        
+        /* Ensure all service cards have consistent height structure */
+        .service-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .service-card p {
+            flex-grow: 0;
+            margin-bottom: 1.5rem;
+        }
+    </style>
           
         </head>
 <body>
@@ -111,7 +191,7 @@
         <div class="floating-contact" id="floatingContact">
             <i class="fas fa-headset"></i>
         </div>
-        <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20want%20to%20know%20more%20about%20your%20services." target="_blank" class="floating-whatsapp">
+        <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20want%20to%20know%20more%20about%20your%20services." target="_blank" class="floating-whatsapp">
             <i class="fab fa-whatsapp"></i>
         </a>
 
@@ -123,7 +203,7 @@
                     <p>We create stylish websites, resumes, portfolios, logos, PPTs, and student projects with modern design, smart UI, and WhatsApp-ready communication.</p>
                     <div class="hero-buttons">
                         <a href="#services" class="btn btn-primary">View Services</a>
-                        <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20want%20to%20know%20more%20about%20your%20website%20services." target="_blank" class="btn btn-whatsapp">
+                        <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20want%20to%20know%20more%20about%20your%20website%20services." target="_blank" class="btn btn-whatsapp">
                             <i class="fab fa-whatsapp"></i> Contact on WhatsApp
                         </a>
                     </div>
@@ -177,7 +257,7 @@
                         <p>Stylish and responsive static websites with modern design, hover effects, and light animations perfect for small businesses and portfolios.</p>
                         <div class="service-buttons">
                             <a href="staticwebdesign.html" class="btn btn-secondary">View Now</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Static%20Website%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Static%20Website%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                         </div>
                     </div>
                     
@@ -189,7 +269,7 @@
                         <p>Custom dynamic websites with database integration, admin panels, forms, and advanced features tailored to your business needs.</p>
                         <div class="service-buttons">
                             <a href="dynamic.html" class="btn btn-secondary">View Now</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Dynamic%20Website%20Development%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Get Custom Quote</a>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Dynamic%20Website%20Development%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Get Custom Quote</a>
                         </div>
                     </div>
                     
@@ -201,19 +281,19 @@
                         <p>Professional and eye-catching resume designs that help you stand out from the crowd and land your dream job.</p>
                         <div class="service-buttons">
                             <a href="resume.html" class="btn btn-secondary">View Now</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Resume%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Resume%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                         </div>
                     </div>
                     
                     <div class="service-card fade-in">
                         <div class="service-icon">
-                            <i class="fas fa-presentation"></i>
+                            <i class="fas fa-file-powerpoint"></i>
                         </div>
                         <h3>PPT Design</h3>
                         <p>Engaging and professional PowerPoint presentations that effectively communicate your message and impress your audience.</p>
                         <div class="service-buttons">
                             <a href="ppt.html" class="btn btn-secondary">View Now</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20PPT%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20PPT%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                         </div>
                     </div>
                     
@@ -225,7 +305,7 @@
                         <p>Beautiful portfolio websites that showcase your work and skills in the best possible way to attract clients and employers.</p>
                         <div class="service-buttons">
                             <a href="portfolio.html" class="btn btn-secondary">View Now</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Portfolio%20Website%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Portfolio%20Website%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                         </div>
                     </div>
                     
@@ -237,7 +317,7 @@
                         <p>Academic projects and mini-projects for students with proper documentation and explanations to help you learn and score well.</p>
                         <div class="service-buttons">
                             <a href="student.html" class="btn btn-secondary">View Now</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Student%20Mini%20Projects%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Student%20Mini%20Projects%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                         </div>
                     </div>
                     
@@ -249,7 +329,7 @@
                         <p>Unique and memorable logo designs that represent your brand identity and make you stand out from the competition.</p>
                         <div class="service-buttons">
                             <a href="logo.html" class="btn btn-secondary">View Now</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Logo%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Logo%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                         </div>
                     </div>
                     
@@ -261,7 +341,7 @@
                         <p>High-converting landing pages designed to capture leads and drive sales for your products or services.</p>
                         <div class="service-buttons">
                             <a href="landingpage.html" class="btn btn-secondary">View Now</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Landing%20Page%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Landing%20Page%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                         </div>
                     </div>
                     
@@ -273,7 +353,7 @@
                         <p>Integrate WhatsApp into your website for seamless customer communication and lead generation.</p>
                         <div class="service-buttons">
                             <a href="WhatsApp.html" class="btn btn-secondary">View Now</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20WhatsApp%20Integration%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20WhatsApp%20Integration%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                         </div>
                     </div>
                 </div>
@@ -302,7 +382,7 @@
                             <li><i class="fas fa-check"></i> WhatsApp integration only</li>
                             <li><i class="fas fa-times"></i> Domain cost separate</li>
                         </ul>
-                        <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I'm%20interested%20in%20your%20Static%20Website%20package%20starting%20at%20₹5,000.%20Can%20you%20provide%20more%20details?" target="_blank" class="btn btn-primary" style="width: 100%;">Enquire on WhatsApp</a>
+                        <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I'm%20interested%20in%20your%20Static%20Website%20package%20starting%20at%20₹5,000.%20Can%20you%20provide%20more%20details?" target="_blank" class="btn btn-primary" style="width: 100%;">Enquire on WhatsApp</a>
                     </div>
                     
                     <div class="pricing-card featured fade-in">
@@ -318,7 +398,7 @@
                             <li><i class="fas fa-check"></i> Business-specific features</li>
                             <li><i class="fas fa-check"></i> WhatsApp integration</li>
                         </ul>
-                        <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I'm%20interested%20in%20a%20Dynamic%20Website.%20Can%20you%20provide%20a%20custom%20quote%20based%20on%20my%20requirements?" target="_blank" class="btn btn-primary" style="width: 100%;">Get Custom Quote</a>
+                        <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I'm%20interested%20in%20a%20Dynamic%20Website.%20Can%20you%20provide%20a%20custom%20quote%20based%20on%20my%20requirements?" target="_blank" class="btn btn-primary" style="width: 100%;">Get Custom Quote</a>
                     </div>
                     
                     <div class="pricing-card fade-in">
@@ -334,7 +414,7 @@
                             <li><i class="fas fa-check"></i> Student-friendly pricing</li>
                             <li><i class="fas fa-check"></i> Fast delivery</li>
                         </ul>
-                        <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I'm%20interested%20in%20your%20Student%20&%20Digital%20Services.%20Can%20you%20provide%20more%20details?" target="_blank" class="btn btn-primary" style="width: 100%;">Ask Now</a>
+                        <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I'm%20interested%20in%20your%20Student%20&%20Digital%20Services.%20Can%20you%20provide%20more%20details?" target="_blank" class="btn btn-primary" style="width: 100%;">Ask Now</a>
                     </div>
                 </div>
             </div>
@@ -376,7 +456,7 @@
                     </div>
                     
                     <div style="text-align: center; margin-top: 2rem;">
-                        <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20want%20to%20know%20more%20about%20your%20special%20offers." target="_blank" class="btn btn-primary">
+                        <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20want%20to%20know%20more%20about%20your%20special%20offers." target="_blank" class="btn btn-primary">
                             <i class="fab fa-whatsapp"></i> Claim on WhatsApp
                         </a>
                     </div>
@@ -402,7 +482,7 @@
                         <p>Simple and elegant text-based logo design with typography focus</p>
                         <div class="logo-buttons">
                             <a href="logo.html" class="btn btn-secondary">View Now</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Text%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Text%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                         </div>
                     </div>
                     
@@ -415,7 +495,7 @@
                         <p>Clean and minimalist logo design with simple shapes and elements</p>
                         <div class="logo-buttons">
                             <a href="logo.html" class="btn btn-secondary">View Now</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Minimal%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Minimal%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                         </div>
                     </div>
                     
@@ -428,7 +508,7 @@
                         <p>Professional logo design suitable for businesses and corporate brands</p>
                         <div class="logo-buttons">
                             <a href="logo.html" class="btn btn-secondary">View Now</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Business%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Business%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                         </div>
                     </div>
                     
@@ -441,7 +521,7 @@
                         <p>Unique mascot or creative logo design with character illustrations</p>
                         <div class="logo-buttons">
                             <a href="logo.html" class="btn btn-secondary">View Now</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Mascot%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Mascot%20Logo%20design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                         </div>
                     </div>
                     
@@ -454,7 +534,7 @@
                         <p>Complete brand identity package with logo, color palette, and style guide</p>
                         <div class="logo-buttons">
                             <a href="logo.html" class="btn btn-secondary">View Now</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Brand%20Identity%20package.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Brand%20Identity%20package.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                         </div>
                     </div>
                 </div>
@@ -665,7 +745,7 @@
                             <p>Modern e-commerce platform with product catalog and payment integration</p>
                             <div class="portfolio-buttons">
                                 <a href="staticwebdesign.html" class="btn btn-secondary">View Now</a>
-                                <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Business%20Website%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                                <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Business%20Website%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                             </div>
                         </div>
                     </div>
@@ -685,7 +765,7 @@
                             <p>Clean and modern portfolio for a web developer with project showcase</p>
                             <div class="portfolio-buttons">
                                 <a href="portfolio.html" class="btn btn-secondary">View Now</a>
-                                <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Student%20Portfolio%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                                <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Student%20Portfolio%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                             </div>
                         </div>
                     </div>
@@ -705,7 +785,7 @@
                             <p>Eye-catching resume design for a marketing professional</p>
                             <div class="portfolio-buttons">
                                 <a href="resume.html" class="btn btn-secondary">View Now</a>
-                                <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Professional%20Resume%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                                <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Professional%20Resume%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                             </div>
                         </div>
                     </div>
@@ -713,7 +793,7 @@
                     <div class="portfolio-card fade-in" data-category="ppt">
                         <div class="portfolio-preview">
                             <div class="portfolio-preview-placeholder">
-                                <i class="fas fa-presentation portfolio-preview-icon"></i>
+                                <i class="fas fa-file-powerpoint portfolio-preview-icon"></i>
                             </div>
                             <div class="portfolio-overlay">
                                 <button class="btn btn-primary">View Project</button>
@@ -725,7 +805,7 @@
                             <p>Professional presentation for a startup pitch deck</p>
                             <div class="portfolio-buttons">
                                 <a href="ppt.html" class="btn btn-secondary">View Now</a>
-                                <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Business%20Presentation%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                                <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Business%20Presentation%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                             </div>
                         </div>
                     </div>
@@ -745,7 +825,7 @@
                             <p>Full-stack task management application with user authentication</p>
                             <div class="portfolio-buttons">
                                 <a href="student.html" class="btn btn-secondary">View Now</a>
-                                <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Mini%20Project%20UI%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                                <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Mini%20Project%20UI%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                             </div>
                         </div>
                     </div>
@@ -765,7 +845,7 @@
                             <p>Modern and minimalist logo for a technology startup</p>
                             <div class="portfolio-buttons">
                                 <a href="logo.html" class="btn btn-secondary">View Now</a>
-                                <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Logo%20Design%20Sample%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                                <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Logo%20Design%20Sample%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                             </div>
                         </div>
                     </div>
@@ -791,7 +871,7 @@
                             <p>Professional resume designs that help you stand out in job applications</p>
                             <div class="service-buttons">
                                 <a href="resume.html" class="btn btn-secondary">View Now</a>
-                                <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20a%20student%20interested%20in%20your%20Resume%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                                <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20a%20student%20interested%20in%20your%20Resume%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                             </div>
                         </div>
                         
@@ -803,7 +883,7 @@
                             <p>Showcase your projects and skills with a professional portfolio website</p>
                             <div class="service-buttons">
                                 <a href="portfolio.html" class="btn btn-secondary">View Now</a>
-                                <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20a%20student%20interested%20in%20your%20Portfolio%20Website%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                                <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20a%20student%20interested%20in%20your%20Portfolio%20Website%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                             </div>
                         </div>
                         
@@ -815,19 +895,19 @@
                             <p>Academic projects with proper documentation to help you learn and score well</p>
                             <div class="service-buttons">
                                 <a href="student.html" class="btn btn-secondary">View Now</a>
-                                <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20a%20student%20interested%20in%20your%20Mini%20Projects%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                                <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20a%20student%20interested%20in%20your%20Mini%20Projects%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                             </div>
                         </div>
                         
                         <div class="service-card">
                             <div class="service-icon">
-                                <i class="fas fa-presentation"></i>
+                                <i class="fas fa-file-powerpoint"></i>
                             </div>
                             <h3>PPT Design</h3>
                             <p>Impressive presentations for your college seminars and project submissions</p>
                             <div class="service-buttons">
                                 <a href="ppt.html" class="btn btn-secondary">View Now</a>
-                                <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20a%20student%20interested%20in%20your%20PPT%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                                <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20a%20student%20interested%20in%20your%20PPT%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                             </div>
                         </div>
                     </div>
@@ -1094,7 +1174,7 @@
                             </div>
                             <div>
                                 <h4>WhatsApp</h4>
-                                <p>738686895149</p>
+                                <p>+91 7386895149</p>
                             </div>
                         </div>
                         
@@ -1130,8 +1210,8 @@
                         
                         <div class="whatsapp-direct">
                             <h4>For Fast Response</h4>
-                            <p>Contact us directly on WhatsApp: <strong>738686895149</strong></p>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20want%20to%20know%20more%20about%20your%20services." target="_blank" class="btn btn-whatsapp" style="width: 100%; margin-top: 1rem;">
+                            <p>Contact us directly on WhatsApp: <strong>+91 7386895149</strong></p>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20want%20to%20know%20more%20about%20your%20services." target="_blank" class="btn btn-whatsapp" style="width: 100%; margin-top: 1rem;">
                                 <i class="fab fa-whatsapp"></i> Start WhatsApp Chat
                             </a>
                         </div>
@@ -1157,7 +1237,7 @@
                             <!-- Add YouTube link here -->
                             <a href="https://www.youtube.com/@kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-youtube"></i></a>
                             <!-- Add WhatsApp link here -->
-                            <a href="https://wa.me/738686895149" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                            <a href="https://wa.me/917386895149" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-whatsapp"></i></a>
                             <!-- Add Facebook link here -->
                             <a href="https://www.facebook.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-facebook"></i></a>
                         </div>
@@ -1192,7 +1272,7 @@
                     <div class="footer-column">
                         <h3>Contact Info</h3>
                         <ul class="footer-links">
-                            <li><i class="fab fa-whatsapp"></i> WhatsApp: 738686895149</li>
+                            <li><i class="fab fa-whatsapp"></i> WhatsApp: +91 7386895149</li>
                             <li><i class="fas fa-envelope"></i> Email: hello@kodingwala.com</li>
                             <li><i class="fab fa-instagram"></i> Instagram: @kodingwala</li>
                             <li><i class="fab fa-youtube"></i> YouTube: Kodingwala</li>
@@ -1984,11 +2064,27 @@
                 return;
             }
             
-            // Create WhatsApp message
-            const whatsappMessage = `Hello Kodingwala, I want to book a service.%0A%0AName: ${name}%0APhone: ${phone}%0AEmail: ${email}%0AService Needed: ${service}%0AType: ${type}%0APages: ${pages}%0AFeatures: ${features}%0AWhatsApp Integration: ${whatsapp}%0ADomain Help: ${domain}%0ALogo Design: ${logo}%0ACustomization: ${customization}%0ABudget: ${budget}%0AProject Details: ${message}`;
+            // Create WhatsApp message (multiline)
+            const messageText = `Hello Kodingwala, I want to book a service.
+    
+Name: ${name}
+Phone: ${phone}
+Email: ${email}
+Service Needed: ${service}
+Type: ${type}
+Pages: ${pages}
+Features: ${features}
+WhatsApp Integration: ${whatsapp}
+Domain Help: ${domain}
+Logo Design: ${logo}
+Customization: ${customization}
+Budget: ${budget}
+Project Details: ${message}`;
+            
+            const encodedMessage = encodeURIComponent(messageText);
             
             // Open WhatsApp with pre-filled message
-            window.open(`https://wa.me/738686895149?text=${whatsappMessage}`, '_blank');
+            window.open(`https://wa.me/917386895149?text=${encodedMessage}`, '_blank');
             
             // Close modal
             closeBookNowModal();
@@ -2012,11 +2108,19 @@
                 return;
             }
             
-            // Create WhatsApp message
-            const whatsappMessage = `Hello Kodingwala, I have an enquiry.%0A%0AName: ${name}%0AEmail: ${email}%0APhone: ${phone}%0AService: ${service}%0AMessage: ${message}`;
+            // Create WhatsApp message (multiline)
+            const messageText = `Hello Kodingwala, I have an enquiry.
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Service: ${service}
+Message: ${message}`;
+            
+            const encodedMessage = encodeURIComponent(messageText);
             
             // Open WhatsApp with pre-filled message
-            window.open(`https://wa.me/738686895149?text=${whatsappMessage}`, '_blank');
+            window.open(`https://wa.me/917386895149?text=${encodedMessage}`, '_blank');
             
             // Reset form
             contactForm.reset();
