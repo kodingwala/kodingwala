@@ -833,55 +833,98 @@
             color: var(--bg-main);
         }
 
-        /* Sample Preview Grid */
-        .sample-preview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .sample-preview-card {
-            background: var(--bg-card);
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .sample-preview-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-            border-color: var(--cyan);
-        }
-
-        .sample-preview-image {
-            height: 300px;
-            background: var(--bg-main);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .sample-preview-placeholder {
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(25, 211, 197, 0.1) 0%, rgba(245, 166, 35, 0.1) 100%);
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .sample-preview-icon {
-            font-size: 3rem;
+        .modal.show {
+            display: flex;
+            opacity: 1;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border-radius: 20px;
+            max-width: 800px;
+            width: 90%;
+            margin: 2rem auto;
+            position: relative;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            margin-bottom: 0;
             color: var(--cyan);
         }
 
-        .sample-preview-content {
-            padding: 1.5rem;
+        .close-modal {
+            background: none;
+            border: none;
+            color: var(--text-soft);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            line-height: 1;
         }
 
-        .sample-preview-title {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
+        .close-modal:hover {
+            color: var(--orange);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-image-container {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .modal-resume-image {
+            max-width: 100%;
+            max-height: 500px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .modal-buttons .btn {
+            min-width: 150px;
         }
 
         /* FAQ Section */
@@ -1405,7 +1448,7 @@
                 <p><span class="brand-koding">Koding</span><span class="brand-wala">wala</span> creates modern, neat, ATS-friendly, and professional resumes for students, freshers, interns, and job seekers who want to make a strong first impression.</p>
                 <div class="hero-buttons">
                     <a href="#samples" class="btn btn-secondary">View Samples</a>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Resume%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                    <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Resume%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                 </div>
                 <div class="trust-badges">
                     <div class="trust-badge">
@@ -1541,7 +1584,7 @@
             </div>
             
             <div class="sample-resumes-grid">
-                <div class="sample-resume-card fade-in">
+                <div class="sample-resume-card fade-in" data-resume-type="student" data-image="https://via.placeholder.com/800x500/0d1f3a/19d3c5?text=Student+Resume+Sample">
                     <div class="sample-resume-preview">
                         <div class="sample-resume-preview-placeholder">
                             <i class="fas fa-user-graduate sample-resume-preview-icon"></i>
@@ -1552,13 +1595,13 @@
                         <h3 class="sample-resume-title">Student Resume Sample</h3>
                         <p class="sample-resume-description">Clean and simple resume layout for students starting their career journey with focus on education and skills.</p>
                         <div class="sample-resume-buttons">
-                            <a href="sample-student-resume.html" class="btn btn-secondary">View</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20this%20resume%20sample%20design.%20Please%20share%20more%20details." target="_blank" class="btn btn-primary">Enquire Now</a>
+                            <button class="btn btn-secondary view-sample-btn" data-resume-type="student" data-image="https://via.placeholder.com/800x500/0d1f3a/19d3c5?text=Student+Resume+Sample">View</button>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20this%20resume%20sample%20design.%20Please%20share%20more%20details." target="_blank" class="btn btn-primary">Enquire Now</a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="sample-resume-card fade-in">
+                <div class="sample-resume-card fade-in" data-resume-type="fresher" data-image="https://via.placeholder.com/800x500/0d1f3a/19d3c5?text=Fresher+Resume+Sample">
                     <div class="sample-resume-preview">
                         <div class="sample-resume-preview-placeholder">
                             <i class="fas fa-user-tie sample-resume-preview-icon"></i>
@@ -1569,13 +1612,13 @@
                         <h3 class="sample-resume-title">Fresher Resume Sample</h3>
                         <p class="sample-resume-description">Modern fresher resume format designed to highlight skills, education, and potential for entry-level positions.</p>
                         <div class="sample-resume-buttons">
-                            <a href="sample-fresher-resume.html" class="btn btn-secondary">View</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20this%20resume%20sample%20design.%20Please%20share%20more%20details." target="_blank" class="btn btn-primary">Enquire Now</a>
+                            <button class="btn btn-secondary view-sample-btn" data-resume-type="fresher" data-image="https://via.placeholder.com/800x500/0d1f3a/19d3c5?text=Fresher+Resume+Sample">View</button>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20this%20resume%20sample%20design.%20Please%20share%20more%20details." target="_blank" class="btn btn-primary">Enquire Now</a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="sample-resume-card fade-in">
+                <div class="sample-resume-card fade-in" data-resume-type="internship" data-image="https://via.placeholder.com/800x500/0d1f3a/19d3c5?text=Internship+Resume+Sample">
                     <div class="sample-resume-preview">
                         <div class="sample-resume-preview-placeholder">
                             <i class="fas fa-briefcase sample-resume-preview-icon"></i>
@@ -1586,13 +1629,13 @@
                         <h3 class="sample-resume-title">Internship Resume Sample</h3>
                         <p class="sample-resume-description">Targeted resume format for internship applications with emphasis on relevant skills and learning ability.</p>
                         <div class="sample-resume-buttons">
-                            <a href="sample-internship-resume.html" class="btn btn-secondary">View</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20this%20resume%20sample%20design.%20Please%20share%20more%20details." target="_blank" class="btn btn-primary">Enquire Now</a>
+                            <button class="btn btn-secondary view-sample-btn" data-resume-type="internship" data-image="https://via.placeholder.com/800x500/0d1f3a/19d3c5?text=Internship+Resume+Sample">View</button>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20this%20resume%20sample%20design.%20Please%20share%20more%20details." target="_blank" class="btn btn-primary">Enquire Now</a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="sample-resume-card fade-in">
+                <div class="sample-resume-card fade-in" data-resume-type="professional" data-image="https://via.placeholder.com/800x500/0d1f3a/19d3c5?text=Professional+Resume+Sample">
                     <div class="sample-resume-preview">
                         <div class="sample-resume-preview-placeholder">
                             <i class="fas fa-chart-line sample-resume-preview-icon"></i>
@@ -1603,13 +1646,13 @@
                         <h3 class="sample-resume-title">Professional Resume Sample</h3>
                         <p class="sample-resume-description">Executive-level resume design for experienced professionals with focus on achievements and leadership.</p>
                         <div class="sample-resume-buttons">
-                            <a href="sample-professional-resume.html" class="btn btn-secondary">View</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20this%20resume%20sample%20design.%20Please%20share%20more%20details." target="_blank" class="btn btn-primary">Enquire Now</a>
+                            <button class="btn btn-secondary view-sample-btn" data-resume-type="professional" data-image="https://via.placeholder.com/800x500/0d1f3a/19d3c5?text=Professional+Resume+Sample">View</button>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20this%20resume%20sample%20design.%20Please%20share%20more%20details." target="_blank" class="btn btn-primary">Enquire Now</a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="sample-resume-card fade-in">
+                <div class="sample-resume-card fade-in" data-resume-type="minimal" data-image="https://via.placeholder.com/800x500/0d1f3a/19d3c5?text=Minimal+Resume+Sample">
                     <div class="sample-resume-preview">
                         <div class="sample-resume-preview-placeholder">
                             <i class="fas fa-th-large sample-resume-preview-icon"></i>
@@ -1620,13 +1663,13 @@
                         <h3 class="sample-resume-title">Minimal Resume Sample</h3>
                         <p class="sample-resume-description">Clean minimal design with focus on essential information and professional presentation.</p>
                         <div class="sample-resume-buttons">
-                            <a href="sample-minimal-resume.html" class="btn btn-secondary">View</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20this%20resume%20sample%20design.%20Please%20share%20more%20details." target="_blank" class="btn btn-primary">Enquire Now</a>
+                            <button class="btn btn-secondary view-sample-btn" data-resume-type="minimal" data-image="https://via.placeholder.com/800x500/0d1f3a/19d3c5?text=Minimal+Resume+Sample">View</button>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20this%20resume%20sample%20design.%20Please%20share%20more%20details." target="_blank" class="btn btn-primary">Enquire Now</a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="sample-resume-card fade-in">
+                <div class="sample-resume-card fade-in" data-resume-type="modern" data-image="https://via.placeholder.com/800x500/0d1f3a/19d3c5?text=Modern+Resume+Sample">
                     <div class="sample-resume-preview">
                         <div class="sample-resume-preview-placeholder">
                             <i class="fas fa-sparkles sample-resume-preview-icon"></i>
@@ -1637,8 +1680,8 @@
                         <h3 class="sample-resume-title">Modern Resume Sample</h3>
                         <p class="sample-resume-description">Contemporary resume design with modern layout and styling for today's competitive job market.</p>
                         <div class="sample-resume-buttons">
-                            <a href="sample-modern-resume.html" class="btn btn-secondary">View</a>
-                            <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20this%20resume%20sample%20design.%20Please%20share%20more%20details." target="_blank" class="btn btn-primary">Enquire Now</a>
+                            <button class="btn btn-secondary view-sample-btn" data-resume-type="modern" data-image="https://via.placeholder.com/800x500/0d1f3a/19d3c5?text=Modern+Resume+Sample">View</button>
+                            <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20this%20resume%20sample%20design.%20Please%20share%20more%20details." target="_blank" class="btn btn-primary">Enquire Now</a>
                         </div>
                     </div>
                 </div>
@@ -1804,7 +1847,7 @@
                 <h3 class="pricing-title">Resume Design</h3>
                 <div class="pricing-price">Starting from ₹199</div>
                 <p style="color: var(--text-soft); margin-bottom: 2rem;">Get a professional resume designed to help you stand out and land your dream job</p>
-                <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Resume%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Get a Quote</a>
+                <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Resume%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Get a Quote</a>
             </div>
         </div>
     </section>
@@ -1923,11 +1966,30 @@
                 <p>Let <span class="brand-koding">Koding</span><span class="brand-wala">wala</span> create a professional resume that helps you stand out and land your dream job.</p>
                 <div class="cta-buttons">
                     <a href="#samples" class="btn btn-secondary">View Samples</a>
-                    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Resume%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
+                    <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Resume%20Design%20service.%20Please%20share%20details." target="_blank" class="btn btn-primary">Enquiry Now</a>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Modal for Resume Preview -->
+    <div id="resumeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Resume Preview</h3>
+                <button class="close-modal" id="closeModalBtn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-image-container">
+                    <img id="modalResumeImage" src="" alt="Resume Sample" class="modal-resume-image">
+                </div>
+                <div class="modal-buttons">
+                    <button id="modalBuyNowBtn" class="btn btn-primary">Buy Now</button>
+                    <button id="modalEnquireNowBtn" class="btn btn-secondary">Enquire Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -1943,7 +2005,7 @@
                     <div class="social-links">
                         <a href="https://instagram.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-instagram"></i></a>
                         <a href="https://youtube.com/@kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-youtube"></i></a>
-                        <a href="https://wa.me/738686895149" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://wa.me/917386895149" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-whatsapp"></i></a>
                         <a href="https://facebook.com/kodingwala" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fab fa-facebook"></i></a>
                     </div>
                 </div>
@@ -1976,7 +2038,7 @@
                 <div class="footer-column">
                     <h3>Contact Info</h3>
                     <ul class="footer-links">
-                        <li><i class="fab fa-whatsapp"></i> WhatsApp: 738686895149</li>
+                        <li><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/917386895149" target="_blank" rel="noopener noreferrer">+91 7386895149</a></li>
                         <li><i class="fas fa-envelope"></i> Email: hello@kodingwala.com</li>
                         <li><i class="fab fa-instagram"></i> Instagram: @kodingwala</li>
                         <li><i class="fab fa-youtube"></i> YouTube: Kodingwala</li>
@@ -1991,7 +2053,7 @@
     </footer>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/738686895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Resume%20Design%20service.%20Please%20share%20details." target="_blank" class="floating-whatsapp">
+    <a href="https://wa.me/917386895149?text=Hello%20Kodingwala,%20I%20am%20interested%20in%20your%20Resume%20Design%20service.%20Please%20share%20details." target="_blank" class="floating-whatsapp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -2049,22 +2111,25 @@
             const extraDetails = document.getElementById('extraDetails').value;
 
             // Build WhatsApp message
-            const message = `Hello Kodingwala, I would like to request a resume design.%0A%0A` +
-                `Full Name: ${fullName}%0A` +
-                `Username/Short Name: ${shortName || 'Not provided'}%0A` +
-                `Mobile Number: ${mobileNumber}%0A` +
-                `Email: ${email}%0A` +
-                `Address: ${address || 'Not provided'}%0A` +
-                `Highest Qualification: ${qualification}%0A` +
-                `Skills: ${skills}%0A` +
-                `Work Experience: ${experience || 'Not provided'}%0A` +
-                `Career Objective: ${objective || 'Not provided'}%0A` +
-                `Resume Type: ${resumeType}%0A` +
-                `Preferred Design Style: ${designStyle}%0A` +
-                `Extra Details: ${extraDetails || 'Not provided'}`;
+            const messageText = `Hello Kodingwala, I would like to request a resume design.
 
-            // Open WhatsApp with the message
-            const whatsappURL = `https://wa.me/738686895149?text=${message}`;
+Full Name: ${fullName}
+Username/Short Name: ${shortName || 'Not provided'}
+Mobile Number: ${mobileNumber}
+Email: ${email}
+Address: ${address || 'Not provided'}
+Highest Qualification: ${qualification}
+Skills: ${skills}
+Work Experience: ${experience || 'Not provided'}
+Career Objective: ${objective || 'Not provided'}
+Resume Type: ${resumeType}
+Preferred Design Style: ${designStyle}
+Extra Details: ${extraDetails || 'Not provided'}`;
+
+            const encodedMessage = encodeURIComponent(messageText);
+
+            // Open WhatsApp with the message using correct number
+            const whatsappURL = `https://wa.me/917386895149?text=${encodedMessage}`;
             window.open(whatsappURL, '_blank');
         });
 
@@ -2142,6 +2207,61 @@
                     });
                 }
             });
+        });
+
+        // Modal Functionality
+        const modal = document.getElementById('resumeModal');
+        const modalImage = document.getElementById('modalResumeImage');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const modalBuyNowBtn = document.getElementById('modalBuyNowBtn');
+        const modalEnquireNowBtn = document.getElementById('modalEnquireNowBtn');
+        let currentResumeImage = '';
+
+        // Open modal when clicking View button
+        const viewButtons = document.querySelectorAll('.view-sample-btn');
+        viewButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const imageUrl = this.getAttribute('data-image');
+                if (imageUrl) {
+                    currentResumeImage = imageUrl;
+                    modalImage.src = imageUrl;
+                    modal.classList.add('show');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+
+        // Close modal function
+        function closeModal() {
+            modal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking close button
+        closeModalBtn.addEventListener('click', closeModal);
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Buy Now button in modal
+        modalBuyNowBtn.addEventListener('click', function() {
+            const messageText = `Hello Kodingwala, I want to buy this resume design. Please share payment and next steps.`;
+            const encodedMessage = encodeURIComponent(messageText);
+            window.open(`https://wa.me/917386895149?text=${encodedMessage}`, '_blank');
+            closeModal();
+        });
+
+        // Enquire Now button in modal
+        modalEnquireNowBtn.addEventListener('click', function() {
+            const messageText = `Hello Kodingwala, I am interested in this resume design sample. Please share more details.`;
+            const encodedMessage = encodeURIComponent(messageText);
+            window.open(`https://wa.me/917386895149?text=${encodedMessage}`, '_blank');
+            closeModal();
         });
     </script>
 </body>
